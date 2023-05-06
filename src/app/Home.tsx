@@ -9,7 +9,7 @@ import {
   Container,
 } from "@mui/material"
 import {
-  useGQLApp,
+  // useGQLApp,
   makeTheme,
   SEO,
   PWABar,
@@ -23,37 +23,37 @@ import {
 export default function Home(props: WrapperShape) {
 
   // console.log("props", props.pageContext.data)
-  const app = useGQLApp()
-  const locale = "en" // zh-CN || en
-  let localised: any = null
-  for (let i=0; i<app.length;i++){
-    if (app[i].node.locale === locale) localised = app[i].node
-  }
-  const appMeta = localised.Meta
+  // const app = useGQLApp()
+  // const locale = "en" // zh-CN || en
+  // let localised: any = null
+  // for (let i=0; i<app.length;i++){
+  //   if (app[i].node.locale === locale) localised = app[i].node
+  // }
+  // const appMeta = localised.Meta
 
 
-  const customTheme = makeTheme("light", localised.Theme.Primary, localised.Theme.Secondary)
+  // const customTheme = makeTheme("light", localised.Theme.Primary, localised.Theme.Secondary)
 
-  let booksData: any = null
-  let pwabarData: any = null
-  let heroData: any = null
+  // let booksData: any = null
+  // let pwabarData: any = null
+  // let heroData: any = null
   
-  const {
-    AppIcon,
-    Title,
-    Description,
-    Books,
-    Hero,
-  } = localised
+  // const {
+  //   AppIcon,
+  //   Title,
+  //   Description,
+  //   Books,
+  //   Hero,
+  // } = localised
   
-  if (Hero) heroData = Hero
-  if (Books) booksData = Books
+  // if (Hero) heroData = Hero
+  // if (Books) booksData = Books
   
-  pwabarData = {
-    title: Title,
-    description: Description,
-    icon: {...AppIcon},
-  }
+  // pwabarData = {
+  //   title: Title,
+  //   description: Description,
+  //   icon: {...AppIcon},
+  // }
   
   React.useEffect(() => {
     console.log(pJSON.name, pJSON.version)
