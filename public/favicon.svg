@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>lighthouse_iOSIcon</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#C09F52" offset="0%"></stop>
+            <stop stop-color="#87703B" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="lighthouse_iOSIcon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M475,256.5 L381.815278,387.523214 C377.036574,394.101786 371.338889,399.49256 364.722222,403.695536 C358.105556,407.898512 350.753704,410 342.666667,410 L111.083333,410 C101.985417,410 94.1970486,406.779241 87.7182292,400.337723 C81.2394097,393.896205 78,386.152679 78,377.107143 L78,135.892857 C78,126.847321 81.2394097,119.103795 87.7182292,112.662277 C94.1970486,106.220759 101.985417,103 111.083333,103 L342.666667,103 C350.753704,103 358.105556,105.101488 364.722222,109.304464 C371.338889,113.50744 377.036574,118.898214 381.815278,125.476786 L475,256.5 Z" id="Label" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
+    </g>
+</svg>
