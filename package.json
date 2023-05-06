@@ -1,7 +1,6 @@
 {
   "name": "gatsby-template",
-  "version": "5.0.0",
-  "author": "@listingslab-software",
+  "version": "5.0.1",
   "scripts": {
     "start": "npm run clean && gatsby develop",
     "build": "gatsby build",
@@ -88,6 +87,7 @@
     "vitest": "0.30.1"
   },
   "license": "MIT",
+  "author": "https://github.com/listingslab-goldlabel",
   "keywords": [
     "gatsby",
     "typescript"

@@ -1,9 +1,9 @@
 import type { GatsbyConfig } from 'gatsby'
-import strapiConfig from "./strapi"
+// import strapiConfig from "./strapi"
 
-const siteTitle = "Listingslab"
-const siteDescription = "Software Development"
-const siteKeywords = "goldlabel, gatsby, strapi, pwa, listingslab, react, javascript, ai, artificial intelligence, chatgpt"
+const siteTitle = "Gatsby Template"
+const siteDescription = "Open Source Gatsby starter for Listingslab Goldlabel"
+const siteKeywords = "goldlabel, gatsby, strapi, pwa, listingslab, react, javascript"
 const siteUrl = "https://listingslab.com/"
 const siteImage = "https://listingslab.com/svg/opengraphImage.svg"
 const siteTwitter = "@auto_machineV2"
@@ -20,27 +20,25 @@ const config: GatsbyConfig = {
     siteIcon,
   },
   plugins: [
+    // { 
+    //   resolve: `gatsby-source-strapi`, 
+    //   options: strapiConfig
+    // },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: `./static${siteIcon}`,
         name: siteTitle,
         short_name: siteTitle,
+        icon: `./static${siteIcon}`,
         start_url: `/`,
         background_color: `#C09F52`,
         theme_color: `#C09F52`,
         display: `standalone`,
       }
     },
-    { 
-      resolve: `gatsby-source-strapi`, 
-      options: strapiConfig
-    },
     "gatsby-plugin-next-seo",
     {
       resolve: 'gatsby-plugin-offline',
-      options: {
-      }
    }],
   jsxRuntime: `automatic`,
 }
