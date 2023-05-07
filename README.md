@@ -1,12 +1,20 @@
 ## Gatsby Template
 
-release 5.0.2
-
 > 👉 Public, Open Source Gatsby Template for Listingslab Goldlabel
 
-> 👉 用于 Listingslab Goldlabel 的公共开源 Gatsby 模板
+Release 5.0.2 用于 Listingslab Goldlabel 的公共开源 Gatsby 模板
 
-#### Localise Language
+
+#### Install & Use
+
+```bash
+cd <working-dir>
+git clone https://github.com/listingslab-goldlabel/gatsby-template
+cd gatsby-template
+npm install
+npm run develop
+```
+#### Localisation
 
 Might as well be in Chinese, right?
 
