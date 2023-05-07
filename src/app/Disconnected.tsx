@@ -28,7 +28,6 @@ export default function Disconnected(props: WrapperShape) {
     siteDescription,
     siteIcon,
     siteImage,
-    siteKeywords,
   } = meta
 
   return (
@@ -36,7 +35,7 @@ export default function Disconnected(props: WrapperShape) {
       <WrapRedux>
           <MuiTheme>
             <CssBaseline />
-            <Container maxWidth="md" sx={{mt:1}}>
+            <Container maxWidth="sm" sx={{mt:1}}>
               <Slice />
               <Card>
                 <CardActionArea
@@ -53,9 +52,6 @@ export default function Disconnected(props: WrapperShape) {
                       component={"img"}
                       height={250}
                       src={siteImage}
-                    />
-                    <CardHeader
-                      subheader={<Font variant="thin">keywords: {siteKeywords}</Font>}
                     />
                 </CardActionArea>
               </Card>
