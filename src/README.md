@@ -9,32 +9,32 @@
 👼 天使
 
 🎅  santa 
-🤶  mrs_claus 
-🧑‍🎄  mx_claus 
+🤶  mrs claus 
+🧑‍🎄  mx claus 
 🦸  superhero 
-🦸‍♂️  superhero_man 
-🦸‍♀️  superhero_woman 
+🦸‍♂️  superhero man 
+🦸‍♀️  superhero woman 
 🦹  supervillain 
-🦹‍♂️  supervillain_man 
-🦹‍♀️  supervillain_woman 
+🦹‍♂️  supervillain man 
+🦹‍♀️  supervillain woman 
 🧙  mage 
-🧙‍♂️  mage_man 
-🧙‍♀️  mage_woman 
+🧙‍♂️  mage man 
+🧙‍♀️  mage woman 
 🧚  fairy 
-🧚‍♂️  fairy_man 
-🧚‍♀️  fairy_woman 
+🧚‍♂️  fairy man 
+🧚‍♀️  fairy woman 
 🧛  vampire 
-🧛‍♂️  vampire_man 
-🧛‍♀️  vampire_woman 
+🧛‍♂️  vampire man 
+🧛‍♀️  vampire woman 
 🧜  merperson 
 🧜‍♂️  merman 
 🧜‍♀️  mermaid 
 🧝  elf 
-🧝‍♂️  elf_man 
-🧝‍♀️  elf_woman 
+🧝‍♂️  elf man 
+🧝‍♀️  elf woman 
 🧞  genie 
-🧞‍♂️  genie_man
-🧞‍♀️  genie_woman 
+🧞‍♂️  genie man
+🧞‍♀️  genie woman 
 🧟  zombie
-🧟‍♂️  zombie_man
-🧟‍♀️  zombie_woman
+🧟‍♂️  zombie man
+🧟‍♀️  zombie woman

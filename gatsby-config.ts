@@ -1,11 +1,12 @@
-import type { GatsbyConfig } from 'gatsby'
 // import strapiConfig from "./strapi"
+import type { GatsbyConfig } from 'gatsby'
+
 
 const siteTitle = "Gatsby Template"
 const siteDescription = "Open Source Gatsby starter for Listingslab Goldlabel"
 const siteKeywords = "goldlabel, gatsby, strapi, pwa, listingslab, react, javascript"
-const siteUrl = "https://listingslab.com/"
-const siteImage = "https://listingslab.com/svg/opengraphImage.svg"
+const siteUrl = "http://listingslab.com/"
+const siteImage = "/svg/opengraphImage.svg"
 const siteTwitter = "@auto_machineV2"
 const siteIcon = "/svg/icons/goldenticket.svg"
 
@@ -37,9 +38,8 @@ const config: GatsbyConfig = {
       }
     },
     "gatsby-plugin-next-seo",
-    {
-      resolve: 'gatsby-plugin-offline',
-   }],
+    {resolve: 'gatsby-plugin-offline'}
+  ],
   jsxRuntime: `automatic`,
 }
 
