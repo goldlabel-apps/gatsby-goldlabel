@@ -14,9 +14,12 @@ export function makeTheme(
       secondary: {
         main: secondary,
       },
+      success: {
+        main: "#FFFFFF",
+      },
       background: {
         default: primary,
-        // paper: "white"
+        paper: secondary,
       }
     },
   }

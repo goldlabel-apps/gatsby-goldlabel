@@ -41,7 +41,7 @@ export default function Disconnected(props: WrapperShape) {
                 <CardActionArea
                   onClick={(e: React.MouseEvent) => {
                     e.preventDefault()
-                    window.open("https://github.com/listingslab-goldlabel/colz", "_blank")
+                    // window.open("https://github.com/listingslab-goldlabel/colz", "_blank")
                   }}>
                     <CardHeader
                       title={<Font variant="title">{siteTitle}</Font>}
@@ -49,9 +49,10 @@ export default function Disconnected(props: WrapperShape) {
                       avatar={<Avatar src={siteIcon} />}
                     />
                     <CardMedia 
+                      src={siteImage}
+                      alt={`${siteTitle} ${siteDescription}`}
                       component={"img"}
                       height={250}
-                      src={siteImage}
                     />
                 </CardActionArea>
               </Card>

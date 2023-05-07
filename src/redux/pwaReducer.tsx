@@ -9,9 +9,9 @@ import {
 const theme :ThemeShape = {
   id: "default",
   locale: "en",
-  Title: "Goldlabel",
-  Primary: "#C09F52",
-  Secondary: "#A58438",
+  Title: "Purple",
+  Primary: "#32328C",
+  Secondary: "#C09F52",
   Font: "gotham",
   LightBackground: "#FFFDEF",
   DefaultDark: false

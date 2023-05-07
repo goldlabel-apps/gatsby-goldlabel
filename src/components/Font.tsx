@@ -6,7 +6,7 @@ import { useTheme, Typography } from "@mui/material"
 export function Font(props: any) {
   const theme = useTheme()
   const { variant, fontSize, color, children, align, width } = props
-  let c = theme.palette.text.primary
+  let c = theme.palette.success.main
   if (color) c = color
   let textAlign = "left"
   let w: any = "100%"
@@ -37,7 +37,6 @@ export function Font(props: any) {
   if (variant === "title") {
     lineHeight = "1.3rem"
     textfontSize = "1.3rem"
-    c = theme.palette.primary.main
   }
 
   return (
