@@ -9,8 +9,6 @@ import {
   Container,
 } from "@mui/material"
 import {
-  // useGQLApp,
-  makeTheme,
   SEO,
   PWABar,
   Slice,
