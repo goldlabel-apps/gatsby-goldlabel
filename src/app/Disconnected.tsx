@@ -16,6 +16,7 @@ import {
 import {
   Font,
   useGQLMeta,
+  useGQLBooks,
   Slice,
   WrapRedux,
   MuiTheme,
@@ -23,6 +24,8 @@ import {
 
 export default function Disconnected(props: WrapperShape) {
   const meta = useGQLMeta()
+  const books = useGQLBooks()
+  console.log("books", books)
   const {
     siteTitle,
     siteDescription,

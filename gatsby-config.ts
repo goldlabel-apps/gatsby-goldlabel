@@ -1,9 +1,9 @@
-// import strapiConfig from "./strapi"
+import strapiConfig from "./strapi"
 import type {GatsbyConfig} from "gatsby"
 
-const siteTitle = "Open Source"
+const siteTitle = "Goldlabel Open Source"
 const siteIcon = "/svg/icons/goldenticket.svg"
-const siteDescription = "Goldlabel"
+const siteDescription = "Gatsby JS with Strapi Headless CMS"
 const siteImage = "/svg/opensource.svg"
 const siteTwitter = "@auto_machineV2"
 const siteKeywords = "goldlabel, gatsby, strapi, pwa, listingslab, react, javascript"
@@ -22,10 +22,10 @@ const config: GatsbyConfig = {
     siteSecondaryColor,
   },
   plugins: [
-    // { 
-    //   resolve: `gatsby-source-strapi`, 
-    //   options: strapiConfig
-    // },
+    { 
+      resolve: `gatsby-source-strapi`, 
+      options: strapiConfig
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -45,7 +45,9 @@ const config: GatsbyConfig = {
         description: siteDescription,
       },
     },
-    {resolve: 'gatsby-plugin-offline'}
+    {
+      resolve: 'gatsby-plugin-offline'
+    }
   ],
   jsxRuntime: `automatic`,
 }

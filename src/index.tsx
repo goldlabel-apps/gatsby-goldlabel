@@ -15,7 +15,7 @@ import Slice from "./components/Slice"
 import BookCard from "./components/BookCard"
 import BookPage from "./components/BookPage"
 import ImageMedia from "./components/ImageMedia"
-// import {useGQLApp} from "./hooks/useGQLApp"
+import {useGQLBooks} from "./hooks/useGQLBooks"
 import {useGQLMeta} from "./hooks/useGQLMeta"
 import {makeImgSrc} from "./app/utils"
 import { selectPWA, setPwaKey } from "./redux/pwaReducer"
@@ -50,7 +50,7 @@ export {
   BookPage,
   ImageMedia,
   makeImgSrc,
-  // useGQLApp,
+  useGQLBooks,
   useGQLMeta,
   selectPWA,
   startApp,
