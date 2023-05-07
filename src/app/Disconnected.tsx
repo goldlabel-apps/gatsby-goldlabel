@@ -5,9 +5,15 @@ import React from "react"
 import "../theme/default.css"
 import {
   CssBaseline,
+  Avatar,
   Container,
+  Card,
+  CardHeader,
+  CardMedia,
+  CardActionArea,
 } from "@mui/material"
 import {
+  Font,
   useGQLMeta,
   Slice,
   WrapRedux,
@@ -16,7 +22,13 @@ import {
 
 export default function Disconnected(props: WrapperShape) {
   const meta = useGQLMeta()
-  const {location} = props
+  // const {location} = props
+  const {
+    siteTitle,
+    siteDescription,
+    siteIcon,
+    siteImage,
+  } = meta
 
   return (
     <>
@@ -25,8 +37,26 @@ export default function Disconnected(props: WrapperShape) {
             <CssBaseline />
             <Container maxWidth="md" sx={{mt:1}}>
               <Slice />
-              <pre style={{fontSize:11}}>{JSON.stringify(meta, null, 2)}</pre>
-              <pre style={{fontSize:11}}>{JSON.stringify(location, null, 2)}</pre>
+              <Card>
+                <CardActionArea
+                  onClick={(e: React.MouseEvent) => {
+                    e.preventDefault()
+                    console.log("HEY")
+                    window.open("https://github.com/listingslab-goldlabel/colz", "_blank")
+                  }}>
+                    <CardHeader
+                      title={<Font variant="title">{siteTitle}</Font>}
+                      subheader={<Font>{siteDescription}</Font>}
+                      avatar={<Avatar src={siteIcon} />}
+                      
+                    />
+                    <CardMedia 
+                      component={"img"}
+                      height={250}
+                      src={siteImage}
+                    />
+                </CardActionArea>
+              </Card>
             </Container>
           </MuiTheme>
       </WrapRedux>
@@ -35,7 +65,5 @@ export default function Disconnected(props: WrapperShape) {
 }
 
 /*
-<pre style={{fontSize:11}}>{JSON.stringify(booksData, null, 2)}</pre>
-
-{booksData ? <pre>{JSON.stringify(booksData, null, 2)}</pre> : null }
+<pre style={{fontSize:11}}>{JSON.stringify(meta, null, 2)}</pre>
 */

@@ -6,6 +6,7 @@ import SEO from "./app/SEO"
 import Home from "./app/Home"
 import Meta from "./components/Meta"
 import Icon from "./components/Icon"
+import {Font} from "./components/Font"
 import HeroClip from "./components/HeroClip"
 import BooksList from "./components/BooksList"
 import PWABar from "./components/PWABar"
@@ -42,6 +43,7 @@ export {
   SEO,
   Home,
   Icon,
+  Font,
   Meta,
   BooksList,
   BookCard,

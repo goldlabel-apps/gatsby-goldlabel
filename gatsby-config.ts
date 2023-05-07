@@ -1,11 +1,9 @@
 // import strapiConfig from "./strapi"
-import type { GatsbyConfig } from 'gatsby'
+import type {GatsbyConfig} from "gatsby"
 
-
-const siteTitle = "Gatsby Template"
-const siteDescription = "Open Source Gatsby starter for Listingslab Goldlabel"
+const siteTitle = "Open Source Goldlabel"
+const siteDescription = "Install Strapi"
 const siteKeywords = "goldlabel, gatsby, strapi, pwa, listingslab, react, javascript"
-const siteUrl = "http://listingslab.com/"
 const siteImage = "/svg/opengraphImage.svg"
 const siteTwitter = "@auto_machineV2"
 const siteIcon = "/svg/icons/goldenticket.svg"
@@ -14,7 +12,6 @@ const config: GatsbyConfig = {
   siteMetadata: {
     siteTitle,
     siteDescription,
-    siteUrl,
     siteImage,
     siteKeywords,
     siteTwitter,

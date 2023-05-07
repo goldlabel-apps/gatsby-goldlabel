@@ -1,6 +1,8 @@
-## Gatsby Starter Template
+## Gatsby Template
 
-> Open Source Gatsby starter for Listingslab Goldlabel
+> 👉 Public, Open Source Gatsby Template for Listingslab Goldlabel
+
+> 👉 用于 Listingslab Goldlabel 的公共开源 Gatsby 模板
 
 #### Localise Language
 
