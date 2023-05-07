@@ -15,8 +15,8 @@ export function makeTheme(
         main: secondary,
       },
       background: {
-        // default: primary,
-        // paper: secondary
+        default: primary,
+        // paper: "white"
       }
     },
   }

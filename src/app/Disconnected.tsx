@@ -1,3 +1,4 @@
+import "../theme/default.css"
 import {
   WrapperShape,
 } from "../types"
@@ -22,12 +23,12 @@ import {
 
 export default function Disconnected(props: WrapperShape) {
   const meta = useGQLMeta()
-  // const {location} = props
   const {
     siteTitle,
     siteDescription,
     siteIcon,
     siteImage,
+    siteKeywords,
   } = meta
 
   return (
@@ -41,19 +42,20 @@ export default function Disconnected(props: WrapperShape) {
                 <CardActionArea
                   onClick={(e: React.MouseEvent) => {
                     e.preventDefault()
-                    console.log("HEY")
                     window.open("https://github.com/listingslab-goldlabel/colz", "_blank")
                   }}>
                     <CardHeader
                       title={<Font variant="title">{siteTitle}</Font>}
                       subheader={<Font>{siteDescription}</Font>}
                       avatar={<Avatar src={siteIcon} />}
-                      
                     />
                     <CardMedia 
                       component={"img"}
                       height={250}
                       src={siteImage}
+                    />
+                    <CardHeader
+                      subheader={<Font variant="thin">keywords: {siteKeywords}</Font>}
                     />
                 </CardActionArea>
               </Card>
