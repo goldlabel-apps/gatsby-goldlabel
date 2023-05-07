@@ -2,7 +2,7 @@
 import type {GatsbyConfig} from "gatsby"
 
 const siteTitle = "Open Source Goldlabel"
-const siteDescription = "Install Strapi"
+const siteDescription = "Ready to install Strapi?"
 const siteKeywords = "goldlabel, gatsby, strapi, pwa, listingslab, react, javascript"
 const siteImage = "/svg/opengraphImage.svg"
 const siteTwitter = "@auto_machineV2"
