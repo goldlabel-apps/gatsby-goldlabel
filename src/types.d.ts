@@ -73,4 +73,5 @@ export type WrapperShape = {
   command?: string
   data?: any
   pageContext?: any
+  location: any
 }
