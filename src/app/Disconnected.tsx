@@ -25,6 +25,7 @@ export default function Disconnected(props: WrapperShape) {
             <CssBaseline />
             <Container maxWidth="md" sx={{mt:1}}>
               <Slice />
+              <pre style={{fontSize:11}}>{JSON.stringify(meta, null, 2)}</pre>
               <pre style={{fontSize:11}}>{JSON.stringify(location, null, 2)}</pre>
             </Container>
           </MuiTheme>
