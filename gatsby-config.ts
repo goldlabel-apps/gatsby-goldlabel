@@ -34,7 +34,13 @@ const config: GatsbyConfig = {
         display: `standalone`,
       }
     },
-    "gatsby-plugin-next-seo",
+    {
+      resolve: 'gatsby-plugin-next-seo',
+      options: {
+        title: siteTitle,
+        description: siteDescription,
+      },
+    },
     {resolve: 'gatsby-plugin-offline'}
   ],
   jsxRuntime: `automatic`,
