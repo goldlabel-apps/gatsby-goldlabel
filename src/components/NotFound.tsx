@@ -13,19 +13,14 @@ import {
     useGQLMeta,
 } from "../"
 
-export default function Site() {
-    const site = useGQLMeta()
+export default function NotFound() {
 
-    const {
-        siteTitle,
-        siteDescription,
-        siteIcon,
-    } = site
 
     return (
     <>
     <ButtonBase 
         sx={{
+            mt:2,
             display:"block",
             textAlign: "left",
             width: "100%",
@@ -35,17 +30,14 @@ export default function Site() {
             console.log("Site")
             window.open("/?restart", "_self")
         }}>
-        <Card>
             <CardHeader
-                avatar={<Avatar src={siteIcon} alt={`${siteTitle} ${siteDescription}`}/>}
                 title={ <Font variant="title">
-                            {siteTitle}
+                            404
                         </Font>}
                 subheader={<Font variant="description">
-                                {siteDescription}
+                                Restart?
                             </Font>}
             />
-        </Card>
     </ButtonBase>
     </>
     )

@@ -1,4 +1,4 @@
-import {BookData} from "../types"
+import {BookShape} from "../types"
 import React from "react"
 import {
   Card,
@@ -11,9 +11,8 @@ import {
   ImageMedia,
 } from "../"
 
-export default function BookCard(props: BookData) {
-  const {book} = props
-  
+export default function BookCard(props: BookShape) {
+  const {book} = props  
   // console.log("data", data)
 
   const {

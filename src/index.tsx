@@ -9,6 +9,7 @@ import {makeTheme} from "./theme/makeTheme"
 
 import Meta from "./components/Meta"
 import Site from "./components/Site"
+import NotFound from "./components/NotFound"
 import Icon from "./components/Icon"
 import {Font} from "./components/Font"
 import HeroClip from "./components/HeroClip"
@@ -57,6 +58,7 @@ export {
   Font,
   Meta,
   Site,
+  NotFound,
   BooksList,
   BookCard,
   BookPage,

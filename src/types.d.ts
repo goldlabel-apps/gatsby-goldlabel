@@ -1,5 +1,17 @@
 import { PaletteMode } from "@mui/material"
 
+
+export type BookShape = {
+  book?: any
+  node?: any
+}
+
+
+export type DocumentShape = {
+  document?: any
+}
+
+
 export type PwaReduxShape = {
   started: boolean
   locale: string
