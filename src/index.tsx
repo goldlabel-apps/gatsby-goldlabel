@@ -1,10 +1,14 @@
-import WrapRedux from "./app/WrapRedux"
-import {usePwaDispatch} from "./hooks/usePwaDispatch"
-import {usePwaSelect} from "./hooks/usePwaSelect"
-import {makeTheme} from "./theme/makeTheme"
+import {firebaseConfig} from "./firebaseConfig"
+import {makeMeta} from "./app/Meta"
 import SEO from "./app/SEO"
 import Home from "./app/Home"
+import WrapRedux from "./app/WrapRedux"
+
+import {makeImgSrc} from "./theme/utils"
+import {makeTheme} from "./theme/makeTheme"
+
 import Meta from "./components/Meta"
+import Site from "./components/Site"
 import Icon from "./components/Icon"
 import {Font} from "./components/Font"
 import HeroClip from "./components/HeroClip"
@@ -15,9 +19,7 @@ import Slice from "./components/Slice"
 import BookCard from "./components/BookCard"
 import BookPage from "./components/BookPage"
 import ImageMedia from "./components/ImageMedia"
-import {useGQLBooks} from "./hooks/useGQLBooks"
-import {useGQLMeta} from "./hooks/useGQLMeta"
-import {makeImgSrc} from "./app/utils"
+
 import { selectPWA, setPwaKey } from "./redux/pwaReducer"
 import {store} from "./redux/store"
 import {persistor} from "./redux/store"
@@ -28,7 +30,16 @@ import { setSeo } from "./redux/actions/setSeo"
 import { setOpen } from "./redux/actions/setOpen"
 import { navigateTo } from "./redux/actions/navigateTo"
 
+
+import {usePwaDispatch} from "./hooks/usePwaDispatch"
+import {usePwaSelect} from "./hooks/usePwaSelect"
+import {useGQLBooks} from "./hooks/useGQLBooks"
+import {useGQLMeta} from "./hooks/useGQLMeta"
+
+
 export {
+  firebaseConfig,
+  makeMeta,
   store,
   persistor,
   setPwaKey,
@@ -45,6 +56,7 @@ export {
   Icon,
   Font,
   Meta,
+  Site,
   BooksList,
   BookCard,
   BookPage,

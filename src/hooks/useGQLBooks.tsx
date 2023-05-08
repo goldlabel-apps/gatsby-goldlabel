@@ -1,4 +1,5 @@
 import { useStaticQuery, graphql } from "gatsby"
+
 export const useGQLBooks = () => {
   const gql = useStaticQuery(
     graphql`

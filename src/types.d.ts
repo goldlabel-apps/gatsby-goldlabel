@@ -1,10 +1,43 @@
-// import { PaletteMode } from "@mui/material"
+import { PaletteMode } from "@mui/material"
 
 export type PwaReduxShape = {
   started: boolean
   locale: string
   persisted?: boolean
   theme: ThemeShape
+}
+
+export type GatsbyShape = {
+  siteUrl: string
+  siteIcon: string
+  siteTitle: string
+  siteDescription: string
+  siteKeywords: string
+  siteImage: string
+  siteTwitter: string
+  siteTheme: string
+}
+
+export type MetaShape = {
+  siteTitle: string
+  title: string
+  description: string
+  siteDescription: string
+  keywords: string
+  url: string
+  canonical: string
+  image: string
+  twitter: string
+}
+
+
+export type ThemeShape = {
+  title: string
+  description: string
+  primaryColor: string
+  secondaryColor: string
+  font: string
+  mode: PaletteMode
 }
 
 export type HeroData = {
@@ -39,30 +72,6 @@ export type ImageSizeShape = {
 export interface KeyValueShape {
   key: string
   value: any
-}
-
-export type ThemeShape = {
-  id: string
-  locale: string
-  Title: string
-  Primary: string
-  Secondary: string
-  Font: string
-  LightBackground: string
-  DefaultDark: boolean
-}
-
-export type SeoShape = {
-  siteTitle: string
-  title: string
-  description: string
-  keywords: string
-  url: string
-  canonical: string
-  openGraphImageSrc: string
-  openGraphImageSrcSize: ImageSizeShape
-  openGraphImageAlt: string
-  twitter: string
 }
 
 export type PWABarShape = {

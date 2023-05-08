@@ -9,27 +9,24 @@ import {
   Container,
 } from "@mui/material"
 import {
-  Slice,
+  Site,
   WrapRedux,
   MuiTheme,
-  useGQLBooks,
 } from "../"
 
 export default function Home(props: WrapperShape) {
-  const books = useGQLBooks ()
-  console.log("books", books)
+  
   React.useEffect(() => {
     console.log(pJSON.name, pJSON.version)
-  }, [])
+  }, [pJSON])
 
   return (
     <>
       <WrapRedux>
         <MuiTheme>
           <CssBaseline />
-          <Container maxWidth="md" sx={{mt:1}}>
-            <Slice />
-            <pre style={{fontSize:11}}>{JSON.stringify(books, null, 2)}</pre>
+          <Container maxWidth="sm" sx={{mt:1}}>
+            <Site />
           </Container>
         </MuiTheme>
       </WrapRedux>

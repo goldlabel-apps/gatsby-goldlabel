@@ -1,26 +1,29 @@
+import {GatsbyShape} from "./src/types"
 import strapiConfig from "./strapi"
 import type {GatsbyConfig} from "gatsby"
 
 const siteTitle = "Goldlabel Open Source"
+const siteUrl = "https://gatsby-template.onrender.com/"
 const siteIcon = "/svg/icons/goldenticket.svg"
 const siteDescription = "Gatsby JS with Strapi Headless CMS"
 const siteImage = "/svg/opensource.svg"
 const siteTwitter = "@auto_machineV2"
 const siteKeywords = "goldlabel, gatsby, strapi, pwa, listingslab, react, javascript"
-const sitePrimaryColor = "#32328C" 
-const siteSecondaryColor = "#C09F52"
+const siteTheme = "#32328C"
+
+const siteMetadata: GatsbyShape =  {
+  siteTitle,
+  siteUrl,
+  siteDescription,
+  siteIcon,
+  siteImage,
+  siteKeywords,
+  siteTwitter,
+  siteTheme,
+}
 
 const config: GatsbyConfig = {
-  siteMetadata: {
-    siteIcon,
-    siteTitle,
-    siteDescription,
-    siteImage,
-    siteKeywords,
-    siteTwitter,
-    sitePrimaryColor,
-    siteSecondaryColor,
-  },
+  siteMetadata,
   plugins: [
     { 
       resolve: `gatsby-source-strapi`, 
@@ -33,8 +36,8 @@ const config: GatsbyConfig = {
         short_name: siteTitle,
         icon: `./static${siteIcon}`,
         start_url: `/`,
-        background_color: sitePrimaryColor,
-        theme_color: sitePrimaryColor,
+        background_color: siteTheme,
+        theme_color: siteTheme,
         display: `standalone`,
       }
     },
