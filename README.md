@@ -4,7 +4,7 @@ Open Source Goldlabel Gatsby/Strapi stack deploying to render.com by Listingslab
 
 > 👉 Public, Open Source Gatsby Template for Listingslab Goldlabel
 
-Release 5.0.2 用于 Listingslab Goldlabel 的公共开源 Gatsby 模板
+Release 5.1.4 用于 Listingslab Goldlabel 的公共开源 Gatsby 模板
 
 
 #### Install & Use
