@@ -31,6 +31,12 @@ export const useGQLBooks = () => {
                 data
               }
             }
+            Image {
+              alternativeText
+              width
+              height
+              url
+            }
           }
         }
       }

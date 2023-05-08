@@ -9,6 +9,7 @@ import {
 } from "@mui/material"
 import {
   ImageMedia,
+  Font,
 } from "../"
 
 export default function BookCard(props: BookShape) {
@@ -37,12 +38,12 @@ export default function BookCard(props: BookShape) {
       >
         <Card>
         <CardHeader
-          title={ <Typography variant="h6">
+          title={ <Font variant="title">
                     {Title}
-                  </Typography>}
-          subheader={<Typography>
-                      {Description}
-                    </Typography>}
+                  </Font>}
+          // subheader={<Font>
+          //             {Description}
+          //           </Font>}
         />
         <CardContent>
           {Image ? <ImageMedia data={Image} height={125} /> : null }

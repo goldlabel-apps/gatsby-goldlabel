@@ -19,6 +19,16 @@ import {
 } from "../"
 
 export default function Home(props: WrapperShape) {
+
+  const {
+    pageContext,
+  } = props
+  let contextComponents: any = null
+  if(pageContext){
+    const {data} = pageContext
+    console.log("pageContext", data)
+  }
+
   
   const books: Array<BookShape> = useGQLBooks()
 
@@ -32,7 +42,7 @@ export default function Home(props: WrapperShape) {
       <WrapRedux>
         <MuiTheme>
           <CssBaseline />
-          <Container maxWidth="sm" sx={{mt:1}}>
+          <Container maxWidth="md" sx={{mt:2}}>
             <Site />
             {books.length ? <>
               <Grid container spacing={1} sx={{mt:1}}>

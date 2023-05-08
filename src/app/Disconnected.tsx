@@ -16,21 +16,16 @@ import {
 } from "../"
 
 export default function Disconnected(props: WrapperShape) {
-
   const {
     pageContext,
   } = props
-
   let contextComponents: any = null
-
   if(pageContext){
     const {data} = pageContext
     const {special} = data
-
     if (special === "404"){
       contextComponents = <NotFound />
     }
-    // console.log("special", special)
   }
 
 
@@ -43,7 +38,7 @@ export default function Disconnected(props: WrapperShape) {
       <WrapRedux>
           <MuiTheme>
             <CssBaseline />
-            <Container maxWidth="sm" sx={{mt:1}}>
+            <Container maxWidth="md" sx={{mt:1}}>
               <Site />
               {contextComponents}
             </Container>
