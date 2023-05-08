@@ -2,10 +2,11 @@ const path = require(`path`)
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const Disconnected = path.resolve("src/app/Disconnected.tsx")
-
+  const Home = path.resolve("src/app/Home.tsx")
+  
   createPage({
     path: "/",
-    component: Disconnected,
+    component: Home,
     context: {
       data: {
         special: "disconnected",
