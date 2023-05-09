@@ -34,8 +34,8 @@ import { navigateTo } from "./redux/actions/navigateTo"
 
 import {usePwaDispatch} from "./hooks/usePwaDispatch"
 import {usePwaSelect} from "./hooks/usePwaSelect"
-import {useGQLBooks} from "./hooks/useGQLBooks"
 import {useGQLMeta} from "./hooks/useGQLMeta"
+import {useGQLApps} from "./hooks/useGQLApps"
 
 
 export {
@@ -48,6 +48,7 @@ export {
   MuiTheme,
   usePwaDispatch,
   usePwaSelect,
+  useGQLApps,
   makeTheme,
   Slice,
   PWABar,
@@ -64,7 +65,6 @@ export {
   BookPage,
   ImageMedia,
   makeImgSrc,
-  useGQLBooks,
   useGQLMeta,
   selectPWA,
   startApp,

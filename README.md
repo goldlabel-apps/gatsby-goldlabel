@@ -1,11 +1,11 @@
-Open Source Goldlabel Gatsby/Strapi stack deploying to render.com by Listingslab
-
 ## Gatsby Template
 
-> 👉 Public, Open Source Gatsby Template for Listingslab Goldlabel
+Release 🤙 5.1.5 用 🦹‍♀️ 于 🧜 Goldlabel Template 的公共开源 Gatsby 模板
 
-Release 5.1.4 用于 Listingslab Goldlabel 的公共开源 Gatsby 模板
+> 👉 Public, Open Source Gatsby Template for Listingslab Goldlabel  
+deploying to render.com by Listingslab
 
+Release 🤙 5.1.5 用 🦹‍♀️ 于 🧜 Goldlabel Template 的公共开源 Gatsby 模板
 
 #### Install & Use
 
@@ -16,7 +16,7 @@ cd gatsby-template
 npm install
 npm run develop
 ```
-#### Localisation
+#### Localise
 
 Might as well be in Chinese, right?
 

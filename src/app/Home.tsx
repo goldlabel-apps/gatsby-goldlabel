@@ -1,4 +1,3 @@
-import pJSON from "../../package.json"
 import {
   WrapperShape,
   BookShape,
@@ -6,7 +5,6 @@ import {
 import React from "react"
 import "../theme/default.css"
 import {
-  Grid,
   CssBaseline,
   Container,
 } from "@mui/material"
@@ -14,7 +12,6 @@ import {
   Site,
   WrapRedux,
   MuiTheme,
-  useGQLBooks,
   BookCard,
 } from "../"
 
@@ -29,13 +26,8 @@ export default function Home(props: WrapperShape) {
     console.log("pageContext", data)
   }
 
-  
-  const books: Array<BookShape> = useGQLBooks()
-
   React.useEffect(() => {
-    console.log(pJSON.name, pJSON.version)
-    console.log("Number of books:", books.length)
-  }, [pJSON, books])
+  }, [])
 
   return (
     <>
@@ -44,7 +36,17 @@ export default function Home(props: WrapperShape) {
           <CssBaseline />
           <Container maxWidth="md" sx={{mt:2}}>
             <Site />
-            {books.length ? <>
+          </Container>
+        </MuiTheme>
+      </WrapRedux>
+    </>
+  )
+}
+
+/*
+
+
+{books.length ? <>
               <Grid container spacing={1} sx={{mt:1}}>
                 {books.map((item: BookShape, i: number) => {
                   return <Grid 
@@ -56,13 +58,8 @@ export default function Home(props: WrapperShape) {
                 })}
               </Grid>
             </> : null }
-          </Container>
-        </MuiTheme>
-      </WrapRedux>
-    </>
-  )
-}
 
-/*
+
+
 <pre>{JSON.stringify(item.node, null, 2)}</pre>
 */
