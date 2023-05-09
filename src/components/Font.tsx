@@ -5,7 +5,7 @@ import { useTheme, Typography } from "@mui/material"
 
 export function Font(props: any) {
   const theme = useTheme()
-  const { variant, fontSize, color, children, align, width } = props
+  const { variant, fontSize, color, children, align, width, /*overflow*/ } = props
   let c = theme.palette.success.main
   if (color) c = color
   let textAlign = "left"
@@ -13,7 +13,7 @@ export function Font(props: any) {
   if (width) w = width
   let textfontSize: any = "1rem"
   let textFont = "Quicksand-Bold"
-  let lineHeight: any = "auto"
+  let lineHeight: any = "1rem"
   if (align) textAlign = align
   if (variant === "black") textFont = "Quicksand-Bold"
   if (variant === "bold") textFont = "Quicksand-Black"

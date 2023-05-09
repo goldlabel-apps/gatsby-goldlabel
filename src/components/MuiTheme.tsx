@@ -17,10 +17,7 @@ export default function MuiTheme(props: any) {
   let locale: string|null = null
   if (pwa) locale = pwa.locale
   const {theme} = pwa
-  // console.log("theme.DefaultDark", theme.DefaultDark)
-  let colorMode: PaletteMode = "dark"
-  if (theme.DefaultDark) colorMode = "dark"
-  const customTheme = makeTheme(colorMode, theme.Primary, theme.Secondary)
+  const customTheme = makeTheme(theme.mode, theme.primaryColor, theme.secondaryColor)
 
   return (
     <>

@@ -1,4 +1,4 @@
-import {BookData} from "../types"
+import {BookShape} from "../types"
 import React from "react"
 import {
   Card,
@@ -9,11 +9,11 @@ import {
 } from "@mui/material"
 import {
   ImageMedia,
+  Font,
 } from "../"
 
-export default function BookCard(props: BookData) {
-  const {book} = props
-  
+export default function BookCard(props: BookShape) {
+  const {book} = props  
   // console.log("data", data)
 
   const {
@@ -38,12 +38,12 @@ export default function BookCard(props: BookData) {
       >
         <Card>
         <CardHeader
-          title={ <Typography variant="h6">
+          title={ <Font variant="title">
                     {Title}
-                  </Typography>}
-          subheader={<Typography>
-                      {Description}
-                    </Typography>}
+                  </Font>}
+          // subheader={<Font>
+          //             {Description}
+          //           </Font>}
         />
         <CardContent>
           {Image ? <ImageMedia data={Image} height={125} /> : null }

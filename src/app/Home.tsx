@@ -1,6 +1,6 @@
-import pJSON from "../../package.json"
 import {
   WrapperShape,
+  BookShape,
 } from "../types"
 import React from "react"
 import "../theme/default.css"
@@ -9,74 +9,57 @@ import {
   Container,
 } from "@mui/material"
 import {
-  SEO,
-  PWABar,
-  Slice,
+  Site,
   WrapRedux,
   MuiTheme,
-  BooksList,
-  HeroClip,
+  BookCard,
 } from "../"
 
 export default function Home(props: WrapperShape) {
 
-  // console.log("props", props.pageContext.data)
-  // const app = useGQLApp()
-  // const locale = "en" // zh-CN || en
-  // let localised: any = null
-  // for (let i=0; i<app.length;i++){
-  //   if (app[i].node.locale === locale) localised = app[i].node
-  // }
-  // const appMeta = localised.Meta
+  const {
+    pageContext,
+  } = props
+  let contextComponents: any = null
+  if(pageContext){
+    const {data} = pageContext
+    console.log("pageContext", data)
+  }
 
-
-  // const customTheme = makeTheme("light", localised.Theme.Primary, localised.Theme.Secondary)
-
-  // let booksData: any = null
-  // let pwabarData: any = null
-  // let heroData: any = null
-  
-  // const {
-  //   AppIcon,
-  //   Title,
-  //   Description,
-  //   Books,
-  //   Hero,
-  // } = localised
-  
-  // if (Hero) heroData = Hero
-  // if (Books) booksData = Books
-  
-  // pwabarData = {
-  //   title: Title,
-  //   description: Description,
-  //   icon: {...AppIcon},
-  // }
-  
   React.useEffect(() => {
-    console.log(pJSON.name, pJSON.version)
   }, [])
 
   return (
     <>
       <WrapRedux>
-        <SEO data={appMeta} />
-          <MuiTheme>
-            <CssBaseline />
-            <PWABar data={pwabarData} />
-            <Container maxWidth="md" sx={{mt:1}}>
-              <Slice />
-              {heroData ? <HeroClip hero={heroData} /> : null }
-              {booksData.length ? <BooksList books={booksData} /> : null }
-            </Container>
-          </MuiTheme>
+        <MuiTheme>
+          <CssBaseline />
+          <Container maxWidth="md" sx={{mt:2}}>
+            <Site />
+          </Container>
+        </MuiTheme>
       </WrapRedux>
     </>
   )
 }
 
 /*
-<pre style={{fontSize:11}}>{JSON.stringify(booksData, null, 2)}</pre>
 
-{booksData ? <pre>{JSON.stringify(booksData, null, 2)}</pre> : null }
+
+{books.length ? <>
+              <Grid container spacing={1} sx={{mt:1}}>
+                {books.map((item: BookShape, i: number) => {
+                  return <Grid 
+                            xs={12} md={6}
+                            key={`book_${i}`}
+                            item>
+                            <BookCard book={item.node} />
+                          </Grid>
+                })}
+              </Grid>
+            </> : null }
+
+
+
+<pre>{JSON.stringify(item.node, null, 2)}</pre>
 */

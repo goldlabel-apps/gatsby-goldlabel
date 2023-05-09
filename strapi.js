@@ -12,30 +12,6 @@ module.exports = {
         },
       },
     },
-    // {
-    //   singularName: "hero",
-    //   pluginOptions: {
-    //     i18n: {
-    //       locale: "all",
-    //     },
-    //   },
-    // },
-    {
-      singularName: "book",
-      pluginOptions: {
-        i18n: {
-          locale: "all",
-        },
-      },
-    },
-    {
-      singularName: "meta",
-      pluginOptions: {
-        i18n: {
-          locale: "all",
-        },
-      },
-    },
   ],
   remoteFileHeaders: {
     Authorization: `Bearer ${process.env.STRAPI_TOKEN}`,
