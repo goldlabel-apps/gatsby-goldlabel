@@ -8,7 +8,7 @@ export const useGQLApps = () => {
           edges {
             node {
               id
-              Title
+              title
             }
           }
         }
