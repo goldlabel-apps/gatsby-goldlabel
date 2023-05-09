@@ -2,13 +2,13 @@ import {GatsbyShape} from "./src/types"
 import strapiConfig from "./strapi"
 import type {GatsbyConfig} from "gatsby"
 
-const siteTitle = "Goldlabel Open Source"
-const siteDescription = "Gatsby JS with Strapi Headless CMS"
+const siteTitle = "Open Source"
+const siteDescription = "Want to reproduce this app?"
 const siteUrl = "https://gatsby-template.onrender.com/"
 const siteIcon = "/svg/icons/goldlabel.svg"
 const siteImage = "/svg/opensource.svg"
 const siteTwitter = "@auto_machineV2"
-const siteKeywords = "goldlabel, gatsby, strapi, pwa, listingslab, react, javascript"
+const siteKeywords = "goldlabel, open source, gatsby, strapi, pwa, listingslab, react, javascript"
 const siteTheme = "#32328C"
 
 const siteMetadata: GatsbyShape =  {
