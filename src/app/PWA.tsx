@@ -18,11 +18,11 @@ export default function PWA(props: WrapperShape) {
   const {
     pageContext,
   } = props
-  let app: any = null
+  let appData: any = null
   
   if(pageContext){
     const {data} = pageContext    
-    // app = data.app.data.allStrapiApp.edges
+    appData = data
   }
   // if (!app) return null
 
@@ -36,7 +36,7 @@ export default function PWA(props: WrapperShape) {
           <MuiTheme>
             <CssBaseline />
             <Container maxWidth="md" sx={{mt:1}}>
-              <Start appData={app}/>
+              <Start appData={appData}/>
             </Container>
           </MuiTheme>
       </WrapRedux>
