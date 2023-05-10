@@ -18,6 +18,7 @@ export default function Site(props: any) {
     const dispatch = usePwaDispatch()
     const {app} = props
     const pwa = usePwaSelect(selectPWA)
+    const {locale} = pwa
     const site = useGQLMeta()
     const {
         siteTitle,
@@ -33,7 +34,27 @@ export default function Site(props: any) {
 
     return (
     <>
-    <ButtonBase 
+    
+        <Card>
+            <CardHeader
+                avatar={<Avatar src={siteIcon} alt={`${siteTitle} ${siteDescription}`}/>}
+                title={ <Font variant="title">
+                            {siteTitle}
+                        </Font>}
+                subheader={<Font variant="description">
+                                {siteDescription}
+                            </Font>}
+                action={<Avatar src={`/svg/flags/${locale}.svg`} alt=""/>}
+            />
+            <pre>{JSON.stringify(pwa, null, 2)}</pre>
+        </Card>
+    </>
+    )
+}
+
+/*
+
+<ButtonBase 
         sx={{
             display:"block",
             textAlign: "left",
@@ -44,23 +65,7 @@ export default function Site(props: any) {
             console.log("Site")
             window.open("/?restart", "_self")
         }}>
-        <Card>
-            <CardHeader
-                avatar={<Avatar src={siteIcon} alt={`${siteTitle} ${siteDescription}`}/>}
-                title={ <Font variant="title">
-                            {siteTitle}
-                        </Font>}
-                subheader={<Font variant="description">
-                                {siteDescription}
-                            </Font>}
-            />
-            <pre>{JSON.stringify(pwa, null, 2)}</pre>
-        </Card>
-    </ButtonBase>
-    </>
-    )
-}
 
-/*
+
 <pre>{JSON.stringify(site, null, 2)}</pre>
 */
