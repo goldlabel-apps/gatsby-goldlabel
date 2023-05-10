@@ -14,7 +14,7 @@ import {
   MuiTheme,
 } from "../"
 
-export default function Disconnected(props: WrapperShape) {
+export default function PWA(props: WrapperShape) {
   const {
     pageContext,
   } = props
@@ -27,7 +27,7 @@ export default function Disconnected(props: WrapperShape) {
 
 
   React.useEffect(() => {
-    console.log("Disconnected.")
+    console.log("PWA.")
   }, [])
 
   return (<>

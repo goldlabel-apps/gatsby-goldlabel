@@ -1,17 +1,18 @@
 const path = require(`path`)
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const Disconnected = path.resolve("src/app/Disconnected.tsx")
-  const Home = path.resolve("src/app/Home.tsx")
+  const PWA = path.resolve("src/app/PWA.tsx")
   
   let app = await graphql(`
   query AppGQL {
-    allStrapiApp(filter: {hostname: {eq: "localhost:8000"}}) {
+    allStrapiApp(filter: {slug: {eq: "listingslab"}}) {
       edges {
         node {
           locale
           title
-          hostname
+          description
+          canonical
+          slug
         }
       }
     }
@@ -21,7 +22,7 @@ exports.createPages = async ({ graphql, actions }) => {
   
   createPage({
     path: "/",
-    component: Home,
+    component: PWA,
     context: {
       data: {
         special: "home",
@@ -34,7 +35,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   createPage({
     path: "/404",
-    component: Disconnected,
+    component: PWA,
     context: {
       data: {
         special: "404",

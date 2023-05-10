@@ -28,6 +28,7 @@ export default function Start(props: any) {
     for (let i=0; i<appData.length; i++){
         if (locale === appData[i].node.locale) localisedApp = appData[i].node
     }
+    if (!localisedApp) return null
     const {
         title,
         hostname,
