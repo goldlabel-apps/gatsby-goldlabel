@@ -1,8 +1,9 @@
 import {firebaseConfig} from "./firebaseConfig"
+
 import Start from "./Start"
+import PWA from "./app/PWA"
 import {makeMeta} from "./app/Meta"
 import SEO from "./app/SEO"
-import Home from "./app/Home"
 import WrapRedux from "./app/WrapRedux"
 
 import {makeImgSrc} from "./theme/utils"
@@ -31,7 +32,6 @@ import { setSeo } from "./redux/actions/setSeo"
 import { setOpen } from "./redux/actions/setOpen"
 import { navigateTo } from "./redux/actions/navigateTo"
 
-
 import {usePwaDispatch} from "./hooks/usePwaDispatch"
 import {usePwaSelect} from "./hooks/usePwaSelect"
 import {useGQLMeta} from "./hooks/useGQLMeta"
@@ -39,6 +39,7 @@ import {useGQLApps} from "./hooks/useGQLApps"
 
 
 export {
+  PWA,
   firebaseConfig,
   makeMeta,
   store,
@@ -54,7 +55,6 @@ export {
   PWABar,
   HeroClip,
   SEO,
-  Home,
   Icon,
   Font,
   Meta,
