@@ -48,9 +48,9 @@ const config: GatsbyConfig = {
         description: siteDescription,
       },
     },
-    {
-      resolve: 'gatsby-plugin-offline'
-    }
+    // {
+    //   resolve: 'gatsby-plugin-offline'
+    // }
   ],
   jsxRuntime: `automatic`,
 }
