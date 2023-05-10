@@ -2,11 +2,7 @@ import React from "react"
 import {
     Avatar,
     Card,
-    Grid,
     CardHeader,
-    // ButtonBase,
-    CardContent,
-    CardActionArea,
 } from "@mui/material"
 import {
     Font,
@@ -15,7 +11,7 @@ import {
     usePwaDispatch,
     selectPWA,
     startApp,
-} from "../"
+} from "./"
 
 export default function Start(props: any) {
     const dispatch = usePwaDispatch()
@@ -25,18 +21,17 @@ export default function Start(props: any) {
     const {locale} = pwa
     const site = useGQLMeta()
     const {
-        siteTitle,
         siteDescription,
         siteIcon,
     } = site
     let localisedApp: any = null
+    
     for (let i=0; i<appData.length; i++){
         if (locale === appData[i].node.locale) localisedApp = appData[i].node
     }
     const {
         title,
         hostname,
-        // books,
     } = localisedApp
 
     React.useEffect(() => {
@@ -45,8 +40,6 @@ export default function Start(props: any) {
         if(!started) dispatch(startApp(localisedApp))
     }, [pwa])
   
-
-
     return (<>
         <Card>
             <CardHeader
@@ -61,6 +54,7 @@ export default function Start(props: any) {
                             sx={{
                                 width: 25,
                                 height: 25,
+                                m:1,
                             }} 
                             src={`/svg/flags/${locale}.svg`} alt=""/>}
             />

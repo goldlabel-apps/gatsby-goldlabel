@@ -12,35 +12,30 @@ import {
   Start,
   WrapRedux,
   MuiTheme,
-  NotFound,
 } from "../"
 
 export default function Disconnected(props: WrapperShape) {
   const {
     pageContext,
   } = props
-  let contextComponents: any = null
+  let app: any = null
   if(pageContext){
-    const {data} = pageContext
-    const {special} = data
-    if (special === "404"){
-      contextComponents = <NotFound />
-    }
+    const {data} = pageContext    
+    app = data.app.data.allStrapiApp.edges
   }
+  if (!app) return null
 
 
   React.useEffect(() => {
     console.log("Disconnected.")
   }, [])
 
-  return (
-    <>
+  return (<>
       <WrapRedux>
           <MuiTheme>
             <CssBaseline />
             <Container maxWidth="md" sx={{mt:1}}>
-              <Start />
-              {contextComponents}
+              <Start appData={app}/>
             </Container>
           </MuiTheme>
       </WrapRedux>

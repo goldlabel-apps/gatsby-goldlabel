@@ -12,10 +12,6 @@ exports.createPages = async ({ graphql, actions }) => {
           locale
           title
           hostname
-          books {
-            title
-            description
-          }
         }
       }
     }
