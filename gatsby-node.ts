@@ -5,7 +5,7 @@ exports.createPages = async ({ graphql, actions }) => {
   
   let app = await graphql(`
   query AppGQL {
-    allStrapiApp(filter: {hostname: {eq: "localhost:8000"}}) {
+    allStrapiApp(filter: {slug: {eq: "listingslab"}}) {
       edges {
         node {
           locale
