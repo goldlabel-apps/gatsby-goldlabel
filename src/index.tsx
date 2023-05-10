@@ -1,4 +1,5 @@
 import {firebaseConfig} from "./firebaseConfig"
+import Start from "./Start"
 import {makeMeta} from "./app/Meta"
 import SEO from "./app/SEO"
 import Home from "./app/Home"
@@ -8,7 +9,6 @@ import {makeImgSrc} from "./theme/utils"
 import {makeTheme} from "./theme/makeTheme"
 
 import Meta from "./components/Meta"
-import Start from "./components/Start"
 import NotFound from "./components/NotFound"
 import Icon from "./components/Icon"
 import {Font} from "./components/Font"
