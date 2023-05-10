@@ -21,9 +21,9 @@ export default function PWA(props: WrapperShape) {
   let app: any = null
   if(pageContext){
     const {data} = pageContext    
-    app = data.app.data.allStrapiApp.edges
+    // app = data.app.data.allStrapiApp.edges
   }
-  if (!app) return null
+  // if (!app) return null
 
 
   React.useEffect(() => {

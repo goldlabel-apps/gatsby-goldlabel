@@ -16,7 +16,6 @@ import {
 export default function Start(props: any) {
     const dispatch = usePwaDispatch()
     const {appData} = props
-    if(!appData) return null
     const pwa = usePwaSelect(selectPWA)
     const {locale} = pwa
     const site = useGQLMeta()
@@ -24,31 +23,31 @@ export default function Start(props: any) {
         siteDescription,
         siteIcon,
     } = site
-    let localisedApp: any = null
-    for (let i=0; i<appData.length; i++){
-        if (locale === appData[i].node.locale) localisedApp = appData[i].node
-    }
-    if (!localisedApp) return null
-    const {
-        title,
-        hostname,
-    } = localisedApp
+    // let localisedApp: any = null
+    // for (let i=0; i<appData.length; i++){
+    //     if (locale === appData[i].node.locale) localisedApp = appData[i].node
+    // }
+    // if (!localisedApp) return null
+    // const {
+    //     title,
+    //     hostname,
+    // } = localisedApp
 
     React.useEffect(() => {
         const {started} = pwa
         // @ts-ignore
-        if(!started) dispatch(startApp(localisedApp))
+        // if(!started) dispatch(startApp(localisedApp))
     }, [pwa])
   
     return (<>
         <Card>
             <CardHeader
-                avatar={<Avatar src={siteIcon} alt={`${title} ${siteDescription}`}/>}
+                avatar={<Avatar src={siteIcon} alt={`${"title"} ${siteDescription}`}/>}
                 title={ <Font variant="title">
-                            {title}
+                            {"title"}
                         </Font>}
                 subheader={<Font variant="description">
-                                {hostname}
+                                {"hostname"}
                             </Font>}
                 action={<Avatar
                             sx={{

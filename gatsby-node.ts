@@ -3,22 +3,22 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const PWA = path.resolve("src/app/PWA.tsx")
   
-  let app = await graphql(`
-  query AppGQL {
-    allStrapiApp(filter: {slug: {eq: "listingslab"}}) {
-      edges {
-        node {
-          locale
-          title
-          description
-          canonical
-          slug
-        }
-      }
-    }
-  }
-  `)
-  if (!app) app = {error:"AppGQL error."}
+  // let app = await graphql(`
+  // query AppGQL {
+  //   allStrapiApp(filter: {slug: {eq: "listingslab"}}) {
+  //     edges {
+  //       node {
+  //         locale
+  //         title
+  //         description
+  //         canonical
+  //         slug
+  //       }
+  //     }
+  //   }
+  // }
+  // `)
+  // if (!app) app = {error:"AppGQL error."}
   
   createPage({
     path: "/",
@@ -27,7 +27,7 @@ exports.createPages = async ({ graphql, actions }) => {
       data: {
         special: "home",
         instructions: "Connected to Colz, bro",
-        app,
+        // app,
       },
     },
     defer: true,
@@ -40,7 +40,7 @@ exports.createPages = async ({ graphql, actions }) => {
       data: {
         special: "404",
         instructions: "Route not there, bro.",
-        app,
+        // app,
       },
     },
     defer: true,
