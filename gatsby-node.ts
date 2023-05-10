@@ -4,46 +4,31 @@ exports.createPages = async ({ graphql, actions }) => {
   const Disconnected = path.resolve("src/app/Disconnected.tsx")
   const Home = path.resolve("src/app/Home.tsx")
 
-  // const books = await graphql(`
-  // query Books {
-  //   allStrapiBook(filter: {locale: {eq: "en"}}) {
-  //     edges {
-  //       node {
-  //         Title
-  //         Description
-  //         Slug
-  //         id
-  //         localizations {
-  //           data {
-  //             attributes {
-  //               locale
-  //               Description
-  //               Slug
-  //               Title
-  //             }
-  //           }
-  //         }
-  //         Documents {
-  //           locale
-  //           Title
-  //           Description
-  //           Slug
-  //           id
-  //           Body {
-  //             data
-  //           }
-  //         }
-  //         Image {
-  //           alternativeText
-  //           width
-  //           height
-  //           url
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-  // `)
+  const app = await graphql(`
+  query AppGQL {
+    allStrapiApp(filter: {hostname: {eq: "localhost:8000"}, locale: {}}) {
+      edges {
+        node {
+          locale
+          title
+          hostname
+          localizations {
+            data {
+              attributes {
+                title
+                hostname
+              }
+            }
+          }
+          books {
+            title
+            description
+          }
+        }
+      }
+    }
+  }
+  `)
   
   createPage({
     path: "/",
@@ -52,7 +37,7 @@ exports.createPages = async ({ graphql, actions }) => {
       data: {
         special: "home",
         instructions: "Connected to Colz, bro",
-        // books: books ? books.data.allStrapiBook.edges : null,
+        app,
       },
     },
     defer: true,
@@ -65,6 +50,7 @@ exports.createPages = async ({ graphql, actions }) => {
       data: {
         special: "404",
         instructions: "Route not there, bro.",
+        app,
       },
     },
     defer: true,

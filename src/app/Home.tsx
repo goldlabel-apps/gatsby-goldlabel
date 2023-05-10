@@ -16,14 +16,15 @@ import {
 } from "../"
 
 export default function Home(props: WrapperShape) {
-
   const {
     pageContext,
   } = props
-  let contextComponents: any = null
+  
+
+  // let contextComponents: any = null
   if(pageContext){
     const {data} = pageContext
-    console.log("pageContext", data)
+    console.log("data", data)
   }
 
   React.useEffect(() => {
