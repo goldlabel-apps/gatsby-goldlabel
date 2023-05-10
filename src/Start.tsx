@@ -25,6 +25,7 @@ export default function Start(props: any) {
         siteIcon,
     } = site
     let localisedApp: any = null
+    
     for (let i=0; i<appData.length; i++){
         if (locale === appData[i].node.locale) localisedApp = appData[i].node
     }
