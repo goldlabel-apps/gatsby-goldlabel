@@ -1,6 +1,5 @@
 import {
   WrapperShape,
-  BookShape,
 } from "../types"
 import React from "react"
 import "../theme/default.css"
@@ -9,26 +8,22 @@ import {
   Container,
 } from "@mui/material"
 import {
-  Site,
+  Start,
   WrapRedux,
   MuiTheme,
-  BookCard,
 } from "../"
 
 export default function Home(props: WrapperShape) {
   const {
     pageContext,
   } = props
-  
-
-  // let contextComponents: any = null
+  let app: any = null
   if(pageContext){
-    const {data} = pageContext
-    console.log("data", data)
+    const {data} = pageContext    
+    app = data.app.data.allStrapiApp.edges
+    // console.log("app", app)
   }
-
-  React.useEffect(() => {
-  }, [])
+  if (!app) return null
 
   return (
     <>
@@ -36,7 +31,8 @@ export default function Home(props: WrapperShape) {
         <MuiTheme>
           <CssBaseline />
           <Container maxWidth="md" sx={{mt:2}}>
-            <Site />
+            <Start app={app}/>
+            
           </Container>
         </MuiTheme>
       </WrapRedux>

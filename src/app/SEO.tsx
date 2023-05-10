@@ -1,6 +1,5 @@
 import React from "react"
 import {
-  SeoShape,
   ImageSizeShape,
 } from "../types"
 import {makeImgSrc} from "../"
@@ -49,7 +48,7 @@ export default function SEO(props: any) {
     keywords = `${book.data.Keywords}, ${keywords}`
   }
 
-  let seo: SeoShape = {
+  let seo: any = {
     siteTitle,
     title,
     description,
