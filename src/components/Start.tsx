@@ -1,26 +1,35 @@
-// import {BookData} from "../types"
 import React from "react"
 import {
     Avatar,
-    IconButton,
     Card,
     CardHeader,
-    Typography,
     ButtonBase,
 } from "@mui/material"
 import {
     Font,
     useGQLMeta,
+    usePwaSelect,
+    usePwaDispatch,
+    selectPWA,
+    startApp,
 } from "../"
 
-export default function Site() {
+export default function Site(props: any) {
+    const dispatch = usePwaDispatch()
+    const {app} = props
+    const pwa = usePwaSelect(selectPWA)
     const site = useGQLMeta()
-
     const {
         siteTitle,
         siteDescription,
         siteIcon,
     } = site
+
+    React.useEffect(() => {
+        const {started} = pwa
+        if(!started) dispatch(startApp(app))
+    }, [pwa])
+  
 
     return (
     <>
@@ -45,6 +54,7 @@ export default function Site() {
                                 {siteDescription}
                             </Font>}
             />
+            <pre>{JSON.stringify(pwa, null, 2)}</pre>
         </Card>
     </ButtonBase>
     </>

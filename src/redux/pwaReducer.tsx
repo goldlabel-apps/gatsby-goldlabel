@@ -30,7 +30,6 @@ const initialState: PwaReduxShape = {
   started: false,
   locale: "en",
   theme,
-  meta,
 }
 
 export const pwaSlice = createSlice({

@@ -9,7 +9,7 @@ import {
   Container,
 } from "@mui/material"
 import {
-  Site,
+  Start,
   WrapRedux,
   MuiTheme,
   NotFound,
@@ -39,7 +39,7 @@ export default function Disconnected(props: WrapperShape) {
           <MuiTheme>
             <CssBaseline />
             <Container maxWidth="md" sx={{mt:1}}>
-              <Site />
+              <Start />
               {contextComponents}
             </Container>
           </MuiTheme>

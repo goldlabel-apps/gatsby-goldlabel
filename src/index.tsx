@@ -8,7 +8,7 @@ import {makeImgSrc} from "./theme/utils"
 import {makeTheme} from "./theme/makeTheme"
 
 import Meta from "./components/Meta"
-import Site from "./components/Site"
+import Start from "./components/Start"
 import NotFound from "./components/NotFound"
 import Icon from "./components/Icon"
 import {Font} from "./components/Font"
@@ -58,7 +58,7 @@ export {
   Icon,
   Font,
   Meta,
-  Site,
+  Start,
   NotFound,
   BooksList,
   BookCard,
