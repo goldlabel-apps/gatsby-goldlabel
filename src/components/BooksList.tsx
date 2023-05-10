@@ -30,7 +30,7 @@ export default function BooksList(props: BooksShape) {
 }
 
 /*
-{/* {books ? <CardContent>
+{books ? <CardContent>
                 {books.length ? <>
                     <Grid container spacing={1} sx={{mt:1}}>
                         {books.map((item: any, i: number) => {
@@ -59,5 +59,5 @@ export default function BooksList(props: BooksShape) {
                     </Grid>
                     </> : null }
 
-            </CardContent> : null } */}
+            </CardContent> : null }
 */
