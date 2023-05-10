@@ -66,7 +66,7 @@ export default function Start(props: any) {
                             }} 
                             src={`/svg/flags/${locale}.svg`} alt=""/>}
             />
-            {books ? <CardContent>
+            {/* {books ? <CardContent>
                 {books.length ? <>
                     <Grid container spacing={1} sx={{mt:1}}>
                         {books.map((item: any, i: number) => {
@@ -95,7 +95,7 @@ export default function Start(props: any) {
                     </Grid>
                     </> : null }
 
-            </CardContent> : null }
+            </CardContent> : null } */}
             
            
         </Card>
