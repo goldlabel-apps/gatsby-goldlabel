@@ -33,7 +33,11 @@ export default function Start(props: any) {
     for (let i=0; i<appData.length; i++){
         if (locale === appData[i].node.locale) localisedApp = appData[i].node
     }
-
+    const {
+        title,
+        hostname,
+        // books,
+    } = localisedApp
 
     React.useEffect(() => {
         const {started} = pwa
@@ -41,15 +45,9 @@ export default function Start(props: any) {
         if(!started) dispatch(startApp(localisedApp))
     }, [pwa])
   
-    const {
-        title,
-        hostname,
-        books,
-    } = localisedApp
 
-    return (
-    <>
-    
+
+    return (<>
         <Card>
             <CardHeader
                 avatar={<Avatar src={siteIcon} alt={`${title} ${siteDescription}`}/>}
@@ -66,38 +64,6 @@ export default function Start(props: any) {
                             }} 
                             src={`/svg/flags/${locale}.svg`} alt=""/>}
             />
-            {books ? <CardContent>
-                {books.length ? <>
-                    <Grid container spacing={1} sx={{mt:1}}>
-                        {books.map((item: any, i: number) => {
-                            const {
-                                title,
-                                description,
-                                slug,
-                            } = item
-                            return <Grid xs={12} md={6}
-                                        key={`book_${i}`}
-                                        item>
-                                            <CardActionArea
-                                                onClick={(e: React.MouseEvent) => {
-                                                    e.preventDefault()
-                                                    console.log("slug", slug)
-                                                    // window.open("/?restart", "_self")
-                                                }}
-                                            >
-                                                <CardHeader 
-                                                    title={title}
-                                                    subheader={description}    
-                                                />
-                                            </CardActionArea>    
-                                    </Grid>
-                            })}
-                    </Grid>
-                    </> : null }
-
-            </CardContent> : null }
-            
-           
         </Card>
     </>
     )
@@ -105,14 +71,5 @@ export default function Start(props: any) {
 
 /*
 
-<ButtonBase 
-        sx={{
-            display:"block",
-            textAlign: "left",
-            width: "100%",
-        }}
-        >
-
-<pre>{JSON.stringify(item, null, 2)}</pre>
 <pre>{JSON.stringify(site, null, 2)}</pre>
 */

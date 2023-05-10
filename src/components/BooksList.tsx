@@ -28,3 +28,36 @@ export default function BooksList(props: BooksShape) {
     </>
   )
 }
+
+/*
+{/* {books ? <CardContent>
+                {books.length ? <>
+                    <Grid container spacing={1} sx={{mt:1}}>
+                        {books.map((item: any, i: number) => {
+                            const {
+                                title,
+                                description,
+                                slug,
+                            } = item
+                            return <Grid xs={12} md={6}
+                                        key={`book_${i}`}
+                                        item>
+                                            <CardActionArea
+                                                onClick={(e: React.MouseEvent) => {
+                                                    e.preventDefault()
+                                                    console.log("slug", slug)
+                                                    // window.open("/?restart", "_self")
+                                                }}
+                                            >
+                                                <CardHeader 
+                                                    title={title}
+                                                    subheader={description}    
+                                                />
+                                            </CardActionArea>    
+                                    </Grid>
+                            })}
+                    </Grid>
+                    </> : null }
+
+            </CardContent> : null } */}
+*/
