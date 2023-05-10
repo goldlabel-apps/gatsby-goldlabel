@@ -20,7 +20,7 @@ export default function Home(props: WrapperShape) {
   let app: any = null
   if(pageContext){
     const {data} = pageContext    
-    app = data.app.data.allStrapiApp.edges
+    // app = data.app.data.allStrapiApp.edges
   }
   if (!app) return null
 

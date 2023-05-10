@@ -16,8 +16,8 @@ import {
 export default function Start(props: any) {
     const dispatch = usePwaDispatch()
     const {appData} = props
+    if(!appData) return null
     const pwa = usePwaSelect(selectPWA)
-    // const {app} = pwa
     const {locale} = pwa
     const site = useGQLMeta()
     const {
@@ -25,7 +25,6 @@ export default function Start(props: any) {
         siteIcon,
     } = site
     let localisedApp: any = null
-    
     for (let i=0; i<appData.length; i++){
         if (locale === appData[i].node.locale) localisedApp = appData[i].node
     }
