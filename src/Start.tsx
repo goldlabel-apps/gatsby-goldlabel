@@ -16,6 +16,7 @@ import {
 export default function Start(props: any) {
     const dispatch = usePwaDispatch()
     const {appData} = props
+    console.log("appData", appData)
     const pwa = usePwaSelect(selectPWA)
     const {locale} = pwa
     const site = useGQLMeta()

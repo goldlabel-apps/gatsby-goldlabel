@@ -19,6 +19,7 @@ export default function PWA(props: WrapperShape) {
     pageContext,
   } = props
   let app: any = null
+  
   if(pageContext){
     const {data} = pageContext    
     // app = data.app.data.allStrapiApp.edges
