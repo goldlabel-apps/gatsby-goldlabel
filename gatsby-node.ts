@@ -3,8 +3,8 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const Disconnected = path.resolve("src/app/Disconnected.tsx")
   const Home = path.resolve("src/app/Home.tsx")
-
-  const app = await graphql(`
+  
+  let app = await graphql(`
   query AppGQL {
     allStrapiApp(filter: {hostname: {eq: "localhost:8000"}, locale: {}}) {
       edges {
@@ -17,6 +17,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   }
   `)
+  if (!app) app = {error:"AppGQL error."}
   
   createPage({
     path: "/",
