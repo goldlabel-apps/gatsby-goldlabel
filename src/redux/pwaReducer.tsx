@@ -28,7 +28,7 @@ const theme :ThemeShape = {
 
 const initialState: PwaReduxShape = {
   started: false,
-  locale: "de",
+  locale: "en",
   theme,
 }
 
