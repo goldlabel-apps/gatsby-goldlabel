@@ -31,7 +31,7 @@ export default function Home(props: WrapperShape) {
         <MuiTheme>
           <CssBaseline />
           <Container maxWidth="md" sx={{mt:2}}>
-            <Start app={app}/>
+            <Start appData={app}/>
             
           </Container>
         </MuiTheme>

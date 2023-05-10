@@ -7,15 +7,15 @@ import {
   PwaReduxShape,
 } from "../types"
 
-const meta: MetaShape = {
-  title: "string",
-  description: "string",
-  keywords: "string",
-  url: "string",
-  canonical: "string",
-  image: "string",
-  twitter: "string",
-}
+// const meta: MetaShape = {
+//   title: "string",
+//   description: "string",
+//   keywords: "string",
+//   url: "string",
+//   canonical: "string",
+//   image: "string",
+//   twitter: "string",
+// }
 
 const theme :ThemeShape = {
   title: "Purple",
