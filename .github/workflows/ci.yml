@@ -1,4 +1,4 @@
-name: 🧜 美人鱼 mermaid
+name: 看看这里 👉
 
 on: [pull_request]
 
@@ -7,14 +7,14 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    name: Automated Machine
+    name: 👌 Automated Machine
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: 🦹‍♀️ 超级反派女人
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Install dependencies
+      - name: 👼 天使
         run: npm test
