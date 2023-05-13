@@ -3,6 +3,7 @@ import {
     Avatar,
     Card,
     CardHeader,
+    CardContent,
 } from "@mui/material"
 import {
     Font,
@@ -10,7 +11,7 @@ import {
     usePwaSelect,
     usePwaDispatch,
     selectPWA,
-    startApp,
+    // startApp,
 } from "./"
 
 export default function Start(props: any) {
@@ -50,11 +51,11 @@ export default function Start(props: any) {
             <CardHeader
                 avatar={<Avatar src={siteIcon} alt={`${"title"} ${siteDescription}`}/>}
                 title={ <Font variant="title">
-                            {"title"}
+                            Goldlabel
                         </Font>}
-                subheader={<Font variant="description">
-                                {"hostname"}
-                            </Font>}
+                // subheader={<Font variant="description">
+                //                 {"hostname"}
+                //             </Font>}
                 action={<Avatar
                             sx={{
                                 width: 25,
@@ -63,13 +64,14 @@ export default function Start(props: any) {
                             }} 
                             src={`/svg/flags/${locale}.svg`} alt=""/>}
             />
-            <pre>{JSON.stringify(localisedApp, null, 2)}</pre>
+            <CardContent>
+                <pre>localisedApp: {JSON.stringify(localisedApp, null, 2)}</pre>
+            </CardContent>
         </Card>
     </>
     )
 }
 
 /*
-
 <pre>{JSON.stringify(site, null, 2)}</pre>
 */
