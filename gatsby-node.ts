@@ -64,7 +64,7 @@ exports.createPages = async ({ graphql, actions }) => {
       data: {
         special: "404",
         instructions: "Route not there, bro.",
-        // app,
+        app,
       },
     },
     defer: true,
