@@ -3,7 +3,6 @@ import {
     Avatar,
     Card,
     CardHeader,
-    CardContent,
 } from "@mui/material"
 import {
     Font,
@@ -11,13 +10,12 @@ import {
     usePwaSelect,
     usePwaDispatch,
     selectPWA,
-    // startApp,
+    LocaleMenu,
 } from "./"
 
 export default function Start(props: any) {
     const dispatch = usePwaDispatch()
     const {appData} = props
-    console.log("appData", appData)
     const pwa = usePwaSelect(selectPWA)
     const {locale} = pwa
     const site = useGQLMeta()
@@ -26,19 +24,18 @@ export default function Start(props: any) {
         siteIcon,
     } = site
     let localisedApp: any = {error:123}
+    let appArr: any = null
     if(appData){
-        localisedApp = appData.app
+        appArr = appData.app.data.allStrapiApp.edges
+        for (let i=0; i<appArr.length; i++){
+            if (appArr[i].node.locale === locale) localisedApp = appArr[i].node
+        }
     }
-
-    // let localisedApp: any = null
-    // for (let i=0; i<appData.length; i++){
-    //     if (locale === appData[i].node.locale) localisedApp = appData[i].node
-    // }
-    // if (!localisedApp) return null
-    // const {
-    //     title,
-    //     hostname,
-    // } = localisedApp
+    if (!localisedApp) return null
+    const {
+        title,
+        description,
+    } = localisedApp
 
     React.useEffect(() => {
         const {started} = pwa
@@ -51,27 +48,21 @@ export default function Start(props: any) {
             <CardHeader
                 avatar={<Avatar src={siteIcon} alt={`${"title"} ${siteDescription}`}/>}
                 title={ <Font variant="title">
-                            Goldlabel
+                            {title}
                         </Font>}
-                // subheader={<Font variant="description">
-                //                 {"hostname"}
-                //             </Font>}
-                action={<Avatar
-                            sx={{
-                                width: 25,
-                                height: 25,
-                                m:1,
-                            }} 
-                            src={`/svg/flags/${locale}.svg`} alt=""/>}
+                subheader={<Font variant="description">
+                                {description}
+                            </Font>}
+                action={<LocaleMenu />}
             />
-            <CardContent>
-                <pre>localisedApp: {JSON.stringify(localisedApp, null, 2)}</pre>
-            </CardContent>
         </Card>
     </>
     )
 }
 
 /*
+<CardContent>
+                <pre>localisedApp: {JSON.stringify(localisedApp, null, 2)}</pre>
+            </CardContent>
 <pre>{JSON.stringify(site, null, 2)}</pre>
 */

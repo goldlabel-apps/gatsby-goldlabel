@@ -1,35 +1,27 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { RootState } from "./store"
 import { 
-  MetaShape,
+  // MetaShape,
   ThemeShape,
   KeyValueShape,
   PwaReduxShape,
 } from "../types"
+import {locales} from "../"
 
-// const meta: MetaShape = {
-//   title: "string",
-//   description: "string",
-//   keywords: "string",
-//   url: "string",
-//   canonical: "string",
-//   image: "string",
-//   twitter: "string",
-// }
-
-const theme :ThemeShape = {
+const theme: ThemeShape = {
   title: "Purple",
   description: "People Eaters",
   primaryColor: "#32328C",
   secondaryColor: "#C09F52",
   font: "gotham",
-  mode: "dark"
+  mode: "dark",  
 }
 
 const initialState: PwaReduxShape = {
   started: false,
-  locale: "en",
+  locale: "zh-CN",
   theme,
+  locales,
 }
 
 export const pwaSlice = createSlice({
