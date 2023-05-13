@@ -24,6 +24,11 @@ export default function Start(props: any) {
         siteDescription,
         siteIcon,
     } = site
+    let localisedApp: any = {error:123}
+    if(appData){
+        localisedApp = appData.app
+    }
+
     // let localisedApp: any = null
     // for (let i=0; i<appData.length; i++){
     //     if (locale === appData[i].node.locale) localisedApp = appData[i].node
@@ -58,6 +63,7 @@ export default function Start(props: any) {
                             }} 
                             src={`/svg/flags/${locale}.svg`} alt=""/>}
             />
+            <pre>{JSON.stringify(localisedApp, null, 2)}</pre>
         </Card>
     </>
     )
