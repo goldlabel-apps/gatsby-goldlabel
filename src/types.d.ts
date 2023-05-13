@@ -1,20 +1,21 @@
 import { PaletteMode } from "@mui/material"
 
 
-export type BookShape = {
-  book?: any
-  node?: any
-}
-
-
 export type DocumentShape = {
   document?: any
 }
 
+export type LocaleShape = {
+  code: string
+  displayName: string
+  localName: string
+  flag: string
+}
 
 export type PwaReduxShape = {
   started: boolean
   locale: string
+  locales: Array<LocaleShape>
   persisted?: boolean
   theme: ThemeShape
 }
@@ -41,6 +42,7 @@ export type MetaShape = {
   image: string
   twitter: string
 }
+
 
 
 export type ThemeShape = {
@@ -96,3 +98,13 @@ export type WrapperShape = {
   pageContext?: any
   location: any
 }
+
+// const meta: MetaShape = {
+//   title: "string",
+//   description: "string",
+//   keywords: "string",
+//   url: "string",
+//   canonical: "string",
+//   image: "string",
+//   twitter: "string",
+// }

@@ -9,10 +9,34 @@ exports.createPages = async ({ graphql, actions }) => {
       edges {
         node {
           locale
+          canonical
+          hostname
           title
           description
-          canonical
-          slug
+          twitter
+          keywords
+          icon {
+            alternativeText
+            url
+          }
+          image {
+            url
+            width
+            height
+            alternativeText
+          }
+          books {
+            title
+            description
+            docs {
+              title
+              description
+              slug
+              body {
+                data
+              }
+            }
+          }
         }
       }
     }
@@ -40,7 +64,7 @@ exports.createPages = async ({ graphql, actions }) => {
       data: {
         special: "404",
         instructions: "Route not there, bro.",
-        // app,
+        app,
       },
     },
     defer: true,

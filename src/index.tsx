@@ -1,5 +1,5 @@
 import {firebaseConfig} from "./firebaseConfig"
-
+import {locales} from "./redux/locales"
 import Start from "./Start"
 import PWA from "./app/PWA"
 import {makeMeta} from "./app/Meta"
@@ -11,6 +11,7 @@ import {makeTheme} from "./theme/makeTheme"
 
 import Meta from "./components/Meta"
 import NotFound from "./components/NotFound"
+import LocaleMenu from "./components/LocaleMenu"
 import Icon from "./components/Icon"
 import {Font} from "./components/Font"
 import HeroClip from "./components/HeroClip"
@@ -41,6 +42,7 @@ import {useGQLApps} from "./hooks/useGQLApps"
 export {
   PWA,
   firebaseConfig,
+  locales,
   makeMeta,
   store,
   persistor,
@@ -62,6 +64,7 @@ export {
   NotFound,
   BooksList,
   BookCard,
+  LocaleMenu,
   BookPage,
   ImageMedia,
   makeImgSrc,
