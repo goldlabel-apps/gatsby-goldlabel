@@ -2,7 +2,7 @@ import {GatsbyShape} from "./src/types"
 import strapiConfig from "./strapi"
 import type {GatsbyConfig} from "gatsby"
 
-const siteTitle = "Goldlabel"
+const siteTitle = "Goldlabel Template"
 const siteDescription = "Reproduce this App. It's Open Source"
 const siteUrl = "https://listingslab.com/"
 const siteIcon = "/svg/icons/goldlabel.svg"
@@ -48,9 +48,9 @@ const config: GatsbyConfig = {
         description: siteDescription,
       },
     },
-    // {
-    //   resolve: 'gatsby-plugin-offline'
-    // }
+    {
+      resolve: 'gatsby-plugin-offline'
+    }
   ],
   jsxRuntime: `automatic`,
 }
