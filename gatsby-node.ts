@@ -19,16 +19,23 @@ exports.createPages = async ({ graphql, actions }) => {
             alternativeText
             url
           }
-          books {
-            id
-            title
-            description
-          }
           image {
             url
             width
             height
             alternativeText
+          }
+          books {
+            id
+            docs {
+              body {
+                data
+              }
+              title
+              slug
+              description
+            }
+            description
           }
         }
       }
