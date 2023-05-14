@@ -2,8 +2,10 @@ import React from "react"
 import {
     Avatar,
     Card,
+    CardContent,
     CardHeader,
     CardMedia,
+    IconButton,
 } from "@mui/material"
 import {
     Font,
@@ -38,18 +40,34 @@ export default function Start(props: any) {
         title,
         description,
         image,
+        icon,
+        books,
     } = localisedApp
 
+    let appIcon: string = siteIcon
     let appImage: string = "/svg/default.svg"
-    if (image){
-        appImage = makeImgSrc(image.url)
+    let alternativeText: string = description
+    if(icon){
+        appIcon = makeImgSrc(icon.url)
     }
 
+    if (image){
+        appImage = makeImgSrc(image.url)
+        alternativeText = image.alternativeText
+    }
   
     return (<>
         <Card>
             <CardHeader
-                avatar={<Avatar src={siteIcon} alt={`${"title"} ${siteDescription}`}/>}
+                avatar={<IconButton
+                            color="primary"
+                            size={"small"}
+                            onClick={(e: React.MouseEvent) => {
+                                e.preventDefault()
+                                window.open(`/?home`, "_self")
+                            }}>
+                            <Avatar src={appIcon} alt={`${title} ${siteDescription}`}/>
+                        </IconButton>}
                 title={ <Font variant="title">
                             {title}
                         </Font>}
@@ -60,11 +78,18 @@ export default function Start(props: any) {
             />
             <CardMedia 
                 component="img"
-                height={315}
+                alt={alternativeText}
+                height={270}
                 src={appImage}
             />
+            <CardContent>
+                {books ? <>
+                    <pre>localisedApp: {JSON.stringify(books, null, 2)}</pre>
+                </> : null }
+            </CardContent>
 
         </Card>
+        
     </>
     )
 }
