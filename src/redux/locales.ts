@@ -1,4 +1,12 @@
 export const locales = [
+
+    {
+        code: "zh-CN",
+        displayName: "Chinese",
+        localName: "简体中文",
+        flag: "/svg/flags/cn.svg",
+    },
+    
     {
         code: "mt",
         displayName: "Maltese",
@@ -11,12 +19,7 @@ export const locales = [
         localName: "Deutch",
         flag: "/svg/flags/de.svg",
     },
-    {
-        code: "zh-CN",
-        displayName: "Chinese",
-        localName: "简体中文",
-        flag: "/svg/flags/cn.svg",
-    },
+    
     {
         code: "sv-SE",
         displayName: "Swedish",

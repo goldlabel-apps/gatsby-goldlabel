@@ -53,18 +53,13 @@ export default function Start(props: any) {
             />
 
             <CardContent>
-                <pre>localisedApp: {JSON.stringify(books, null, 2)}</pre>
+                <pre>books: {JSON.stringify(books, null, 2)}</pre>
             </CardContent>
-
 
         </Card>
     </>
     )
 }
 
-/*
-<CardContent>
-                <pre>localisedApp: {JSON.stringify(localisedApp, null, 2)}</pre>
-            </CardContent>
-<pre>{JSON.stringify(site, null, 2)}</pre>
+/* 
 */

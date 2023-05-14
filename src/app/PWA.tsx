@@ -25,11 +25,9 @@ export default function PWA(props: WrapperShape) {
     appData = data
   }
   // if (!app) return null
-
-
-  React.useEffect(() => {
-    console.log("PWA.")
-  }, [])
+  // React.useEffect(() => {
+  //   console.log("PWA.")
+  // }, [])
 
   return (<>
       <WrapRedux>
