@@ -15,7 +15,6 @@ import LocaleMenu from "./components/LocaleMenu"
 import Icon from "./components/Icon"
 import {Font} from "./components/Font"
 import HeroClip from "./components/HeroClip"
-import BooksList from "./components/BooksList"
 import PWABar from "./components/PWABar"
 import MuiTheme from "./components/MuiTheme"
 import Slice from "./components/Slice"
@@ -62,7 +61,6 @@ export {
   Meta,
   Start,
   NotFound,
-  BooksList,
   BookCard,
   LocaleMenu,
   BookPage,
