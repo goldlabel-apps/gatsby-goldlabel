@@ -19,7 +19,7 @@ const theme: ThemeShape = {
 
 const initialState: PwaReduxShape = {
   started: false,
-  locale: "zh-CN",
+  locale: "en",
   theme,
   locales,
 }
