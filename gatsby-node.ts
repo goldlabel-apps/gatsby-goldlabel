@@ -11,9 +11,16 @@ exports.createPages = async ({ graphql, actions }) => {
           locale
           title
           description
-          keywords
           canonical
-          image {
+          keywords
+          appicon {
+            alternativeText
+            width
+            height
+            url
+          }
+          appimage {
+            alternativeText
             width
             height
             url
@@ -21,8 +28,14 @@ exports.createPages = async ({ graphql, actions }) => {
           books {
             title
             description
-            slug
             keywords
+            slug,
+            bookimage {
+              alternativeText
+              width
+              height
+              url
+            }
           }
         }
       }
