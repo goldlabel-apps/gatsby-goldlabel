@@ -1,83 +1,31 @@
 const path = require(`path`)
-exports.createPages = async ({ graphql, actions }) => {
+
+exports.createPages = async ({ actions }) => {
   const { createPage } = actions
-  const PWA = path.resolve("src/app/PWA.tsx")
-  
-  let app = await graphql(`
-  query AppGQL {
-    allStrapiApp(filter: {slug: {eq: "listingslab"}}) {
-      edges {
-        node {
-          locale
-          title
-          description
-          canonical
-          keywords
-          appicon {
-            alternativeText
-            width
-            height
-            url
-          }
-          appimage {
-            alternativeText
-            width
-            height
-            url
-          }
-          books {
-            title
-            description
-            keywords
-            slug,
-            bookimage {
-              alternativeText
-              width
-              height
-              url
-            }
-            docs {
-              title
-              description
-              keywords
-              slug
-              body {
-                data
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  `)
-  if (!app) app = {error:"AppGQL error."}
-  
+  const PwaSeo = path.resolve("src/app/PwaSeo.tsx")
+
   createPage({
     path: "/",
-    component: PWA,
+    component: PwaSeo,
     context: {
       data: {
         special: "home",
         instructions: "Connected to Colz, bro",
-        app,
       },
     },
     defer: true,
   })
 
   createPage({
-    path: "/404",
-    component: PWA,
+    path: `${"404"}`,
+    component: PwaSeo,
     context: {
       data: {
         special: "404",
-        instructions: "Route not there, bro.",
-        app,
+        instructions: "Route unavailable",
       },
     },
     defer: true,
   })
-
   
 }

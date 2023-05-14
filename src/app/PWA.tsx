@@ -1,8 +1,8 @@
+import React from "react"
 import "../theme/default.css"
 import {
   WrapperShape,
 } from "../types"
-import React from "react"
 import "../theme/default.css"
 import {
   CssBaseline,
@@ -13,7 +13,6 @@ import {
   WrapRedux,
   MuiTheme,
 } from "../"
-
 export default function PWA(props: WrapperShape) {
   const {
     pageContext,
