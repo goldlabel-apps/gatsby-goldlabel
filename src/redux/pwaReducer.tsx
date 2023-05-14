@@ -14,7 +14,7 @@ const theme: ThemeShape = {
   primaryColor: "#32328C",
   secondaryColor: "#C09F52",
   font: "gotham",
-  mode: "dark",  
+  mode: "light",  
 }
 
 const initialState: PwaReduxShape = {

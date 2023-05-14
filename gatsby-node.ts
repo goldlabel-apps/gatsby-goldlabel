@@ -36,6 +36,15 @@ exports.createPages = async ({ graphql, actions }) => {
               height
               url
             }
+            docs {
+              title
+              description
+              keywords
+              slug
+              body {
+                data
+              }
+            }
           }
         }
       }

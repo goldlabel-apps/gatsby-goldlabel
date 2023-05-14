@@ -10,9 +10,9 @@ import {
     CardHeader,
     CardMedia,
     IconButton,
-    // List,
-    // ListItemButton,
-    // ListItemText,
+    List,
+    ListItemButton,
+    ListItemText,
     Grid,
 } from "@mui/material"
 import {
@@ -83,6 +83,9 @@ export default function Start(props: any) {
                 title={ !isMobile ? <Font variant="title">
                             {title}
                         </Font> : null}
+                subheader={ !isMobile ? <Font variant="description">
+                                {description}
+                            </Font> : null}
                 action={<LocaleMenu />}
             />
             {isMobile ? <CardHeader 
@@ -103,13 +106,6 @@ export default function Start(props: any) {
                 height={200}
                 src={image}
             />
-
-             <CardHeader
-                subheader={ <Font variant="description">
-                                {description}
-                            </Font>}
-            />
-
             
             </Card>
                 {books ? <>
@@ -120,7 +116,9 @@ export default function Start(props: any) {
                             description,
                             bookimage,
                             // slug,
+                            docs,
                             } = book
+                            // console.log("docs", docs)
                             return <Grid item xs={12} md={6} key={`book${i}`}>
                                         <Card sx={{m:1}}><CardActionArea
                                             onClick={(e: React.MouseEvent) => {
@@ -130,10 +128,9 @@ export default function Start(props: any) {
                                         
                                         >
                                             <CardHeader 
-                                                title={<Font variant="title">
+                                                title={<Font>
                                                             {title}
                                                         </Font>}
-                                                
                                             />
                                             { bookimage ? <CardMedia 
                                                                 component="img"
@@ -141,10 +138,27 @@ export default function Start(props: any) {
                                                                 height={135}
                                                                 src={makeImgSrc(bookimage.url)}
                                                             /> : null }
-                                            <CardContent>
-                                                <Font>{description}</Font>
-                                            </CardContent>
+                                            
                                         </CardActionArea>
+                                        {docs ? <>
+                                            <List>
+                                                {docs.map((item: any, i: number) => {
+                                                    const {
+                                                    title,
+                                                    description,
+                                                    } = item
+                                                    return <ListItemButton
+                                                            key={`document_${i}`}
+                                                            >
+                                                            <ListItemText 
+                                                                primary={<Font>
+                                                                            {title}
+                                                                        </Font>}
+                                                            />
+                                                            </ListItemButton>
+                                                })}
+                                            </List>
+                                        </> : null }
                                         </Card>
                                     </Grid>
                         })}

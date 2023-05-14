@@ -18,8 +18,8 @@ export function makeTheme(
         main: "#FFFFFF",
       },
       background: {
-        default: secondary,
-        paper: darken(primary, 0.5),
+        default: darken(secondary, 0.78),
+        paper: darken(secondary, 0.75),
       }
     },
   }
