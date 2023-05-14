@@ -2,7 +2,7 @@ import {GatsbyShape} from "./src/types"
 import strapiConfig from "./strapi"
 import type {GatsbyConfig} from "gatsby"
 
-const siteTitle = "Goldlabel Template"
+const siteTitle = "Goldlabel"
 const siteDescription = "Reproduce this App. It's Open Source"
 const siteUrl = "https://listingslab.com/"
 const siteIcon = "/svg/icons/goldlabel.svg"
