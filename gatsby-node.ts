@@ -70,25 +70,5 @@ exports.createPages = async ({ graphql, actions }) => {
     defer: true,
   })
 
-  // if (books){
-  //   const nodes = books.data.allStrapiBook.edges
-  //   for(let i=0; i<nodes.length; i++){
-  //     const node = nodes[i].node
-  //     const { Slug } = node
-  //     const path = `/book/${Slug}`
-  //     if (Slug) {
-  //       createPage({
-  //         path,
-  //         component: Home,
-  //         context: {
-  //           data: { 
-  //             special: "book",
-  //             book: node,
-  //             books,
-  //           },
-  //         },
-  //       })
-  //     }
-  //   }
-  // }
+  
 }

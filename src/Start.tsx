@@ -28,8 +28,10 @@ import {
 
 export default function Start(props: any) {
     // const dispatch = usePwaDispatch()
+
     const isMobile = !useMediaQuery("(min-width: 860px)")
     const {appData} = props
+    console.log("appData", appData)
     const pwa = usePwaSelect(selectPWA)
     const {locale} = pwa
     const site = useGQLMeta()
@@ -81,9 +83,6 @@ export default function Start(props: any) {
                 title={ !isMobile ? <Font variant="title">
                             {title}
                         </Font> : null}
-                subheader={ !isMobile ? <Font variant="description">
-                                {description}
-                            </Font> : null}
                 action={<LocaleMenu />}
             />
             {isMobile ? <CardHeader 
@@ -104,6 +103,14 @@ export default function Start(props: any) {
                 height={200}
                 src={image}
             />
+
+             <CardHeader
+                subheader={ <Font variant="description">
+                                {description}
+                            </Font>}
+            />
+
+            
             </Card>
                 {books ? <>
                     <Grid container>

@@ -9,7 +9,7 @@ const siteIcon = "/svg/icons/goldlabel.svg"
 const siteImage = "/svg/opensource.svg"
 const siteTwitter = "@listingslab"
 const siteKeywords = "goldlabel, open source, gatsby, strapi, pwa, listingslab, react, javascript"
-const siteTheme = "#32328C"
+const siteTheme = "#C09F52"
 
 const siteMetadata: GatsbyShape =  {
   siteTitle,
