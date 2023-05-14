@@ -31,7 +31,7 @@ export default function Start(props: any) {
 
     const isMobile = !useMediaQuery("(min-width: 860px)")
     const {appData} = props
-    console.log("appData", appData)
+    // console.log("appData", appData)
     const pwa = usePwaSelect(selectPWA)
     const {locale} = pwa
     const site = useGQLMeta()
