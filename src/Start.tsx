@@ -10,9 +10,9 @@ import {
     CardHeader,
     CardMedia,
     IconButton,
-    List,
-    ListItemButton,
-    ListItemText,
+    // List,
+    // ListItemButton,
+    // ListItemText,
     Grid,
 } from "@mui/material"
 import {
@@ -29,7 +29,6 @@ import {
 export default function Start(props: any) {
     // const dispatch = usePwaDispatch()
     const isMobile = !useMediaQuery("(min-width: 860px)")
-    console.log("isMobile", isMobile)
     const {appData} = props
     const pwa = usePwaSelect(selectPWA)
     const {locale} = pwa
@@ -68,7 +67,7 @@ export default function Start(props: any) {
     }
   
     return (<>
-        <Card>
+        <Card sx={{m:1}}>
             <CardHeader
                 avatar={<IconButton
                             color="primary"
@@ -105,22 +104,21 @@ export default function Start(props: any) {
                 height={200}
                 src={image}
             />
-            
+            </Card>
                 {books ? <>
-                    <Grid container spacing={2}>
+                    <Grid container>
                         { books.map((book: any, i: number) => {
                             const {
                             title,
                             description,
                             bookimage,
-                            slug,
+                            // slug,
                             } = book
-
                             return <Grid item xs={12} md={6} key={`book${i}`}>
-                                        <CardActionArea
+                                        <Card sx={{m:1}}><CardActionArea
                                             onClick={(e: React.MouseEvent) => {
                                                 e.preventDefault()
-                                                window.open(`/book/${slug}`, "_self")
+                                                // window.open(`/book/${slug}`, "_self")
                                             }}
                                         
                                         >
@@ -136,12 +134,11 @@ export default function Start(props: any) {
                                                                 height={135}
                                                                 src={makeImgSrc(bookimage.url)}
                                                             /> : null }
-                                            
-                                        </CardActionArea>
-                                        <CardContent>
+                                            <CardContent>
                                                 <Font>{description}</Font>
-                                        </CardContent>
-                                        
+                                            </CardContent>
+                                        </CardActionArea>
+                                        </Card>
                                     </Grid>
                         })}
                     </Grid>
@@ -155,9 +152,9 @@ export default function Start(props: any) {
                         }}>
                         <Icon icon="github" />
                     </IconButton>
-                        
+                    <Box sx={{flexGrow:1}}/>
                 </CardActions>
-        </Card>
+        
     </>
     )
 }
