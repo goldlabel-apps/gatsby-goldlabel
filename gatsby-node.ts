@@ -9,33 +9,20 @@ exports.createPages = async ({ graphql, actions }) => {
       edges {
         node {
           locale
-          canonical
-          hostname
           title
           description
-          twitter
           keywords
-          icon {
-            alternativeText
-            url
-          }
+          canonical
           image {
-            url
             width
             height
-            alternativeText
+            url
           }
           books {
             title
             description
-            docs {
-              title
-              description
-              slug
-              body {
-                data
-              }
-            }
+            slug
+            keywords
           }
         }
       }

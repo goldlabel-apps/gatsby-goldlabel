@@ -3,7 +3,7 @@ import {
     Avatar,
     Card,
     CardHeader,
-    CardContent,
+    CardMedia,
 } from "@mui/material"
 import {
     Font,
@@ -12,6 +12,7 @@ import {
     // usePwaDispatch,
     selectPWA,
     LocaleMenu,
+    makeImgSrc,
 } from "./"
 
 export default function Start(props: any) {
@@ -36,8 +37,14 @@ export default function Start(props: any) {
     const {
         title,
         description,
-        books,
+        image,
     } = localisedApp
+
+    let appImage: string = "/svg/default.svg"
+    if (image){
+        appImage = makeImgSrc(image.url)
+    }
+
   
     return (<>
         <Card>
@@ -51,10 +58,11 @@ export default function Start(props: any) {
                             </Font>}
                 action={<LocaleMenu />}
             />
-
-            <CardContent>
-                <pre>books: {JSON.stringify(books, null, 2)}</pre>
-            </CardContent>
+            <CardMedia 
+                component="img"
+                height={315}
+                src={appImage}
+            />
 
         </Card>
     </>
@@ -62,4 +70,5 @@ export default function Start(props: any) {
 }
 
 /* 
+<pre>localisedApp: {JSON.stringify(localisedApp, null, 2)}</pre>
 */
