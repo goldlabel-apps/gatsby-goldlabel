@@ -9,19 +9,17 @@ exports.createPages = async ({ graphql, actions }) => {
       edges {
         node {
           locale
-          slug
           title
           description
-          keywords
           canonical
-          twitter
-          icon {
+          keywords
+          appicon {
             alternativeText
             width
             height
             url
           }
-          image {
+          appimage {
             alternativeText
             width
             height
@@ -30,9 +28,9 @@ exports.createPages = async ({ graphql, actions }) => {
           books {
             title
             description
-            slug
             keywords
-            image {
+            slug,
+            bookimage {
               alternativeText
               width
               height
