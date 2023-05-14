@@ -3,18 +3,19 @@ import {
     Avatar,
     Card,
     CardHeader,
+    CardContent,
 } from "@mui/material"
 import {
     Font,
     useGQLMeta,
     usePwaSelect,
-    usePwaDispatch,
+    // usePwaDispatch,
     selectPWA,
     LocaleMenu,
 } from "./"
 
 export default function Start(props: any) {
-    const dispatch = usePwaDispatch()
+    // const dispatch = usePwaDispatch()
     const {appData} = props
     const pwa = usePwaSelect(selectPWA)
     const {locale} = pwa
@@ -35,13 +36,8 @@ export default function Start(props: any) {
     const {
         title,
         description,
+        books,
     } = localisedApp
-
-    React.useEffect(() => {
-        const {started} = pwa
-        // @ts-ignore
-        // if(!started) dispatch(startApp(localisedApp))
-    }, [pwa])
   
     return (<>
         <Card>
@@ -55,6 +51,12 @@ export default function Start(props: any) {
                             </Font>}
                 action={<LocaleMenu />}
             />
+
+            <CardContent>
+                <pre>localisedApp: {JSON.stringify(books, null, 2)}</pre>
+            </CardContent>
+
+
         </Card>
     </>
     )
