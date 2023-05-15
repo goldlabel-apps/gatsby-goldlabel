@@ -6,7 +6,7 @@ import {
 import {
   makeImgSrc,
   useGQLMeta,
-  useGQLGatsbyPages,
+  Font,
   Keywords,
   Icon,
   Sitemap,
@@ -22,10 +22,7 @@ import {
   Container,
   CardMedia,
   Grid,
-  List,
   Typography,
-  ListItemButton,
-  ListItemText,
 } from "@mui/material"
 
 export default function PwaSeo(props: WrapperShape) {
@@ -113,22 +110,24 @@ export default function PwaSeo(props: WrapperShape) {
               }}
             />
             <Container maxWidth="sm">
-              <Sitemap />
+              
               <Grid container>
                 <Grid item xs={12}>
                   <Card>
                     <CardHeader 
-                      title={<Typography variant="h1" sx={{fontSize: "3rem"}}>
+                      title={<Font variant="title">
                               {title}
-                            </Typography>}
-                      subheader={<Typography variant="h2" sx={{fontSize: "2rem"}}>
+                            </Font>}
+                      subheader={<Font variant="subheader">
                                   {description}
-                                </Typography>}
+                                </Font>}
                       action={<Avatar 
                         alt={`${title} ${description}`}
                         src={`/svg/localeflags/${locale}.svg`}
                       />}
                     />
+
+                    <Sitemap />
 
                     {og ? <CardMedia 
                             component={"img"}
@@ -138,9 +137,7 @@ export default function PwaSeo(props: WrapperShape) {
                           /> : null }
 
                           <CardContent>
-                            <Typography variant="body2">
-                              {url}
-                            </Typography>
+                            
                             <Keywords keywords={keywords}/>
                           </CardContent>
 
