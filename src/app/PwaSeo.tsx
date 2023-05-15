@@ -9,6 +9,7 @@ import {
   useGQLGatsbyPages,
   Keywords,
   Icon,
+  Sitemap,
 } from "../"
 import {
   Box,
@@ -28,17 +29,21 @@ import {
 } from "@mui/material"
 
 export default function PwaSeo(props: WrapperShape) {
-  const gatsbyPages = useGQLGatsbyPages()
   let locale: string = "en"
   let title: string = "Default title"
   let description: string = "Default description"
   let keywords: string = "default, keywords"
-  let og: string | null = null
+  let url: string = ""
+  let og: string = ""
   const {
     pageContext,
   } = props
+
+  
+  
   const meta = useGQLMeta()
   const {
+    siteUrl,
     siteTitle,
     siteDescription,
     siteKeywords,
@@ -46,13 +51,19 @@ export default function PwaSeo(props: WrapperShape) {
     // siteTwitter,
   } = meta
 
+  
+
+
   title = siteTitle
   description = siteDescription
   keywords = siteKeywords
   og = siteImage
   // twitter = siteTwitter
   
-  const {special, instructions, book} = pageContext.data
+  const {special, instructions, book, path} = pageContext.data
+
+  url = `${siteUrl}${path}`
+
   let appData: any = null
   
   if(pageContext){
@@ -71,7 +82,6 @@ export default function PwaSeo(props: WrapperShape) {
 
   if(special === "book"){
     if (book){
-      // console.log("book", book)
       locale = book.locale
       title = book.title
       description = book.description
@@ -82,33 +92,44 @@ export default function PwaSeo(props: WrapperShape) {
       }
     }
   }
-  const showList = false
+  const showActions = false
 
+  
+  // !! <html> element does not have a [lang] attribute
   return (<>
             <GatsbySeo 
               title={`${title} ${special !== "home" ? siteTitle : siteDescription}`}
               description={description}
+              openGraph={{
+                type: 'website',
+                url,
+                title,
+                description,
+                images: [
+                  {
+                    url: og,
+                  },
+                ],
+              }}
             />
             <Container maxWidth="sm">
-
+              <Sitemap />
               <Grid container>
-
                 <Grid item xs={12}>
                   <Card>
                     <CardHeader 
-
                       title={<Typography variant="h1" sx={{fontSize: "3rem"}}>
                               {title}
                             </Typography>}
                       subheader={<Typography variant="h2" sx={{fontSize: "2rem"}}>
                                   {description}
                                 </Typography>}
-
                       action={<Avatar 
                         alt={`${title} ${description}`}
                         src={`/svg/localeflags/${locale}.svg`}
                       />}
                     />
+
                     {og ? <CardMedia 
                             component={"img"}
                             src={og} 
@@ -117,14 +138,14 @@ export default function PwaSeo(props: WrapperShape) {
                           /> : null }
 
                           <CardContent>
-                            
+                            <Typography variant="body2">
+                              {url}
+                            </Typography>
                             <Keywords keywords={keywords}/>
                           </CardContent>
 
-                          
-
-                          <CardActions>
-                            <Box sx={{flexGrow:1}}/>
+                      {showActions ? <CardActions>
+                        <Box sx={{flexGrow:1}}/>
                             <Button
                               color="primary"
                               variant="text">
@@ -133,6 +154,16 @@ export default function PwaSeo(props: WrapperShape) {
                                   Back
                                 </span> 
                             </Button>
+
+                            <Button
+                              color="primary"
+                              variant="text">
+                                <Icon icon="up" />
+                                <span style={{marginLeft: 8, marginRight: 8}}>
+                                  Up
+                                </span> 
+                            </Button>
+                            
                             <Button
                               color="primary"
                               variant="text">
@@ -142,38 +173,14 @@ export default function PwaSeo(props: WrapperShape) {
                                 <Icon icon="right" />
                             </Button>
                             <Box sx={{flexGrow:1}}/>
-                          </CardActions>
+                          </CardActions> : null }
+
+                          
                     
                   </Card>
                 </Grid>
                 
-                {showList ? <Grid item xs={12}>
-                  <List dense>
-                    { gatsbyPages.map((item: any, i: number) => {
-                      let linkTitle = siteTitle
-                      const {path, pageContext} = item.node
-                      const {data} = pageContext
-                      if (!data) return null
-                      const { book } = data
-                      if (book) linkTitle = book.title
-                      // return null
-                      return <ListItemButton 
-                              key={`page_${i}`}
-                              onClick={(e: React.MouseEvent) => {
-                                e.preventDefault()
-                                window.open(path, "_self")
-                              }}>
-                                <ListItemText 
-                                  primary={linkTitle}
-                                  secondary={path}
-                                />
-                            </ListItemButton>
-                    })}
-                  </List>
-                </Grid> : null }
-
                 
-
               </Grid>
              
             </Container>
@@ -182,5 +189,5 @@ export default function PwaSeo(props: WrapperShape) {
 }
 
 /*
-<pre>meta {JSON.stringify(meta, null, 2)}</pre>
+  <pre>meta {JSON.stringify(meta, null, 2)}</pre>
 */

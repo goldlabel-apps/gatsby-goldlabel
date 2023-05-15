@@ -9,8 +9,8 @@ import WrapRedux from "./app/WrapRedux"
 import {makeImgSrc} from "./theme/utils"
 import {makeTheme} from "./theme/makeTheme"
 
-
 import Meta from "./components/Meta"
+import Sitemap from "./components/Sitemap"
 import Keywords from "./components/Keywords"
 import NotFound from "./components/NotFound"
 import LocaleMenu from "./components/LocaleMenu"
@@ -65,6 +65,7 @@ export {
   Font,
   Meta,
   Keywords,
+  Sitemap,
   Start,
   NotFound,
   BookCard,

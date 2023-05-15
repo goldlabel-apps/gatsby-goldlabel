@@ -5,6 +5,7 @@ export const useGQLMeta = () => {
     query Meta {
       site {
         siteMetadata {
+          siteUrl
           siteTitle
           siteDescription
           siteIcon
