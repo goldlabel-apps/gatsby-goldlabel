@@ -10,8 +10,15 @@ exports.createPages = async ({ graphql, actions }) => {
       edges {
         node {
           title
+          description
           slug
           locale
+          bookimage {
+            alternativeText
+            width
+            height
+            url
+          }
         }
       }
     }
@@ -29,9 +36,10 @@ exports.createPages = async ({ graphql, actions }) => {
           component: PwaSeo,
           context: {
             data: {
-              ...book.node,
+              special: "book",
+              book: book.node,
             },
-            // special: "book",
+            // 
             // instructions: "Single book",
           },
         })
@@ -46,10 +54,8 @@ exports.createPages = async ({ graphql, actions }) => {
       data: {
         special: "home",
         instructions: "Connected to Colz, bro",
-        books
       },
     },
-    defer: true,
   })
 
   createPage({
@@ -61,7 +67,6 @@ exports.createPages = async ({ graphql, actions }) => {
         instructions: "Route unavailable",
       },
     },
-    defer: true,
   })
   
 }
