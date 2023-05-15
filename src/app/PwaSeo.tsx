@@ -65,7 +65,6 @@ export default function PwaSeo(props: WrapperShape) {
   }
 
   if(special === "home"){
-    title = ``
     description = siteDescription
     keywords = siteKeywords
   }
@@ -87,7 +86,7 @@ export default function PwaSeo(props: WrapperShape) {
 
   return (<>
             <GatsbySeo 
-              title={`${title} ${siteTitle}`}
+              title={`${title} ${special !== "home" ? siteTitle : siteDescription}`}
               description={description}
             />
             <Container maxWidth="sm">
