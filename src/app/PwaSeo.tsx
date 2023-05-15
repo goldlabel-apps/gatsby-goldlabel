@@ -3,15 +3,22 @@ import { GatsbySeo } from "gatsby-plugin-next-seo"
 import {
   WrapperShape,
 } from "../types"
-import {useGQLMeta} from "../"
+import {
+  useGQLMeta,
+  useGQLGatsbyPages,
+} from "../"
 
 import {
   Container,
+  List,
+  ListItemText,
+  ListItemButton,
 } from "@mui/material"
 
 
 export default function PwaSeo(props: WrapperShape) {
-  
+  const gatsbyPages = useGQLGatsbyPages()
+  console.log("gatsbyPages", gatsbyPages)
   let locale: string = "en"
   let title: string = "Default title"
   let description: string = "Default description"
@@ -64,7 +71,15 @@ export default function PwaSeo(props: WrapperShape) {
               <h2>{description}</h2>
               {og ? <img src={og} width={300} /> : null }
               <p>{keywords}</p>
-              
+              <List dense>
+                { gatsbyPages.map((item: any, i: number) => {
+                  const {path} = item.node
+                  return <ListItemButton key={`page_${i}`}>
+                          {path}  
+                        </ListItemButton>
+
+                })}
+              </List>
             </Container>
 
           </>)

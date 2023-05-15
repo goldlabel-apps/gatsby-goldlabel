@@ -14,5 +14,5 @@ export const useGQLGatsbyPages = () => {
     }
     `
   )
-  return gql.allSitePage
+  return gql.allSitePage.edges
 }

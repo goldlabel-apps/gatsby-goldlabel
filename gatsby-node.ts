@@ -1,8 +1,43 @@
 const path = require(`path`)
 
-exports.createPages = async ({ actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const PwaSeo = path.resolve("src/app/PwaSeo.tsx")
+
+  const allBooks = await graphql(`
+  query Books {
+    allStrapiBook {
+      edges {
+        node {
+          title
+          slug
+          locale
+        }
+      }
+    }
+  }
+  `)
+  const books = allBooks.data.allStrapiBook.edges
+  
+  if (books) {
+    books.forEach(book => {
+      // console.log("FFS", book.node.slug)
+      const { slug } = book.node
+      if (slug) {
+        actions.createPage({
+          path: `/book/${book.node.slug}`,
+          component: PwaSeo,
+          context: {
+            data: {
+              ...book.node,
+            },
+            // special: "book",
+            // instructions: "Single book",
+          },
+        })
+      }
+    })
+  }
 
   createPage({
     path: "/",
@@ -11,6 +46,7 @@ exports.createPages = async ({ actions }) => {
       data: {
         special: "home",
         instructions: "Connected to Colz, bro",
+        books
       },
     },
     defer: true,
