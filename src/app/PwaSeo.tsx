@@ -7,6 +7,7 @@ import {
   makeImgSrc,
   useGQLMeta,
   useGQLGatsbyPages,
+  Keywords,
 } from "../"
 import {
   Avatar,
@@ -17,21 +18,18 @@ import {
   CardMedia,
   Grid,
   List,
-  ListItemText,
-  ListItemButton,
   Typography,
+  ListItemButton,
+  ListItemText,
 } from "@mui/material"
-
 
 export default function PwaSeo(props: WrapperShape) {
   const gatsbyPages = useGQLGatsbyPages()
-  // console.log("gatsbyPages", gatsbyPages)
   let locale: string = "en"
   let title: string = "Default title"
   let description: string = "Default description"
   let keywords: string = "default, keywords"
   let og: string | null = null
-  let twitter: string | null = null
   const {
     pageContext,
   } = props
@@ -41,14 +39,14 @@ export default function PwaSeo(props: WrapperShape) {
     siteDescription,
     siteKeywords,
     siteImage,
-    siteTwitter,
+    // siteTwitter,
   } = meta
 
   title = siteTitle
   description = siteDescription
   keywords = siteKeywords
   og = siteImage
-  twitter = siteTwitter
+  // twitter = siteTwitter
   
   const {special, instructions, book} = pageContext.data
   let appData: any = null
@@ -81,19 +79,21 @@ export default function PwaSeo(props: WrapperShape) {
       }
     }
   }
+  const showList = false
 
   return (<>
             <GatsbySeo 
               title={`${title} ${siteTitle}`}
               description={description}
             />
-            <Container maxWidth="lg">
+            <Container maxWidth="sm">
 
               <Grid container>
 
-                <Grid item xs={12} md={9}>
+                <Grid item xs={12}>
                   <Card>
                     <CardHeader 
+
                       title={<Typography variant="h1" sx={{fontSize: "3rem"}}>
                               {title}
                             </Typography>}
@@ -114,14 +114,14 @@ export default function PwaSeo(props: WrapperShape) {
                           /> : null }
 
                           <CardContent>
-                            <p>body</p>
-                            <p>{keywords}</p>
+                            
+                            <Keywords keywords={keywords}/>
                           </CardContent>
                     
                   </Card>
                 </Grid>
                 
-                <Grid item xs={12} md={3}>
+                {showList ? <Grid item xs={12}>
                   <List dense>
                     { gatsbyPages.map((item: any, i: number) => {
                       let linkTitle = siteTitle
@@ -130,6 +130,7 @@ export default function PwaSeo(props: WrapperShape) {
                       if (!data) return null
                       const { book } = data
                       if (book) linkTitle = book.title
+                      // return null
                       return <ListItemButton 
                               key={`page_${i}`}
                               onClick={(e: React.MouseEvent) => {
@@ -138,12 +139,14 @@ export default function PwaSeo(props: WrapperShape) {
                               }}>
                                 <ListItemText 
                                   primary={linkTitle}
-                                  // secondary={path}
+                                  secondary={path}
                                 />
                             </ListItemButton>
                     })}
                   </List>
-                </Grid>
+                </Grid> : null }
+
+                
 
               </Grid>
              
