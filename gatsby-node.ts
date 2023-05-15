@@ -9,10 +9,11 @@ exports.createPages = async ({ graphql, actions }) => {
     allStrapiBook {
       edges {
         node {
+          locale
           title
           description
           slug
-          locale
+          keywords
           bookimage {
             alternativeText
             width

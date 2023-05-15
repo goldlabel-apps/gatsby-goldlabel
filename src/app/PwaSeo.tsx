@@ -10,6 +10,7 @@ import {
 } from "../"
 import {
   Container,
+  CardMedia,
   Grid,
   List,
   ListItemText,
@@ -65,10 +66,10 @@ export default function PwaSeo(props: WrapperShape) {
 
   if(special === "book"){
     if (book){
-      // console.log("book", book)
+      console.log("book", book)
       title = book.title
       description = book.description
-      keywords = book.description
+      keywords = book.keywords
       const {bookimage} = book
       if (bookimage){
         og = makeImgSrc(bookimage.url)
@@ -84,6 +85,20 @@ export default function PwaSeo(props: WrapperShape) {
             <Container maxWidth="lg">
 
               <Grid container>
+
+                <Grid item xs={12} md={9}>
+                  <Typography component={"span"}>
+                    <h1>{title}</h1>
+                    <h2>{description}</h2>
+                    {og ? <CardMedia 
+                            component={"img"}
+                            src={og} 
+                            height={200}
+                            alt={`${title} ${description}`}
+                          /> : null }
+                    <p>{keywords}</p>
+                  </Typography>
+                </Grid>
                 
                 <Grid item xs={12} md={3}>
                   <List dense>
@@ -109,18 +124,7 @@ export default function PwaSeo(props: WrapperShape) {
                   </List>
                 </Grid>
 
-                <Grid item xs={12} md={9}>
-                  <Typography component={"span"}>
-                    <h1>{title}</h1>
-                    <h2>{description}</h2>
-                    {og ? <img src={og} width={300} /> : null }
-                    <p>{keywords}</p>
-                  </Typography>
-                </Grid>
-                
               </Grid>
-
-              
              
             </Container>
 
