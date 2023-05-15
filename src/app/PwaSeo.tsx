@@ -8,12 +8,16 @@ import {
   useGQLMeta,
   useGQLGatsbyPages,
   Keywords,
+  Icon,
 } from "../"
 import {
+  Box,
+  Button,
   Avatar,
   Card,
   CardHeader,
   CardContent,
+  CardActions,
   Container,
   CardMedia,
   Grid,
@@ -117,6 +121,29 @@ export default function PwaSeo(props: WrapperShape) {
                             
                             <Keywords keywords={keywords}/>
                           </CardContent>
+
+                          
+
+                          <CardActions>
+                            <Box sx={{flexGrow:1}}/>
+                            <Button
+                              color="primary"
+                              variant="text">
+                                <Icon icon="left" />
+                                <span style={{marginLeft: 8, marginRight: 8}}>
+                                  Back
+                                </span> 
+                            </Button>
+                            <Button
+                              color="primary"
+                              variant="text">
+                                <span style={{marginLeft: 8, marginRight: 8}}>
+                                  Forward
+                                </span> 
+                                <Icon icon="right" />
+                            </Button>
+                            <Box sx={{flexGrow:1}}/>
+                          </CardActions>
                     
                   </Card>
                 </Grid>
