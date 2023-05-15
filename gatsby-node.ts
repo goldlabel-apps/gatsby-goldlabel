@@ -32,11 +32,13 @@ exports.createPages = async ({ graphql, actions }) => {
       // console.log("FFS", book.node.slug)
       const { slug } = book.node
       if (slug) {
+        const p = `/book/${book.node.slug}`
         actions.createPage({
-          path: `/book/${book.node.slug}`,
+          path: p,
           component: PwaSeo,
           context: {
             data: {
+              path: p,
               special: "book",
               book: book.node,
             },
