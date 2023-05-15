@@ -9,7 +9,9 @@ import WrapRedux from "./app/WrapRedux"
 import {makeImgSrc} from "./theme/utils"
 import {makeTheme} from "./theme/makeTheme"
 
+
 import Meta from "./components/Meta"
+import Keywords from "./components/Keywords"
 import NotFound from "./components/NotFound"
 import LocaleMenu from "./components/LocaleMenu"
 import Icon from "./components/Icon"
@@ -62,6 +64,7 @@ export {
   Icon,
   Font,
   Meta,
+  Keywords,
   Start,
   NotFound,
   BookCard,
