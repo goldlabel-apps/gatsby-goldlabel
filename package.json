@@ -1,6 +1,6 @@
 {
   "name": "gatsby-template",
-  "version": "5.2.6",
+  "version": "5.2.7",
   "scripts": {
     "start": "npm run clean && gatsby develop",
     "build": "gatsby build",

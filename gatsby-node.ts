@@ -1,83 +1,72 @@
 const path = require(`path`)
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const PWA = path.resolve("src/app/PWA.tsx")
-  
-  let app = await graphql(`
-  query AppGQL {
-    allStrapiApp(filter: {slug: {eq: "listingslab"}}) {
+  const PwaSeo = path.resolve("src/app/PwaSeo.tsx")
+
+  const allBooks = await graphql(`
+  query Books {
+    allStrapiBook {
       edges {
         node {
-          locale
           title
           description
-          canonical
-          keywords
-          appicon {
+          slug
+          locale
+          bookimage {
             alternativeText
             width
             height
             url
-          }
-          appimage {
-            alternativeText
-            width
-            height
-            url
-          }
-          books {
-            title
-            description
-            keywords
-            slug,
-            bookimage {
-              alternativeText
-              width
-              height
-              url
-            }
-            docs {
-              title
-              description
-              keywords
-              slug
-              body {
-                data
-              }
-            }
           }
         }
       }
     }
   }
   `)
-  if (!app) app = {error:"AppGQL error."}
+  const books = allBooks.data.allStrapiBook.edges
   
+  if (books) {
+    books.forEach(book => {
+      // console.log("FFS", book.node.slug)
+      const { slug } = book.node
+      if (slug) {
+        actions.createPage({
+          path: `/book/${book.node.slug}`,
+          component: PwaSeo,
+          context: {
+            data: {
+              special: "book",
+              book: book.node,
+            },
+            // 
+            // instructions: "Single book",
+          },
+        })
+      }
+    })
+  }
+
   createPage({
     path: "/",
-    component: PWA,
+    component: PwaSeo,
     context: {
       data: {
         special: "home",
         instructions: "Connected to Colz, bro",
-        app,
       },
     },
-    defer: true,
   })
 
   createPage({
-    path: "/404",
-    component: PWA,
+    path: `${"404"}`,
+    component: PwaSeo,
     context: {
       data: {
         special: "404",
-        instructions: "Route not there, bro.",
-        app,
+        instructions: "Route unavailable",
       },
     },
-    defer: true,
   })
-
   
 }
