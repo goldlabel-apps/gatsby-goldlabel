@@ -9,6 +9,10 @@ import {
   useGQLGatsbyPages,
 } from "../"
 import {
+  Avatar,
+  Card,
+  CardHeader,
+  CardContent,
   Container,
   CardMedia,
   Grid,
@@ -22,7 +26,7 @@ import {
 export default function PwaSeo(props: WrapperShape) {
   const gatsbyPages = useGQLGatsbyPages()
   // console.log("gatsbyPages", gatsbyPages)
-  // let locale: string = "en"
+  let locale: string = "en"
   let title: string = "Default title"
   let description: string = "Default description"
   let keywords: string = "default, keywords"
@@ -59,14 +63,15 @@ export default function PwaSeo(props: WrapperShape) {
   }
 
   if(special === "home"){
-    title = `${siteTitle}`
+    title = ``
     description = siteDescription
     keywords = siteKeywords
   }
 
   if(special === "book"){
     if (book){
-      console.log("book", book)
+      // console.log("book", book)
+      locale = book.locale
       title = book.title
       description = book.description
       keywords = book.keywords
@@ -79,7 +84,7 @@ export default function PwaSeo(props: WrapperShape) {
 
   return (<>
             <GatsbySeo 
-              title={title}
+              title={`${title} ${siteTitle}`}
               description={description}
             />
             <Container maxWidth="lg">
@@ -87,17 +92,33 @@ export default function PwaSeo(props: WrapperShape) {
               <Grid container>
 
                 <Grid item xs={12} md={9}>
-                  <Typography component={"span"}>
-                    <h1>{title}</h1>
-                    <h2>{description}</h2>
+                  <Card>
+                    <CardHeader 
+                      title={<Typography variant="h1" sx={{fontSize: "3rem"}}>
+                              {title}
+                            </Typography>}
+                      subheader={<Typography variant="h2" sx={{fontSize: "2rem"}}>
+                                  {description}
+                                </Typography>}
+
+                      action={<Avatar 
+                        alt={`${title} ${description}`}
+                        src={`/svg/localeflags/${locale}.svg`}
+                      />}
+                    />
                     {og ? <CardMedia 
                             component={"img"}
                             src={og} 
                             height={200}
                             alt={`${title} ${description}`}
                           /> : null }
-                    <p>{keywords}</p>
-                  </Typography>
+
+                          <CardContent>
+                            <p>body</p>
+                            <p>{keywords}</p>
+                          </CardContent>
+                    
+                  </Card>
                 </Grid>
                 
                 <Grid item xs={12} md={3}>
@@ -132,8 +153,5 @@ export default function PwaSeo(props: WrapperShape) {
 }
 
 /*
-
-ALSO USE gatsby built in HEAD API for keywords
-
 <pre>meta {JSON.stringify(meta, null, 2)}</pre>
 */
