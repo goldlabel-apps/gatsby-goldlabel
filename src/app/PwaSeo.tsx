@@ -58,8 +58,15 @@ export default function PwaSeo(props: WrapperShape) {
   url = `${siteUrl}${path}`
   let appData: any = null
   if(pageContext){
-    const {data} = pageContext    
+    const {data} = pageContext
+    console.log("data", data) 
     appData = data
+  }
+
+  const {apps} = appData
+  
+  if(special === "app"){
+    console.log("HEY!", pageContext.data)
   }
 
   if(special === "404"){
@@ -86,7 +93,7 @@ export default function PwaSeo(props: WrapperShape) {
     description = siteDescription
     keywords = siteKeywords
     body = "Home"
-    console.log("HEY!", pageContext)
+    // console.log("HEY!", pageContext)
   }
 
   const showActions = false
@@ -152,6 +159,9 @@ export default function PwaSeo(props: WrapperShape) {
                                 alt={`${title} ${description}`}
                               /> : null }  
 
+
+                              
+
                         {body ? <>
                                   <CardContent>
                                     {body}
@@ -188,10 +198,11 @@ export default function PwaSeo(props: WrapperShape) {
                               </CardActions> : null }
                           
                           <Sitemap options={{
-                            defaultExpanded: special === "404" ? true : false,
+                            defaultExpanded: special === "home" || special === "404" ? true : false,
                           }}/>
-
-                        </Card>                  
+                          <pre>{JSON.stringify(apps, null, 2)}</pre>  
+                        </Card>            
+                            
                     </Grid>
                   </Grid>
                 </Container>

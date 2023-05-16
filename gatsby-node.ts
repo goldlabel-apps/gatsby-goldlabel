@@ -4,6 +4,52 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const PwaSeo = path.resolve("src/app/PwaSeo.tsx")
 
+  const allApps = await graphql(`
+  query Apps {
+    allStrapiApp {
+      edges {
+        node {
+          locale
+          title
+          description
+        }
+      }
+    }
+  }
+  `)
+  const apps = allApps.data.allStrapiApp.edges
+
+  for(let i = 0; i < apps.length; i++){
+    const {node} = apps[i]
+    if(i === 0) console.log("app node", node)
+    const {locale} = node
+    const path = `${locale}`
+    createPage({
+      path,
+      component: PwaSeo,
+      context: {
+        data: {
+          special: "app",
+          path,
+          instructions: "localise",
+          apps,
+        },
+      },
+    })
+  }
+
+  createPage({
+    path: "/",
+    component: PwaSeo,
+    context: {
+      data: {
+        special: "home",
+        instructions: "Velcome, velcome",
+        apps,
+      },
+    },
+  })
+
   const allBooks = await graphql(`
   query Books {
     allStrapiBook {
@@ -39,7 +85,7 @@ exports.createPages = async ({ graphql, actions }) => {
           context: {
             data: {
               special: "book",
-              locale: book.node.locale,
+              apps,
               path,
               book: book.node,
             },
@@ -49,16 +95,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   }
 
-  createPage({
-    path: "/",
-    component: PwaSeo,
-    context: {
-      data: {
-        special: "home",
-        instructions: "Velcome, velcome",
-      },
-    },
-  })
+
 
   createPage({
     path: `${"404"}`,
@@ -66,6 +103,7 @@ exports.createPages = async ({ graphql, actions }) => {
     context: {
       data: {
         special: "404",
+        apps,
         instructions: "Route unavailable",
       },
     },
