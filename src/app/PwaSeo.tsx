@@ -38,6 +38,7 @@ export default function PwaSeo(props: WrapperShape) {
   let avatar: string = ""
   let twitter: string = "@"
   let body: any = false
+  let books: Array<any> = false
   const {
     pageContext,
   } = props
@@ -57,6 +58,13 @@ export default function PwaSeo(props: WrapperShape) {
   keywords = siteKeywords
   avatar = siteIcon  
   const {special, instructions, book, path, localised} = pageContext.data
+
+  if (localised){
+    // console.log("localised", localised)
+    books = localised.books
+  }
+
+
   url = `${siteUrl}${path}`
   let appData: any = null
 
@@ -65,8 +73,8 @@ export default function PwaSeo(props: WrapperShape) {
     // console.log("data", data) 
     appData = data
   }
-
-  const {apps} = appData
+  // console.log("appData", appData)
+  // const {apps} = appData
 
   if(special === "404"){
     title = instructions
@@ -168,6 +176,10 @@ export default function PwaSeo(props: WrapperShape) {
                                     </Font>
                                   </CardContent>
                                 </> : null }  
+                          </Grid>
+
+                          <Grid item xs={6}>
+                          <pre>{JSON.stringify(books, null, 2)}</pre> 
                           </Grid>
 
                         </Grid>

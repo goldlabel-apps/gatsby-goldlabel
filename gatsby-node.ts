@@ -23,11 +23,30 @@ exports.createPages = async ({ graphql, actions }) => {
               appbody
             }
           }
+          books {
+            slug
+            title
+            description
+            keywords
+            bookimage {
+              alternativeText
+              url
+              width
+              height
+            }
+            docs {
+              slug
+              title
+              description
+              keywords
+            }
+          }
         }
       }
     }
   }
   `)
+
   const apps = allApps.data.allStrapiApp.edges
 
   for(let i = 0; i < apps.length; i++){
