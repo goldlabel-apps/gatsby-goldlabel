@@ -14,11 +14,8 @@ export function makeTheme(
       secondary: {
         main: secondary,
       },
-      success: {
-        main: "#FFFFFF",
-      },
       background: {
-        default: "#333",
+        default: "#000",
         paper: darken(secondary, 0.5),
       }
     },

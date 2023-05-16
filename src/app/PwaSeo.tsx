@@ -33,6 +33,7 @@ export default function PwaSeo(props: WrapperShape) {
   let url: string = ""
   let og: string = ""
   let avatar: string = ""
+  let twitter: string = "@"
   const {
     pageContext,
   } = props
@@ -44,7 +45,9 @@ export default function PwaSeo(props: WrapperShape) {
     siteDescription,
     siteKeywords,
     siteIcon,
+    siteTwitter,
   } = meta
+  twitter = siteTwitter
   title = siteTitle
   description = siteDescription
   keywords = siteKeywords
@@ -85,8 +88,9 @@ export default function PwaSeo(props: WrapperShape) {
   // !! <html> element does not have a [lang] attribute
   return (<>
             <GatsbySeo 
-              title={`${title} ${special !== "home" ? siteTitle : siteDescription}`}
+              title={`${title}`}
               description={description}
+              canonical={siteUrl}
               openGraph={{
                 type: 'website',
                 url,
@@ -98,10 +102,15 @@ export default function PwaSeo(props: WrapperShape) {
                   },
                 ],
               }}
+              twitter={{
+                handle: twitter,
+                site: twitter,
+                cardType: 'summary_large_image',
+              }}
             />
             <WrapRedux>
               <MuiTheme>
-                <Container maxWidth="sm" sx={{my:1}}>
+                <Container maxWidth="md" sx={{my:1}}>
                   
                   <Grid container>
                     <Grid item xs={12}>
@@ -142,7 +151,6 @@ export default function PwaSeo(props: WrapperShape) {
                                     {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
                                       Back
                                     </Font>  : null }
-                                    
                                 </Button>
 
                                 <Button
@@ -152,13 +160,11 @@ export default function PwaSeo(props: WrapperShape) {
                                     {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
                                       Up
                                     </Font>  : null }
-                                    
                                 </Button>
                                 
                                 <Button
                                   color="primary"
                                   variant="text">
-                                    
                                     {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
                                       Next
                                     </Font>  : null }
@@ -176,11 +182,11 @@ export default function PwaSeo(props: WrapperShape) {
           </>)
 }
 
-/*
-
-<CardContent>
-  <Keywords keywords={keywords}/>
-</CardContent>
-                          
-  <pre>meta {JSON.stringify(meta, null, 2)}</pre>
-*/
+export function Head() {
+  const locale = "en"
+  return (
+    <>
+      <html lang={locale} />
+    </>
+  )
+}
