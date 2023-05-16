@@ -1,8 +1,15 @@
 import { PaletteMode } from "@mui/material"
 
-
-export type DocumentShape = {
-  document?: any
+export type MetaShape = {
+  siteTitle: string
+  title: string
+  description: string
+  siteDescription: string
+  keywords: string
+  url: string
+  canonical: string
+  image: string
+  twitter: string
 }
 
 export type LocaleShape = {
@@ -30,20 +37,6 @@ export type GatsbyShape = {
   siteTwitter: string
   siteTheme: string
 }
-
-export type MetaShape = {
-  siteTitle: string
-  title: string
-  description: string
-  siteDescription: string
-  keywords: string
-  url: string
-  canonical: string
-  image: string
-  twitter: string
-}
-
-
 
 export type ThemeShape = {
   title: string
@@ -99,12 +92,8 @@ export type WrapperShape = {
   location: any
 }
 
-// const meta: MetaShape = {
-//   title: "string",
-//   description: "string",
-//   keywords: "string",
-//   url: "string",
-//   canonical: "string",
-//   image: "string",
-//   twitter: "string",
-// }
+
+
+export type DocumentShape = {
+  document?: any
+}

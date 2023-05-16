@@ -1,9 +1,12 @@
-import {firebaseConfig} from "./firebaseConfig"
-import {locales} from "./redux/locales"
-import WrapRedux from "./app/WrapRedux"
+import {usePwaDispatch} from "./hooks/usePwaDispatch"
+import {usePwaSelect} from "./hooks/usePwaSelect"
+import {useGQLMeta} from "./hooks/useGQLMeta"
+import {useGQLApps} from "./hooks/useGQLApps"
+import {useGQLGatsbyPages} from "./hooks/useGQLGatsbyPages"
 
 import {makeImgSrc} from "./theme/utils"
 import {makeTheme} from "./theme/makeTheme"
+import {firebaseConfig} from "./firebaseConfig"
 
 import Meta from "./components/Meta"
 import Sitemap from "./components/Sitemap"
@@ -20,7 +23,9 @@ import BookCard from "./components/BookCard"
 import BookPage from "./components/BookPage"
 import ImageMedia from "./components/ImageMedia"
 
-import { selectPWA, setPwaKey } from "./redux/pwaReducer"
+import WrapRedux from "./redux/WrapRedux"
+import {locales} from "./redux/locales"
+import {selectPWA, setPwaKey} from "./redux/pwaReducer"
 import {store} from "./redux/store"
 import {persistor} from "./redux/store"
 import { startApp } from "./redux/actions/startApp"
@@ -29,14 +34,6 @@ import { setLocale } from "./redux/actions/setLocale"
 import { setSeo } from "./redux/actions/setSeo"
 import { setOpen } from "./redux/actions/setOpen"
 import { navigateTo } from "./redux/actions/navigateTo"
-
-import {usePwaDispatch} from "./hooks/usePwaDispatch"
-import {usePwaSelect} from "./hooks/usePwaSelect"
-import {useGQLMeta} from "./hooks/useGQLMeta"
-import {useGQLApps} from "./hooks/useGQLApps"
-import {useGQLGatsbyPages} from "./hooks/useGQLGatsbyPages"
-
-
 
 export {
   firebaseConfig,

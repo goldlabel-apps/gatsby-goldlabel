@@ -1,6 +1,7 @@
 import React from "react"
 import { WrapperShape} from "../types"
 import "../theme/default.css"
+import ReactMarkdown from "react-markdown"
 import { GatsbySeo } from "gatsby-plugin-next-seo"
 import {
   makeImgSrc,
@@ -10,6 +11,7 @@ import {
   Sitemap,
   MuiTheme,
   WrapRedux,
+  LocaleMenu,
 } from "../"
 import {
   Avatar,
@@ -19,6 +21,7 @@ import {
   Card,
   CardHeader,
   CardActions,
+  CardContent,
   Container,
   CardMedia,
   Grid,
@@ -34,8 +37,7 @@ export default function PwaSeo(props: WrapperShape) {
   let og: string = ""
   let avatar: string = ""
   let twitter: string = "@"
-
-  seotitle
+  let body: any = false
   const {
     pageContext,
   } = props
@@ -54,13 +56,17 @@ export default function PwaSeo(props: WrapperShape) {
   description = siteDescription
   keywords = siteKeywords
   avatar = siteIcon  
-  const {special, instructions, book, path} = pageContext.data
+  const {special, instructions, book, path, localised} = pageContext.data
   url = `${siteUrl}${path}`
   let appData: any = null
+
   if(pageContext){
-    const {data} = pageContext    
+    const {data} = pageContext
+    // console.log("data", data) 
     appData = data
   }
+
+  const {apps} = appData
 
   if(special === "404"){
     title = instructions
@@ -82,9 +88,11 @@ export default function PwaSeo(props: WrapperShape) {
   }
 
   if(special === "home"){
-    seotitle =  `${siteTitle} ${siteDescription}`
-    description = siteDescription
+    title = localised.title
+    seotitle =  `${localised.title} ${localised.description}`
+    description = localised.description
     keywords = siteKeywords
+    body = localised.appbody.data.appbody
   }
 
   const showActions = false
@@ -133,13 +141,9 @@ export default function PwaSeo(props: WrapperShape) {
                                       {description}
                                     </Font>}
                           action={<>
-                                <IconButton
-                                    onClick={(e: React.MouseEvent) => {
-                                        e.preventDefault()
-                                        window.open(`https://github.com/listingslab-goldlabel/gatsby-template`, "_blank")
-                                    }}>
-                                    <Icon icon="github" />
-                                </IconButton>
+                                <Box sx={{display:"flex"}}>
+                                  <LocaleMenu />
+                                </Box>
                               </>}
                         />
 
@@ -148,7 +152,18 @@ export default function PwaSeo(props: WrapperShape) {
                                 src={og} 
                                 height={200}
                                 alt={`${title} ${description}`}
-                              /> : null }    
+                              /> : null }  
+
+
+                        {body ? <>
+                                  <CardContent>
+                                    <Font>
+                                    <ReactMarkdown>
+                                      {body}
+                                    </ReactMarkdown>
+                                    </Font>
+                                  </CardContent>
+                                </> : null }  
                         
                         {showActions ? <CardActions>
                             <Box sx={{flexGrow:1}}/>
@@ -180,10 +195,11 @@ export default function PwaSeo(props: WrapperShape) {
                               </CardActions> : null }
                           
                           <Sitemap options={{
-                            defaultExpanded: special === "404" ? true : false,
+                            defaultExpanded: special === "home" || special === "404" ? false : false,
                           }}/>
-
-                        </Card>                  
+                           
+                        </Card>            
+                            
                     </Grid>
                   </Grid>
                 </Container>
@@ -202,9 +218,5 @@ export function Head() {
 }
 
 /*
-<Avatar 
-  sx={{width: 16, height: 16}}
-  alt={`${title} ${description}`}
-  src={`/svg/localeflags/${locale}.svg`}
-/>
+<pre>{JSON.stringify(apps, null, 2)}</pre> 
 */

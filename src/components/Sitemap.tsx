@@ -40,18 +40,23 @@ export default function Sitemap(props: any) {
               const { book, special } = data
               if (book) linkTitle = book.title
 
-              // console.log("special", special)
-
               let icon = "link"
-
               switch (special) {
                 case "book":
                   icon = "book"
                   break
+
+                case "app":
+
+                  icon = "code"
+                  linkTitle = data.path
+                  break
+                
                 case "home":
                   icon = "home"
                   linkTitle = "Home"
                   break
+                
                 case "404":
                   icon = "help"
                   linkTitle = "404"
@@ -69,7 +74,7 @@ export default function Sitemap(props: any) {
                         </ListItemIcon>
                         <ListItemText 
                           primary={<Font>{linkTitle}</Font>}
-                          // secondary={path}
+                          secondary={path}
                         />
                     </ListItemButton>
               })}
@@ -80,6 +85,15 @@ export default function Sitemap(props: any) {
 }
 
 /*
+
+<IconButton
+                                      onClick={(e: React.MouseEvent) => {
+                                          e.preventDefault()
+                                          window.open(`https://github.com/listingslab-goldlabel/gatsby-goldlabel`, "_blank")
+                                      }}>
+                                      <Icon icon="github" />
+                                  </IconButton>
+                                  
 <Typography>
   <pre>
     {JSON.stringify(gatsbyPages, null, 2)}

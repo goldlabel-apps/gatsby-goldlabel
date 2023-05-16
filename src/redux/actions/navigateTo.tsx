@@ -5,7 +5,6 @@ export const navigateTo =
   (url: string, target?: string): AppThunk =>
   async (dispatch: any) => {
     try {
-      // console.log("navigateTo", url, target)
       dispatch(
         setPwaKey({
           key: "route",
