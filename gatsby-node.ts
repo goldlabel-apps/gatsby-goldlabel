@@ -12,6 +12,12 @@ exports.createPages = async ({ graphql, actions }) => {
           locale
           title
           description
+          appimage {
+            alternativeText
+            width
+            height
+            url
+          }
           appbody {
             data {
               appbody

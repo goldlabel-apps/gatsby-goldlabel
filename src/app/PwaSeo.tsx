@@ -93,6 +93,7 @@ export default function PwaSeo(props: WrapperShape) {
     description = localised.description
     keywords = siteKeywords
     body = localised.appbody.data.appbody
+    og = makeImgSrc(localised.appimage.url)
   }
 
   const showActions = false
