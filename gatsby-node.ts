@@ -55,7 +55,7 @@ exports.createPages = async ({ graphql, actions }) => {
     context: {
       data: {
         special: "home",
-        instructions: "Connected to Colz, bro",
+        instructions: "Velcome, velcome",
       },
     },
   })

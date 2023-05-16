@@ -19,6 +19,7 @@ import {
   Card,
   CardHeader,
   CardActions,
+  CardContent,
   Container,
   CardMedia,
   Grid,
@@ -34,8 +35,7 @@ export default function PwaSeo(props: WrapperShape) {
   let og: string = ""
   let avatar: string = ""
   let twitter: string = "@"
-
-  seotitle
+  let body: any = false
   const {
     pageContext,
   } = props
@@ -85,6 +85,8 @@ export default function PwaSeo(props: WrapperShape) {
     seotitle =  `${siteTitle} ${siteDescription}`
     description = siteDescription
     keywords = siteKeywords
+    body = "Home"
+    console.log("HEY!", pageContext)
   }
 
   const showActions = false
@@ -148,7 +150,13 @@ export default function PwaSeo(props: WrapperShape) {
                                 src={og} 
                                 height={200}
                                 alt={`${title} ${description}`}
-                              /> : null }    
+                              /> : null }  
+
+                        {body ? <>
+                                  <CardContent>
+                                    {body}
+                                  </CardContent>
+                                </> : null }  
                         
                         {showActions ? <CardActions>
                             <Box sx={{flexGrow:1}}/>
@@ -200,11 +208,3 @@ export function Head() {
     </>
   )
 }
-
-/*
-<Avatar 
-  sx={{width: 16, height: 16}}
-  alt={`${title} ${description}`}
-  src={`/svg/localeflags/${locale}.svg`}
-/>
-*/
