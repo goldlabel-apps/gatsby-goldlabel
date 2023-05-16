@@ -14,12 +14,15 @@ import {
   Font,
 } from "../"
 
-export default function Sitemap() {
-
+export default function Sitemap(props: any) {
+    const {options} = props
+    let dO = false
+    const {defaultExpanded} = options
+    if (defaultExpanded) dO = true
     const gatsbyPages = useGQLGatsbyPages()
 
     return (<>
-      <Accordion sx={{border: "none", boxShadow: "none"}}>
+      <Accordion defaultExpanded={dO} sx={{border: "none", boxShadow: "none"}}>
         <AccordionSummary
           sx={{border: "none", boxShadow: "none"}}
           expandIcon={<Icon icon="acc" color="primary" />}
