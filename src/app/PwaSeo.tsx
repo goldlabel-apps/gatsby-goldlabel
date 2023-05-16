@@ -25,6 +25,11 @@ import {
   Container,
   CardMedia,
   Grid,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+
 } from "@mui/material"
 
 export default function PwaSeo(props: WrapperShape) {
@@ -105,7 +110,7 @@ export default function PwaSeo(props: WrapperShape) {
   }
 
   const showActions = false
-  const showLabels = true
+  const showLabels = false
 
   return (<>
             <GatsbySeo 
@@ -158,7 +163,7 @@ export default function PwaSeo(props: WrapperShape) {
                         
                         <Grid container>
 
-                          <Grid item xs={6}>
+                          <Grid item xs={12} md={7}>
                             
                             { og ? <CardContent><CardMedia 
                                 component={"img"}
@@ -176,48 +181,68 @@ export default function PwaSeo(props: WrapperShape) {
                                     </Font>
                                   </CardContent>
                                 </> : null }  
+
+                                {showActions ? <CardActions>
+                                  <Box sx={{flexGrow:1}}/>
+                                      <Button
+                                        color="primary"
+                                        variant="text">
+                                          <Icon icon="left" />
+                                          {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
+                                            Back
+                                          </Font>  : null }
+                                      </Button>
+                                      <Button
+                                        color="primary"
+                                        variant="text">
+                                          <Icon icon="up" />
+                                          {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
+                                            Up
+                                          </Font>  : null }
+                                      </Button>
+                                      <Button
+                                        color="primary"
+                                        variant="text">
+                                          {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
+                                            Next
+                                          </Font>  : null }
+                                          <Icon icon="right" />
+                                      </Button>
+                                      <Box sx={{flexGrow:1}}/>
+                                    </CardActions> : null }
                           </Grid>
 
-                          <Grid item xs={6}>
-                          <pre>{JSON.stringify(books, null, 2)}</pre> 
+                          <Grid item xs={12} md={5}>
+                              { books ? <>
+                              <List>
+                                { books.map((item: any, i: number) => {
+                                  const {
+                                    title,
+                                    description,
+                                    slug,
+                                  } = item
+                                  return <ListItemButton
+                                            key={`book_${i}`}
+                                            onClick={(e: React.MouseEvent) => {
+                                              e.preventDefault()
+                                               window.open(`/book/${slug}`, "_self")
+                                            }}
+                                          >
+                                            <ListItemIcon>
+                                              <Icon icon="book" color="primary"/>
+                                            </ListItemIcon>
+                                            <ListItemText 
+                                              primary={title}
+                                              secondary={description}
+                                            />
+                                        </ListItemButton>
+                                })}
+                              </List>
+                              </> : null }
+
                           </Grid>
 
-                        </Grid>
-
-
-                        
-
-
-                        
-                        
-                        {showActions ? <CardActions>
-                            <Box sx={{flexGrow:1}}/>
-                                <Button
-                                  color="primary"
-                                  variant="text">
-                                    <Icon icon="left" />
-                                    {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
-                                      Back
-                                    </Font>  : null }
-                                </Button>
-                                <Button
-                                  color="primary"
-                                  variant="text">
-                                    <Icon icon="up" />
-                                    {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
-                                      Up
-                                    </Font>  : null }
-                                </Button>
-                                <Button
-                                  color="primary"
-                                  variant="text">
-                                    {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
-                                      Next
-                                    </Font>  : null }
-                                    <Icon icon="right" />
-                                </Button>
-                                <Box sx={{flexGrow:1}}/>
-                              </CardActions> : null }
+                        </Grid>                        
                           
                           <Sitemap options={{
                             defaultExpanded: special === "home" || special === "404" ? false : false,
