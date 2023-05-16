@@ -7,22 +7,22 @@ import {
   makeImgSrc,
   useGQLMeta,
   Font,
-  Keywords,
   Icon,
   Sitemap,
+  MuiTheme,
+  WrapRedux,
 } from "../"
 import {
+  Avatar,
+  IconButton,
   Box,
   Button,
-  Avatar,
   Card,
   CardHeader,
-  CardContent,
   CardActions,
   Container,
   CardMedia,
   Grid,
-  Typography,
 } from "@mui/material"
 
 export default function PwaSeo(props: WrapperShape) {
@@ -32,11 +32,10 @@ export default function PwaSeo(props: WrapperShape) {
   let keywords: string = "default, keywords"
   let url: string = ""
   let og: string = ""
+  let avatar: string = ""
   const {
     pageContext,
   } = props
-
-  
   
   const meta = useGQLMeta()
   const {
@@ -44,37 +43,27 @@ export default function PwaSeo(props: WrapperShape) {
     siteTitle,
     siteDescription,
     siteKeywords,
-    siteImage,
-    // siteTwitter,
+    siteIcon,
   } = meta
-
-  
-
-
   title = siteTitle
   description = siteDescription
   keywords = siteKeywords
-  og = siteImage
-  // twitter = siteTwitter
-  
+  avatar = siteIcon  
   const {special, instructions, book, path} = pageContext.data
-
   url = `${siteUrl}${path}`
-
   let appData: any = null
-  
   if(pageContext){
     const {data} = pageContext    
     appData = data
   }
 
-  if(special === "404"){
-    title = instructions
-  }
-
   if(special === "home"){
     description = siteDescription
     keywords = siteKeywords
+  }
+
+  if(special === "404"){
+    title = instructions
   }
 
   if(special === "book"){
@@ -89,7 +78,8 @@ export default function PwaSeo(props: WrapperShape) {
       }
     }
   }
-  const showActions = false
+  const showActions = true
+  const showLabels = false
 
   
   // !! <html> element does not have a [lang] attribute
@@ -109,82 +99,88 @@ export default function PwaSeo(props: WrapperShape) {
                 ],
               }}
             />
-            <Container maxWidth="sm">
-              
-              <Grid container>
-                <Grid item xs={12}>
-                  <Card>
-                    <CardHeader 
-                      title={<Font variant="title">
-                              {title}
-                            </Font>}
-                      subheader={<Font variant="subheader">
-                                  {description}
+            <WrapRedux>
+              <MuiTheme>
+                <Container maxWidth="sm" sx={{my:1}}>
+                  
+                  <Grid container>
+                    <Grid item xs={12}>
+                      <Card>
+                        <CardHeader 
+                          avatar={<IconButton
+                                    onClick={(e: React.MouseEvent) => {
+                                      e.preventDefault()
+                                      window.open(`/`, "_self")
+                                  }}>
+                                    <Avatar src={avatar} alt={description}/>
+                                  </IconButton>}
+                          title={<Font variant="title">
+                                  {title}
                                 </Font>}
-                      action={<Avatar 
-                        alt={`${title} ${description}`}
-                        src={`/svg/localeflags/${locale}.svg`}
-                      />}
-                    />
-
-                    <Sitemap />
-
-                    {og ? <CardMedia 
-                            component={"img"}
-                            src={og} 
-                            height={200}
-                            alt={`${title} ${description}`}
-                          /> : null }
-
-                          <CardContent>
-                            
-                            <Keywords keywords={keywords}/>
-                          </CardContent>
-
-                      {showActions ? <CardActions>
-                        <Box sx={{flexGrow:1}}/>
-                            <Button
-                              color="primary"
-                              variant="text">
-                                <Icon icon="left" />
-                                <span style={{marginLeft: 8, marginRight: 8}}>
-                                  Back
-                                </span> 
-                            </Button>
-
-                            <Button
-                              color="primary"
-                              variant="text">
-                                <Icon icon="up" />
-                                <span style={{marginLeft: 8, marginRight: 8}}>
-                                  Up
-                                </span> 
-                            </Button>
-                            
-                            <Button
-                              color="primary"
-                              variant="text">
-                                <span style={{marginLeft: 8, marginRight: 8}}>
-                                  Forward
-                                </span> 
-                                <Icon icon="right" />
-                            </Button>
+                          subheader={<Font variant="subheader">
+                                      {description}
+                                    </Font>}
+                          action={<Avatar 
+                                    sx={{width: 16, height: 16}}
+                                    alt={`${title} ${description}`}
+                                    src={`/svg/localeflags/${locale}.svg`}
+                                  />}
+                        />
+                        { og ? <CardMedia 
+                                component={"img"}
+                                src={og} 
+                                height={200}
+                                alt={`${title} ${description}`}
+                              /> : null }    
+                        
+                        {showActions ? <CardActions>
                             <Box sx={{flexGrow:1}}/>
-                          </CardActions> : null }
+                                <Button
+                                  color="primary"
+                                  variant="text">
+                                    <Icon icon="left" />
+                                    {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
+                                      Back
+                                    </Font>  : null }
+                                    
+                                </Button>
 
-                          
-                    
-                  </Card>
-                </Grid>
-                
-                
-              </Grid>
-             
-            </Container>
-
+                                <Button
+                                  color="primary"
+                                  variant="text">
+                                    <Icon icon="up" />
+                                    {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
+                                      Up
+                                    </Font>  : null }
+                                    
+                                </Button>
+                                
+                                <Button
+                                  color="primary"
+                                  variant="text">
+                                    
+                                    {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
+                                      Next
+                                    </Font>  : null }
+                                    <Icon icon="right" />
+                                </Button>
+                                <Box sx={{flexGrow:1}}/>
+                              </CardActions> : null }
+                          <Sitemap />
+                        </Card>                  
+                    </Grid>
+                  </Grid>
+                </Container>
+              </MuiTheme>
+            </WrapRedux>
           </>)
 }
 
 /*
+
+<CardContent>
+  <Keywords keywords={keywords}/>
+</CardContent>
+                          
   <pre>meta {JSON.stringify(meta, null, 2)}</pre>
 */
