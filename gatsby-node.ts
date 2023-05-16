@@ -12,6 +12,11 @@ exports.createPages = async ({ graphql, actions }) => {
           locale
           title
           description
+          appbody {
+            data {
+              appbody
+            }
+          }
         }
       }
     }
@@ -29,10 +34,10 @@ exports.createPages = async ({ graphql, actions }) => {
       component: PwaSeo,
       context: {
         data: {
-          special: "app",
-          path,
-          instructions: "localise",
           apps,
+          special: "home",
+          localised: node,
+          path,
         },
       },
     })
@@ -43,9 +48,10 @@ exports.createPages = async ({ graphql, actions }) => {
     component: PwaSeo,
     context: {
       data: {
-        special: "home",
-        instructions: "Velcome, velcome",
         apps,
+        special: "home",
+        path: "/",
+        localised: apps[0].node,
       },
     },
   })
@@ -75,7 +81,6 @@ exports.createPages = async ({ graphql, actions }) => {
   
   if (books) {
     books.forEach(book => {
-      // console.log("FFS", book.node.slug)
       const { slug } = book.node
       if (slug) {
         const path = `/book/${book.node.slug}`
@@ -84,8 +89,8 @@ exports.createPages = async ({ graphql, actions }) => {
           component: PwaSeo,
           context: {
             data: {
-              special: "book",
               apps,
+              special: "book",
               path,
               book: book.node,
             },

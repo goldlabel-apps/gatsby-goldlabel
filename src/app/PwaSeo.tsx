@@ -1,6 +1,7 @@
 import React from "react"
 import { WrapperShape} from "../types"
 import "../theme/default.css"
+import ReactMarkdown from "react-markdown"
 import { GatsbySeo } from "gatsby-plugin-next-seo"
 import {
   makeImgSrc,
@@ -10,6 +11,7 @@ import {
   Sitemap,
   MuiTheme,
   WrapRedux,
+  LocaleMenu,
 } from "../"
 import {
   Avatar,
@@ -54,20 +56,17 @@ export default function PwaSeo(props: WrapperShape) {
   description = siteDescription
   keywords = siteKeywords
   avatar = siteIcon  
-  const {special, instructions, book, path} = pageContext.data
+  const {special, instructions, book, path, localised} = pageContext.data
   url = `${siteUrl}${path}`
   let appData: any = null
+
   if(pageContext){
     const {data} = pageContext
-    console.log("data", data) 
+    // console.log("data", data) 
     appData = data
   }
 
   const {apps} = appData
-  
-  if(special === "app"){
-    console.log("HEY!", pageContext.data)
-  }
 
   if(special === "404"){
     title = instructions
@@ -89,11 +88,11 @@ export default function PwaSeo(props: WrapperShape) {
   }
 
   if(special === "home"){
-    seotitle =  `${siteTitle} ${siteDescription}`
-    description = siteDescription
+    title = localised.title
+    seotitle =  `${localised.title} ${localised.description}`
+    description = localised.description
     keywords = siteKeywords
-    body = "Home"
-    // console.log("HEY!", pageContext)
+    body = localised.appbody.data.appbody
   }
 
   const showActions = false
@@ -142,13 +141,9 @@ export default function PwaSeo(props: WrapperShape) {
                                       {description}
                                     </Font>}
                           action={<>
-                                <IconButton
-                                    onClick={(e: React.MouseEvent) => {
-                                        e.preventDefault()
-                                        window.open(`https://github.com/listingslab-goldlabel/gatsby-template`, "_blank")
-                                    }}>
-                                    <Icon icon="github" />
-                                </IconButton>
+                                <Box sx={{display:"flex"}}>
+                                  <LocaleMenu />
+                                </Box>
                               </>}
                         />
 
@@ -160,11 +155,13 @@ export default function PwaSeo(props: WrapperShape) {
                               /> : null }  
 
 
-                              
-
                         {body ? <>
                                   <CardContent>
-                                    {body}
+                                    <Font>
+                                    <ReactMarkdown>
+                                      {body}
+                                    </ReactMarkdown>
+                                    </Font>
                                   </CardContent>
                                 </> : null }  
                         
@@ -198,9 +195,9 @@ export default function PwaSeo(props: WrapperShape) {
                               </CardActions> : null }
                           
                           <Sitemap options={{
-                            defaultExpanded: special === "home" || special === "404" ? true : false,
+                            defaultExpanded: special === "home" || special === "404" ? false : false,
                           }}/>
-                          <pre>{JSON.stringify(apps, null, 2)}</pre>  
+                           
                         </Card>            
                             
                     </Grid>
@@ -219,3 +216,7 @@ export function Head() {
     </>
   )
 }
+
+/*
+<pre>{JSON.stringify(apps, null, 2)}</pre> 
+*/
