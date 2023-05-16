@@ -19,8 +19,6 @@ import HeroClip from "./components/HeroClip"
 import PWABar from "./components/PWABar"
 import MuiTheme from "./components/MuiTheme"
 import Slice from "./components/Slice"
-import BookCard from "./components/BookCard"
-import BookPage from "./components/BookPage"
 import ImageMedia from "./components/ImageMedia"
 
 import WrapRedux from "./redux/WrapRedux"
@@ -57,9 +55,7 @@ export {
   Keywords,
   Sitemap,
   NotFound,
-  BookCard,
   LocaleMenu,
-  BookPage,
   ImageMedia,
   makeImgSrc,
   useGQLMeta,

@@ -25,6 +25,11 @@ import {
   Container,
   CardMedia,
   Grid,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+
 } from "@mui/material"
 
 export default function PwaSeo(props: WrapperShape) {
@@ -38,6 +43,7 @@ export default function PwaSeo(props: WrapperShape) {
   let avatar: string = ""
   let twitter: string = "@"
   let body: any = false
+  let books: Array<any> = false
   const {
     pageContext,
   } = props
@@ -57,6 +63,13 @@ export default function PwaSeo(props: WrapperShape) {
   keywords = siteKeywords
   avatar = siteIcon  
   const {special, instructions, book, path, localised} = pageContext.data
+
+  if (localised){
+    // console.log("localised", localised)
+    books = localised.books
+  }
+
+
   url = `${siteUrl}${path}`
   let appData: any = null
 
@@ -65,8 +78,8 @@ export default function PwaSeo(props: WrapperShape) {
     // console.log("data", data) 
     appData = data
   }
-
-  const {apps} = appData
+  // console.log("appData", appData)
+  // const {apps} = appData
 
   if(special === "404"){
     title = instructions
@@ -97,7 +110,7 @@ export default function PwaSeo(props: WrapperShape) {
   }
 
   const showActions = false
-  const showLabels = true
+  const showLabels = false
 
   return (<>
             <GatsbySeo 
@@ -147,16 +160,19 @@ export default function PwaSeo(props: WrapperShape) {
                                 </Box>
                               </>}
                         />
+                        
+                        <Grid container>
 
-                        { og ? <CardMedia 
+                          <Grid item xs={12} md={7}>
+                            
+                            { og ? <CardContent><CardMedia 
                                 component={"img"}
                                 src={og} 
                                 height={200}
                                 alt={`${title} ${description}`}
-                              /> : null }  
+                              /></CardContent> : null }  
 
-
-                        {body ? <>
+                              {body ? <>
                                   <CardContent>
                                     <Font>
                                     <ReactMarkdown>
@@ -165,35 +181,68 @@ export default function PwaSeo(props: WrapperShape) {
                                     </Font>
                                   </CardContent>
                                 </> : null }  
-                        
-                        {showActions ? <CardActions>
-                            <Box sx={{flexGrow:1}}/>
-                                <Button
-                                  color="primary"
-                                  variant="text">
-                                    <Icon icon="left" />
-                                    {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
-                                      Back
-                                    </Font>  : null }
-                                </Button>
-                                <Button
-                                  color="primary"
-                                  variant="text">
-                                    <Icon icon="up" />
-                                    {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
-                                      Up
-                                    </Font>  : null }
-                                </Button>
-                                <Button
-                                  color="primary"
-                                  variant="text">
-                                    {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
-                                      Next
-                                    </Font>  : null }
-                                    <Icon icon="right" />
-                                </Button>
-                                <Box sx={{flexGrow:1}}/>
-                              </CardActions> : null }
+
+                                {showActions ? <CardActions>
+                                  <Box sx={{flexGrow:1}}/>
+                                      <Button
+                                        color="primary"
+                                        variant="text">
+                                          <Icon icon="left" />
+                                          {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
+                                            Back
+                                          </Font>  : null }
+                                      </Button>
+                                      <Button
+                                        color="primary"
+                                        variant="text">
+                                          <Icon icon="up" />
+                                          {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
+                                            Up
+                                          </Font>  : null }
+                                      </Button>
+                                      <Button
+                                        color="primary"
+                                        variant="text">
+                                          {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
+                                            Next
+                                          </Font>  : null }
+                                          <Icon icon="right" />
+                                      </Button>
+                                      <Box sx={{flexGrow:1}}/>
+                                    </CardActions> : null }
+                          </Grid>
+
+                          <Grid item xs={12} md={5}>
+                              { books ? <>
+                              <List>
+                                { books.map((item: any, i: number) => {
+                                  const {
+                                    title,
+                                    description,
+                                    slug,
+                                  } = item
+                                  return <ListItemButton
+                                            key={`book_${i}`}
+                                            onClick={(e: React.MouseEvent) => {
+                                              e.preventDefault()
+                                               window.open(`/book/${slug}`, "_self")
+                                            }}
+                                          >
+                                            <ListItemIcon>
+                                              <Icon icon="book" color="primary"/>
+                                            </ListItemIcon>
+                                            <ListItemText 
+                                              primary={title}
+                                              secondary={description}
+                                            />
+                                        </ListItemButton>
+                                })}
+                              </List>
+                              </> : null }
+
+                          </Grid>
+
+                        </Grid>                        
                           
                           <Sitemap options={{
                             defaultExpanded: special === "home" || special === "404" ? false : false,
