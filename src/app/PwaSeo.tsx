@@ -147,16 +147,19 @@ export default function PwaSeo(props: WrapperShape) {
                                 </Box>
                               </>}
                         />
+                        
+                        <Grid container>
 
-                        { og ? <CardMedia 
+                          <Grid item xs={6}>
+                            
+                            { og ? <CardContent><CardMedia 
                                 component={"img"}
                                 src={og} 
                                 height={200}
                                 alt={`${title} ${description}`}
-                              /> : null }  
+                              /></CardContent> : null }  
 
-
-                        {body ? <>
+                              {body ? <>
                                   <CardContent>
                                     <Font>
                                     <ReactMarkdown>
@@ -165,6 +168,15 @@ export default function PwaSeo(props: WrapperShape) {
                                     </Font>
                                   </CardContent>
                                 </> : null }  
+                          </Grid>
+
+                        </Grid>
+
+
+                        
+
+
+                        
                         
                         {showActions ? <CardActions>
                             <Box sx={{flexGrow:1}}/>
