@@ -68,7 +68,7 @@ export default function PwaSeo(props: WrapperShape) {
 
   if(special === "404"){
     title = instructions
-    seotitle =  `${instructions} ${book.title}`
+    seotitle =  `${instructions} ${siteTitle.title}`
   }
 
   if(special === "book"){
