@@ -1,4 +1,5 @@
 import React from "react"
+import "../theme/default.css"
 import { GatsbySeo } from "gatsby-plugin-next-seo"
 import {
   WrapperShape,
@@ -27,13 +28,16 @@ import {
 
 export default function PwaSeo(props: WrapperShape) {
   let locale: string = "en"
-  let title: string = "Default title"
-  let description: string = "Default description"
-  let keywords: string = "default, keywords"
+  let title: string = ""
+  let seotitle: string = ""
+  let description: string = ""
+  let keywords: string = ""
   let url: string = ""
   let og: string = ""
   let avatar: string = ""
   let twitter: string = "@"
+
+  seotitle
   const {
     pageContext,
   } = props
@@ -60,19 +64,18 @@ export default function PwaSeo(props: WrapperShape) {
     appData = data
   }
 
-  if(special === "home"){
-    description = siteDescription
-    keywords = siteKeywords
-  }
+
 
   if(special === "404"){
     title = instructions
+    seotitle =  `${instructions} ${book.title}`
   }
 
   if(special === "book"){
     if (book){
       locale = book.locale
       title = book.title
+      seotitle =  `${book.title} ${siteDescription}`
       description = book.description
       keywords = book.keywords
       const {bookimage} = book
@@ -81,14 +84,21 @@ export default function PwaSeo(props: WrapperShape) {
       }
     }
   }
-  const showActions = true
-  const showLabels = false
 
-  
-  // !! <html> element does not have a [lang] attribute
+  if(special === "home"){
+    seotitle =  `${siteTitle} ${siteDescription}`
+    description = siteDescription
+    keywords = siteKeywords
+  }
+
+
+  const showActions = true
+  const showLabels = true
+
+
   return (<>
             <GatsbySeo 
-              title={`${title}`}
+              title={seotitle}
               description={description}
               canonical={siteUrl}
               openGraph={{
@@ -129,11 +139,16 @@ export default function PwaSeo(props: WrapperShape) {
                           subheader={<Font variant="subheader">
                                       {description}
                                     </Font>}
-                          action={<Avatar 
-                                    sx={{width: 16, height: 16}}
-                                    alt={`${title} ${description}`}
-                                    src={`/svg/localeflags/${locale}.svg`}
-                                  />}
+                          action={<>
+                          <IconButton
+                              onClick={(e: React.MouseEvent) => {
+                                  e.preventDefault()
+                                  window.open(`https://github.com/listingslab-goldlabel/gatsby-template`, "_blank")
+                              }}>
+                              <Icon icon="github" />
+                          </IconButton>
+                          
+                          </>}
                         />
                         { og ? <CardMedia 
                                 component={"img"}
@@ -190,3 +205,11 @@ export function Head() {
     </>
   )
 }
+
+/*
+<Avatar 
+  sx={{width: 16, height: 16}}
+  alt={`${title} ${description}`}
+  src={`/svg/localeflags/${locale}.svg`}
+/>
+*/
