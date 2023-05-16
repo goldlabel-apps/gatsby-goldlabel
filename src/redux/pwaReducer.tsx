@@ -11,10 +11,10 @@ import {locales} from "../"
 const theme: ThemeShape = {
   title: "Purple",
   description: "People Eaters",
-  primaryColor: "#32328C",
+  primaryColor: "#C09F52",
   secondaryColor: "#C09F52",
   font: "gotham",
-  mode: "light",  
+  mode: "dark",  
 }
 
 const initialState: PwaReduxShape = {

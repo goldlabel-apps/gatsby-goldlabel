@@ -6,8 +6,8 @@ import { useTheme, Typography } from "@mui/material"
 export function Font(props: any) {
   const theme = useTheme()
   const { variant, fontSize, color, children, align, width, /*overflow*/ } = props
-  let c = theme.palette.success.main
-  if (color) c = color
+  // let c = theme.palette.primary.main
+  // if (color) c = color
   let textAlign = "left"
   let w: any = "100%"
   if (width) w = width
@@ -51,7 +51,7 @@ export function Font(props: any) {
         fontFamily: textFont,
         fontSize: textfontSize,
         lineHeight,
-        color: c,
+        // color: c,
         width: w,
       }}
     >
