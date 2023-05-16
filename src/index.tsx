@@ -1,9 +1,5 @@
 import {firebaseConfig} from "./firebaseConfig"
 import {locales} from "./redux/locales"
-import Start from "./Start"
-import PWA from "./app/PWA"
-import {makeMeta} from "./app/Meta"
-import SEO from "./app/SEO"
 import WrapRedux from "./app/WrapRedux"
 
 import {makeImgSrc} from "./theme/utils"
@@ -43,10 +39,8 @@ import {useGQLGatsbyPages} from "./hooks/useGQLGatsbyPages"
 
 
 export {
-  PWA,
   firebaseConfig,
   locales,
-  makeMeta,
   store,
   persistor,
   setPwaKey,
@@ -60,13 +54,11 @@ export {
   Slice,
   PWABar,
   HeroClip,
-  SEO,
   Icon,
   Font,
   Meta,
   Keywords,
   Sitemap,
-  Start,
   NotFound,
   BookCard,
   LocaleMenu,
