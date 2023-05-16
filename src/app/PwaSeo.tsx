@@ -1,9 +1,7 @@
 import React from "react"
+import { WrapperShape} from "../types"
 import "../theme/default.css"
 import { GatsbySeo } from "gatsby-plugin-next-seo"
-import {
-  WrapperShape,
-} from "../types"
 import {
   makeImgSrc,
   useGQLMeta,
@@ -64,11 +62,9 @@ export default function PwaSeo(props: WrapperShape) {
     appData = data
   }
 
-
-
   if(special === "404"){
     title = instructions
-    seotitle =  `${instructions} ${siteTitle.title}`
+    seotitle =  `${instructions} ${siteTitle}`
   }
 
   if(special === "book"){
@@ -91,16 +87,19 @@ export default function PwaSeo(props: WrapperShape) {
     keywords = siteKeywords
   }
 
-
-  const showActions = true
+  const showActions = false
   const showLabels = true
-
 
   return (<>
             <GatsbySeo 
               title={seotitle}
               description={description}
               canonical={siteUrl}
+              twitter={{
+                handle: twitter,
+                site: twitter,
+                cardType: 'summary_large_image',
+              }}
               openGraph={{
                 type: 'website',
                 url,
@@ -111,17 +110,11 @@ export default function PwaSeo(props: WrapperShape) {
                     url: og,
                   },
                 ],
-              }}
-              twitter={{
-                handle: twitter,
-                site: twitter,
-                cardType: 'summary_large_image',
-              }}
-            />
+              }}/>
+
             <WrapRedux>
               <MuiTheme>
                 <Container maxWidth="md" sx={{my:1}}>
-                  
                   <Grid container>
                     <Grid item xs={12}>
                       <Card>
@@ -140,16 +133,16 @@ export default function PwaSeo(props: WrapperShape) {
                                       {description}
                                     </Font>}
                           action={<>
-                          <IconButton
-                              onClick={(e: React.MouseEvent) => {
-                                  e.preventDefault()
-                                  window.open(`https://github.com/listingslab-goldlabel/gatsby-template`, "_blank")
-                              }}>
-                              <Icon icon="github" />
-                          </IconButton>
-                          
-                          </>}
+                                <IconButton
+                                    onClick={(e: React.MouseEvent) => {
+                                        e.preventDefault()
+                                        window.open(`https://github.com/listingslab-goldlabel/gatsby-template`, "_blank")
+                                    }}>
+                                    <Icon icon="github" />
+                                </IconButton>
+                              </>}
                         />
+
                         { og ? <CardMedia 
                                 component={"img"}
                                 src={og} 
@@ -167,7 +160,6 @@ export default function PwaSeo(props: WrapperShape) {
                                       Back
                                     </Font>  : null }
                                 </Button>
-
                                 <Button
                                   color="primary"
                                   variant="text">
@@ -176,7 +168,6 @@ export default function PwaSeo(props: WrapperShape) {
                                       Up
                                     </Font>  : null }
                                 </Button>
-                                
                                 <Button
                                   color="primary"
                                   variant="text">
@@ -187,7 +178,11 @@ export default function PwaSeo(props: WrapperShape) {
                                 </Button>
                                 <Box sx={{flexGrow:1}}/>
                               </CardActions> : null }
-                          <Sitemap />
+                          
+                          <Sitemap options={{
+                            defaultExpanded: special === "404" ? true : false,
+                          }}/>
+
                         </Card>                  
                     </Grid>
                   </Grid>
