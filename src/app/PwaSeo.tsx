@@ -137,6 +137,9 @@ export default function PwaSeo(props: WrapperShape) {
             <WrapRedux>
               <MuiTheme>
                 <Container maxWidth="md" sx={{my:1}}>
+                <Sitemap options={{
+                            defaultExpanded: special === "home" || special === "404" ? false : false,
+                          }}/>
                   <Grid container>
                     <Grid item xs={12}>
                       <Card>
@@ -244,9 +247,7 @@ export default function PwaSeo(props: WrapperShape) {
 
                         </Grid>                        
                           
-                          <Sitemap options={{
-                            defaultExpanded: special === "home" || special === "404" ? false : false,
-                          }}/>
+                          
                            
                         </Card>            
                             
