@@ -1,6 +1,6 @@
 import React from "react"
-import { WrapperShape} from "../types"
 import "../theme/default.css"
+import { WrapperShape} from "../types"
 import ReactMarkdown from "react-markdown"
 import { GatsbySeo } from "gatsby-plugin-next-seo"
 import {
