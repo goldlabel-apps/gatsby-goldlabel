@@ -1,7 +1,6 @@
 import {usePwaDispatch} from "./hooks/usePwaDispatch"
 import {usePwaSelect} from "./hooks/usePwaSelect"
 import {useGQLMeta} from "./hooks/useGQLMeta"
-import {useGQLApps} from "./hooks/useGQLApps"
 import {useGQLGatsbyPages} from "./hooks/useGQLGatsbyPages"
 
 import {makeImgSrc} from "./theme/utils"
@@ -43,7 +42,6 @@ export {
   MuiTheme,
   usePwaDispatch,
   usePwaSelect,
-  useGQLApps,
   useGQLGatsbyPages,
   makeTheme,
   Slice,

@@ -13,20 +13,25 @@ export function Font(props: any) {
   if (width) w = width
   let textfontSize: any = "1rem"
   let textFont = "Quicksand-Bold"
-  let lineHeight: any = "1rem"
+  let lineHeight: any = "1.2rem"
   if (align) textAlign = align
   if (variant === "black") textFont = "Quicksand-Bold"
   if (variant === "bold") textFont = "Quicksand-Black"
   if (variant === "thin") textFont = "Quicksand-Light"
 
+  if (variant === "title") {
+    lineHeight = "1.2rem"
+    textfontSize = "1.4rem"
+  }
+
   if (variant === "description") {
-    textfontSize = "1rem"
-    lineHeight = "1rem"
+    textfontSize = "1.1rem"
+    lineHeight = "1.3rem"
   }
 
   if (variant === "subheader") {
     textfontSize = "1.1rem"
-    lineHeight = "1.1rem"
+    lineHeight = "1.2rem"
   }
 
   if (fontSize) {
@@ -34,10 +39,7 @@ export function Font(props: any) {
     textfontSize = fontSize
   }
 
-  if (variant === "title") {
-    lineHeight = "1.3rem"
-    textfontSize = "1.3rem"
-  }
+
 
   return (
     <Typography
