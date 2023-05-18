@@ -28,18 +28,6 @@ exports.createPages = async ({ graphql, actions }) => {
             title
             description
             keywords
-            bookimage {
-              alternativeText
-              url
-              width
-              height
-            }
-            docs {
-              slug
-              title
-              description
-              keywords
-            }
           }
         }
       }
@@ -51,7 +39,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   for(let i = 0; i < apps.length; i++){
     const {node} = apps[i]
-    if(i === 0) console.log("app node", node)
+    // if(i === 0) console.log("app node", node)
     const {locale} = node
     const path = `${locale}`
     createPage({
@@ -91,12 +79,6 @@ exports.createPages = async ({ graphql, actions }) => {
           description
           slug
           keywords
-          bookimage {
-            alternativeText
-            width
-            height
-            url
-          }
         }
       }
     }

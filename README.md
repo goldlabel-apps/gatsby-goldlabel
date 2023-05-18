@@ -1,5 +1,5 @@
 ## Gatsby Goldlabel
 
-Uses a Strapi Headless CMS for which we have a starter repo for here
+Uses a Strapi Headless CMS for which here is a starter repo;l
 
 - [Install Strapi Colz](https://github.com/listingslab-goldlabel/strapi-colz)

@@ -137,6 +137,13 @@ export default function PwaSeo(props: WrapperShape) {
             <WrapRedux>
               <MuiTheme>
                 <Container maxWidth="md" sx={{my:1}}>
+                  <Box sx={{display: "none"}}>
+                    <Sitemap 
+                      options={{
+                        defaultExpanded: special === "home" || special === "404" ? false : false,
+                      }}
+                    />
+                  </Box>
                   <Grid container>
                     <Grid item xs={12}>
                       <Card>
@@ -154,11 +161,11 @@ export default function PwaSeo(props: WrapperShape) {
                           subheader={<Font variant="subheader">
                                       {description}
                                     </Font>}
-                          action={<>
-                                <Box sx={{display:"flex"}}>
-                                  <LocaleMenu />
-                                </Box>
-                              </>}
+                          // action={<>
+                          //       <Box sx={{display:"flex"}}>
+                          //         <LocaleMenu />
+                          //       </Box>
+                          //     </>}
                         />
                         
                         <Grid container>
@@ -232,8 +239,12 @@ export default function PwaSeo(props: WrapperShape) {
                                               <Icon icon="book" color="primary"/>
                                             </ListItemIcon>
                                             <ListItemText 
-                                              primary={title}
-                                              secondary={description}
+                                              primary={<Font variant="subheader">
+                                                        {title}
+                                                      </Font>}
+                                              secondary={<Font>
+                                                          {description}
+                                                        </Font>}
                                             />
                                         </ListItemButton>
                                 })}
@@ -244,9 +255,7 @@ export default function PwaSeo(props: WrapperShape) {
 
                         </Grid>                        
                           
-                          <Sitemap options={{
-                            defaultExpanded: special === "home" || special === "404" ? false : false,
-                          }}/>
+                          
                            
                         </Card>            
                             
