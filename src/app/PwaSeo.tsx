@@ -1,6 +1,6 @@
 import React from "react"
-import { WrapperShape} from "../types"
 import "../theme/default.css"
+import { WrapperShape} from "../types"
 import ReactMarkdown from "react-markdown"
 import { GatsbySeo } from "gatsby-plugin-next-seo"
 import {
@@ -11,7 +11,7 @@ import {
   Sitemap,
   MuiTheme,
   WrapRedux,
-  LocaleMenu,
+  // LocaleMenu,
 } from "../"
 import {
   Avatar,
@@ -22,6 +22,7 @@ import {
   CardHeader,
   CardActions,
   CardContent,
+  CardActionArea,
   Container,
   CardMedia,
   Grid,
@@ -29,7 +30,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-
+  ButtonBase,
 } from "@mui/material"
 
 export default function PwaSeo(props: WrapperShape) {
@@ -168,95 +169,135 @@ export default function PwaSeo(props: WrapperShape) {
                           //     </>}
                         />
                         
-                        <Grid container>
+                          <Grid container>
 
-                          <Grid item xs={12} md={7}>
-                            
-                            { og ? <CardContent><CardMedia 
-                                component={"img"}
-                                src={og} 
-                                height={200}
-                                alt={`${title} ${description}`}
-                              /></CardContent> : null }  
+                            <Grid item xs={12} md={7}>
+                              
+                              { og ? <CardContent><CardMedia 
+                                  component={"img"}
+                                  src={og} 
+                                  height={200}
+                                  alt={`${title} ${description}`}
+                                /></CardContent> : null }  
 
-                              {body ? <>
-                                  <CardContent>
-                                    <Font>
-                                    <ReactMarkdown>
-                                      {body}
-                                    </ReactMarkdown>
-                                    </Font>
-                                  </CardContent>
-                                </> : null }  
+                                {body ? <>
+                                    <CardContent>
+                                      <Font>
+                                      <ReactMarkdown>
+                                        {body}
+                                      </ReactMarkdown>
+                                      </Font>
+                                    </CardContent>
+                                  </> : null }  
 
-                                {showActions ? <CardActions>
-                                  <Box sx={{flexGrow:1}}/>
-                                      <Button
-                                        color="primary"
-                                        variant="text">
-                                          <Icon icon="left" />
-                                          {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
-                                            Back
-                                          </Font>  : null }
-                                      </Button>
-                                      <Button
-                                        color="primary"
-                                        variant="text">
-                                          <Icon icon="up" />
-                                          {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
-                                            Up
-                                          </Font>  : null }
-                                      </Button>
-                                      <Button
-                                        color="primary"
-                                        variant="text">
-                                          {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
-                                            Next
-                                          </Font>  : null }
-                                          <Icon icon="right" />
-                                      </Button>
-                                      <Box sx={{flexGrow:1}}/>
-                                    </CardActions> : null }
-                          </Grid>
+                                  {showActions ? <CardActions>
+                                    <Box sx={{flexGrow:1}}/>
+                                        <Button
+                                          color="primary"
+                                          variant="text">
+                                            <Icon icon="left" />
+                                            {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
+                                              Back
+                                            </Font>  : null }
+                                        </Button>
+                                        <Button
+                                          color="primary"
+                                          variant="text">
+                                            <Icon icon="up" />
+                                            {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
+                                              Up
+                                            </Font>  : null }
+                                        </Button>
+                                        <Button
+                                          color="primary"
+                                          variant="text">
+                                            {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
+                                              Next
+                                            </Font>  : null }
+                                            <Icon icon="right" />
+                                        </Button>
+                                        <Box sx={{flexGrow:1}}/>
+                                      </CardActions> : null }
+                            </Grid>
 
-                          <Grid item xs={12} md={5}>
-                              { books ? <>
-                              <List>
-                                { books.map((item: any, i: number) => {
-                                  const {
-                                    title,
-                                    description,
-                                    slug,
-                                  } = item
-                                  return <ListItemButton
-                                            key={`book_${i}`}
-                                            onClick={(e: React.MouseEvent) => {
-                                              e.preventDefault()
-                                               window.open(`/book/${slug}`, "_self")
-                                            }}
-                                          >
-                                            <ListItemIcon>
-                                              <Icon icon="book" color="primary"/>
-                                            </ListItemIcon>
-                                            <ListItemText 
-                                              primary={<Font variant="subheader">
+                            <Grid item xs={12} md={5}>
+                                { books ? <>
+                                <List>
+                                  { books.map((item: any, i: number) => {
+                                    const {
+                                      title,
+                                      description,
+                                      slug,
+                                      bookogimg,
+                                      bookdocs,
+                                    } = item
+                                    console.log("bookdocs", bookdocs)
+
+                                    return <Box 
+                                              key={`book_${i}`}
+                                              sx={{m:1}}
+                                            >
+                                            <CardActionArea
+                                              sx={{display: "block"}}
+                                              onClick={(e: React.MouseEvent) => {
+                                                e.preventDefault()
+                                                window.open(`/book/${slug}`, "_self")
+                                              }}
+                                            >
+
+                                              {bookogimg ? <CardMedia 
+                                                component={"img"}
+                                                height={100}
+                                                alt={bookogimg.alternativeText}
+                                                src={makeImgSrc(bookogimg.url)}
+                                              /> : null }
+
+
+                                          
+
+                                              <CardHeader 
+                                                title={<Font variant="title">
                                                         {title}
                                                       </Font>}
-                                              secondary={<Font>
-                                                          {description}
-                                                        </Font>}
-                                            />
-                                        </ListItemButton>
-                                })}
-                              </List>
-                              </> : null }
+                                                subheader={<Font variant="subheader">
+                                                        {description}
+                                                      </Font>}
+                                              />
+                                              
+                                              </CardActionArea>
 
-                          </Grid>
 
-                        </Grid>                        
+                                          {bookdocs.length ? <>
+                                                { bookdocs.map((doc: any, i: number) => {
+                                                  console.log("doc", doc)
+                                                  const {
+                                                    title,
+                                                    slug,
+                                                  } = doc
+
+                                                  return <ListItemButton
+                                                            key={`doc_${i}`}
+                                                            sx={{display: "block"}}
+                                                            onClick={(e: React.MouseEvent) => {
+                                                              e.preventDefault()
+                                                              window.open(`/doc/${slug}`, "_self")
+                                                            }}
+                                                          >
+                                                            {title}
+                                                          </ListItemButton>
+                                                }) }
+                                              </> : null }
+                                              
+                                          </Box>
+                                          
+                                  })}
+                                </List>
+                                </> : null }
+
+                            </Grid>
+
+                          </Grid>                        
                           
-                          
-                           
                         </Card>            
                             
                     </Grid>
@@ -277,5 +318,6 @@ export function Head() {
 }
 
 /*
+<pre>{JSON.stringify(bookdocs, null, 2)}</pre>
 <pre>{JSON.stringify(apps, null, 2)}</pre> 
 */
