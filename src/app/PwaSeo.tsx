@@ -231,7 +231,6 @@ export default function PwaSeo(props: WrapperShape) {
                                       bookogimg,
                                       bookdocs,
                                     } = item
-                                    console.log("bookdocs", bookdocs)
 
                                     return <Box 
                                               key={`book_${i}`}
@@ -242,8 +241,7 @@ export default function PwaSeo(props: WrapperShape) {
                                               onClick={(e: React.MouseEvent) => {
                                                 e.preventDefault()
                                                 window.open(`/book/${slug}`, "_self")
-                                              }}
-                                            >
+                                              }}>
 
                                               {bookogimg ? <CardMedia 
                                                 component={"img"}
@@ -252,14 +250,12 @@ export default function PwaSeo(props: WrapperShape) {
                                                 src={makeImgSrc(bookogimg.url)}
                                               /> : null }
 
-
-                                          
-
                                               <CardHeader 
-                                                title={<Font variant="title">
+                                                avatar={<Icon icon="book" color="primary"/>}
+                                                title={<Font>
                                                         {title}
                                                       </Font>}
-                                                subheader={<Font variant="subheader">
+                                                subheader={<Font>
                                                         {description}
                                                       </Font>}
                                               />
@@ -269,7 +265,7 @@ export default function PwaSeo(props: WrapperShape) {
 
                                           {bookdocs.length ? <>
                                                 { bookdocs.map((doc: any, i: number) => {
-                                                  console.log("doc", doc)
+                                                  
                                                   const {
                                                     title,
                                                     slug,
@@ -277,13 +273,19 @@ export default function PwaSeo(props: WrapperShape) {
 
                                                   return <ListItemButton
                                                             key={`doc_${i}`}
-                                                            sx={{display: "block"}}
                                                             onClick={(e: React.MouseEvent) => {
                                                               e.preventDefault()
                                                               window.open(`/doc/${slug}`, "_self")
                                                             }}
                                                           >
-                                                            {title}
+                                                            <ListItemIcon>
+                                                              <Icon icon="right" color="primary"/>
+                                                            </ListItemIcon>
+                                                            <ListItemText 
+                                                              primary={<Font>
+                                                                        {title}
+                                                                      </Font>}
+                                                            />
                                                           </ListItemButton>
                                                 }) }
                                               </> : null }
