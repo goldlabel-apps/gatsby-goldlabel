@@ -1,4 +1,15 @@
 @font-face {
-  font-family: "Gotham";
+  font-family: "GothamLight";
   src: url("./gotham/GothamLight.otf");
 }
+
+@font-face {
+  font-family: "GothamBlack";
+  src: url("./gotham/GothamBlack.otf");
+}
+
+@font-face {
+  font-family: "GothamBold";
+  src: url("./gotham/GothamBold.otf");
+}
+
