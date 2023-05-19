@@ -44,7 +44,7 @@ export default function PwaSeo(props: WrapperShape) {
   let avatar: string = ""
   let twitter: string = "@"
   let body: any = false
-  let books: Array<any> = false
+  let books: Array<any> = []
   const {
     pageContext,
   } = props
