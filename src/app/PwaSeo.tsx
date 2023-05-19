@@ -11,14 +11,12 @@ import {
   Sitemap,
   MuiTheme,
   WrapRedux,
-  // LocaleMenu,
 } from "../"
 import {
   Avatar,
   IconButton,
   Box,
   Button,
-  Card,
   CardHeader,
   CardActions,
   CardContent,
@@ -30,10 +28,15 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  ButtonBase,
 } from "@mui/material"
 
 export default function PwaSeo(props: WrapperShape) {
+  const meta = useGQLMeta()
+  
+  const showBookImages = false
+  const showActions = true
+  const showLabels = true
+
   let locale: string = "en"
   let title: string = ""
   let seotitle: string = ""
@@ -48,8 +51,6 @@ export default function PwaSeo(props: WrapperShape) {
   const {
     pageContext,
   } = props
-  
-  const meta = useGQLMeta()
   const {
     siteUrl,
     siteTitle,
@@ -96,10 +97,6 @@ export default function PwaSeo(props: WrapperShape) {
     body = localised.appbody.data.appbody
     og = makeImgSrc(localised.appimage.url)
   }
-
-  const showActions = true
-  const showLabels = true
-
   return (<>
             <GatsbySeo 
               title={seotitle}
@@ -221,53 +218,38 @@ export default function PwaSeo(props: WrapperShape) {
 
                                     return <Box 
                                               key={`book_${i}`}
-                                              sx={{m:1}}
-                                            >
-                                            <CardActionArea
-                                              sx={{display: "block"}}
-                                              onClick={(e: React.MouseEvent) => {
-                                                e.preventDefault()
-                                                window.open(`/book/${slug}`, "_self")
-                                              }}>
-
-                                              {bookogimg ? <CardMedia 
-                                                component={"img"}
-                                                height={100}
-                                                alt={bookogimg.alternativeText}
-                                                src={makeImgSrc(bookogimg.url)}
-                                              /> : null }
-
-                                              <CardHeader 
-                                                avatar={<Icon icon="book" color="primary"/>}
-                                                title={<Font>
-                                                        {title}
-                                                      </Font>}
-                                                subheader={<Font>
-                                                        {description}
-                                                      </Font>}
-                                              />
-                                              
-                                              </CardActionArea>
-
-
-                                          {bookdocs.length ? <>
+                                              sx={{m:1}}>
+                                              <CardActionArea
+                                                sx={{display: "block"}}
+                                                onClick={(e: React.MouseEvent) => {
+                                                  e.preventDefault()
+                                                  window.open(`/book/${slug}`, "_self")
+                                                }}>
+                                                  {bookogimg && showBookImages ? <CardMedia 
+                                                    component={"img"}
+                                                    height={100}
+                                                    alt={bookogimg.alternativeText}
+                                                    src={makeImgSrc(bookogimg.url)}
+                                                  /> : null }
+                                                  <CardHeader 
+                                                    avatar={<Icon icon="book" color="primary"/>}
+                                                    title={<Font>
+                                                            {title}
+                                                          </Font>}
+                                                  />
+                                                </CardActionArea>
+                                              {bookdocs.length ? <>
                                                 { bookdocs.map((doc: any, i: number) => {
-                                                  
                                                   const {
                                                     title,
                                                     slug,
                                                   } = doc
-
                                                   return <ListItemButton
                                                             key={`doc_${i}`}
                                                             onClick={(e: React.MouseEvent) => {
                                                               e.preventDefault()
                                                               window.open(`/doc/${slug}`, "_self")
-                                                            }}
-                                                          >
-                                                            <ListItemIcon>
-                                                              <Icon icon="right" color="primary"/>
-                                                            </ListItemIcon>
+                                                            }}>
                                                             <ListItemText 
                                                               primary={<Font>
                                                                         {title}
