@@ -135,7 +135,7 @@ export default function PwaSeo(props: WrapperShape) {
                           title={<Font variant="title">
                                   {title}
                                 </Font>}
-                          subheader={<Font variant="subheader">
+                          subheader={<Font>
                                       {description}
                                     </Font>}/>
                         
