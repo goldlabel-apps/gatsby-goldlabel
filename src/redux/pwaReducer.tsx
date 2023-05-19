@@ -9,8 +9,7 @@ import {
 import {locales} from "../"
 
 const theme: ThemeShape = {
-  title: "Purple",
-  description: "People Eaters",
+  title: "Gold",
   primaryColor: "#C09F52",
   secondaryColor: "#C09F52",
   font: "gotham",
