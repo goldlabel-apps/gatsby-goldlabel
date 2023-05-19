@@ -7,33 +7,25 @@ import {
   Avatar,
   IconButton,
   Box,
-  Button,
   CardHeader,
-  CardActions,
   CardContent,
-  CardActionArea,
   Container,
   CardMedia,
   Grid,
-  List,
-  ListItemButton,
-  ListItemText,
 } from "@mui/material"
 import {
   makeImgSrc,
   useGQLMeta,
   Font,
-  Icon,
   Sitemap,
   MuiTheme,
   WrapRedux,
   ContextNav,
+  ListBooks,
 } from "../"
 
 export default function PwaSeo(props: WrapperShape) {
   const meta = useGQLMeta()
-  
-  const showBookImages = false
   const showContextNav = false
 
   let locale: string = "en"
@@ -47,6 +39,7 @@ export default function PwaSeo(props: WrapperShape) {
   let twitter: string = "@"
   let body: any = false
   let books: Array<any> = []
+  let appData: any = null
   const {
     pageContext,
   } = props
@@ -68,7 +61,6 @@ export default function PwaSeo(props: WrapperShape) {
     books = localised.books
   }
   url = `${siteUrl}${path}`
-  let appData: any = null
   if(pageContext){
     const {data} = pageContext
     appData = data
@@ -96,6 +88,7 @@ export default function PwaSeo(props: WrapperShape) {
     body = localised.appbody.data.appbody
     og = makeImgSrc(localised.appimage.url)
   }
+
   return (<>
             <GatsbySeo 
               title={seotitle}
@@ -120,7 +113,7 @@ export default function PwaSeo(props: WrapperShape) {
 
             <WrapRedux>
               <MuiTheme>
-                <Container maxWidth="md" sx={{my:1}}>
+                <Container maxWidth="lg" sx={{my:1}}>
                   <Box sx={{display: "none"}}>
                     <Sitemap 
                       options={{
@@ -144,11 +137,24 @@ export default function PwaSeo(props: WrapperShape) {
                                 </Font>}
                           subheader={<Font variant="subheader">
                                       {description}
-                                    </Font>}
-                        />
+                                    </Font>}/>
                         
                           <Grid container>
-                            <Grid item xs={12} md={7}>
+
+                            <Grid item xs={12} sm={8}>
+                              {body ? <>
+                                <CardContent>
+                                  <Font>
+                                    <ReactMarkdown>
+                                      {body}
+                                    </ReactMarkdown>
+                                  </Font>
+                                </CardContent>
+                              </> : null }   
+                            </Grid>
+
+
+                            <Grid item xs={12} sm={4}>
                               {showContextNav ? <ContextNav /> : null }
                               { og ? <CardContent><CardMedia 
                                   component={"img"}
@@ -156,77 +162,10 @@ export default function PwaSeo(props: WrapperShape) {
                                   height={200}
                                   alt={`${title} ${description}`}
                                 /></CardContent> : null }  
-                                {body ? <>
-                                    <CardContent>
-                                      <Font>
-                                      <ReactMarkdown>
-                                        {body}
-                                      </ReactMarkdown>
-                                      </Font>
-                                    </CardContent>
-                                  </> : null }                                    
-                            </Grid>
-
-                            <Grid item xs={12} md={5}>
-                                { books ? <><List>
-                                  { books.map((item: any, i: number) => {
-                                    const {
-                                      title,
-                                      description,
-                                      slug,
-                                      bookogimg,
-                                      bookdocs,
-                                    } = item
-
-                                    return <Box 
-                                              key={`book_${i}`}
-                                              sx={{m:1}}>
-                                              <CardActionArea
-                                                onClick={(e: React.MouseEvent) => {
-                                                  e.preventDefault()
-                                                  window.open(`/book/${slug}`, "_self")
-                                                }}>
-                                                  {bookogimg && showBookImages ? <CardMedia 
-                                                    component={"img"}
-                                                    height={100}
-                                                    alt={bookogimg.alternativeText}
-                                                    src={makeImgSrc(bookogimg.url)}
-                                                  /> : null }
-                                                  <CardHeader 
-                                                    avatar={<Icon icon="book" color="primary"/>}
-                                                    title={<Font>
-                                                            {title}
-                                                          </Font>}/>
-                                                </CardActionArea>
-                                              {bookdocs.length ? <>
-                                                { bookdocs.map((doc: any, i: number) => {
-                                                  const {
-                                                    title,
-                                                    slug,
-                                                  } = doc
-                                                  return <ListItemButton
-                                                            key={`doc_${i}`}
-                                                            onClick={(e: React.MouseEvent) => {
-                                                              e.preventDefault()
-                                                              window.open(`/doc/${slug}`, "_self")
-                                                            }}>
-                                                            <ListItemText 
-                                                              primary={<Font>
-                                                                        {title}
-                                                                      </Font>}
-                                                            />
-                                                          </ListItemButton>
-                                                }) }
-                                              </> : null }
-                                          </Box>
-                                          
-                                  })}
-                                </List></> : null }
-
+                                {books ? <ListBooks books={books} /> : null }
                             </Grid>
 
                           </Grid>                        
-                          
                         </Box>
                     </Grid>
                   </Grid>
@@ -246,5 +185,5 @@ export function Head() {
 }
 
 /*
-<pre>{JSON.stringify(apps, null, 2)}</pre> 
+  <pre>{JSON.stringify(apps, null, 2)}</pre> 
 */
