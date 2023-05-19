@@ -142,26 +142,37 @@ export default function PwaSeo(props: WrapperShape) {
                           <Grid container>
 
                             <Grid item xs={12} sm={8}>
-                              {body ? <>
-                                <CardContent>
-                                  <Font>
-                                    <ReactMarkdown>
-                                      {body}
-                                    </ReactMarkdown>
-                                  </Font>
-                                </CardContent>
-                              </> : null }   
+
+                              <Grid container>
+                                
+                                  { og ? <Grid item xs={12}><CardMedia 
+                                  component={"img"}
+                                  src={og} 
+                                  height={200}
+                                  alt={`${title} ${description}`}
+                                /></Grid> : null }  
+                                
+                                    {body ? <>
+                                    <Grid item xs={12}>
+                                      <CardContent>
+                                        <Font>
+                                          <ReactMarkdown>
+                                            {body}
+                                          </ReactMarkdown>
+                                        </Font>
+                                      </CardContent>
+                                      </Grid>
+                                    </> : null }  
+                                
+                              </Grid>
+
+                              
                             </Grid>
 
 
                             <Grid item xs={12} sm={4}>
                               {showContextNav ? <ContextNav /> : null }
-                              { og ? <CardContent><CardMedia 
-                                  component={"img"}
-                                  src={og} 
-                                  height={200}
-                                  alt={`${title} ${description}`}
-                                /></CardContent> : null }  
+                              
                                 {books ? <ListBooks books={books} /> : null }
                             </Grid>
 
