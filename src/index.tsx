@@ -20,6 +20,7 @@ import MuiTheme from "./components/MuiTheme"
 import Slice from "./components/Slice"
 import ImageMedia from "./components/ImageMedia"
 import ContextNav from "./components/ContextNav"
+import ListBooks from "./components/ListBooks"
 
 import WrapRedux from "./redux/WrapRedux"
 import {locales} from "./redux/locales"
@@ -53,6 +54,7 @@ export {
   Meta,
   Keywords,
   ContextNav,
+  ListBooks,
   Sitemap,
   NotFound,
   LocaleMenu,
