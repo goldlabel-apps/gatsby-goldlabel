@@ -47,28 +47,31 @@ export default function ListBooks(props: any) {
                                       {title}
                                     </Font>}/>
                           </CardActionArea>
-                        {bookdocs.length ? <>
-                          { bookdocs.map((doc: any, i: number) => {
-                            const {
-                              title,
-                              slug,
-                            } = doc
-                            return <ListItemButton
-                                      key={`doc_${i}`}
-                                      onClick={(e: React.MouseEvent) => {
-                                        e.preventDefault()
-                                        window.open(`/doc/${slug}`, "_self")
-                                      }}>
-                                      <ListItemText 
-                                        primary={<Font>
-                                                  {title}
-                                                </Font>}
-                                      />
-                                    </ListItemButton>
-                          }) }
-                        </> : null }
+                          {bookdocs.length ? <>
+                            { bookdocs.map((doc: any, i: number) => {
+                              const {
+                                title,
+                                slug,
+                                description,
+                              } = doc
+                              return <ListItemButton
+                                        key={`doc_${i}`}
+                                        onClick={(e: React.MouseEvent) => {
+                                          e.preventDefault()
+                                          window.open(`/doc/${slug}`, "_self")
+                                        }}>
+                                        <ListItemText 
+                                          primary={<Font>
+                                                    {title}
+                                                  </Font>}
+                                          secondary={<Font>
+                                                    {description}
+                                                  </Font>}
+                                        />
+                                      </ListItemButton>
+                            }) }
+                          </> : null }
                     </Box>
-                    
             })}
           </List></> : null }
     </>)

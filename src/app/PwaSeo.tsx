@@ -113,7 +113,7 @@ export default function PwaSeo(props: WrapperShape) {
 
             <WrapRedux>
               <MuiTheme>
-                <Container maxWidth="md" sx={{my:1}}>
+                <Container maxWidth="lg" sx={{my:1}}>
                   <Box sx={{display: "none"}}>
                     <Sitemap 
                       options={{
@@ -140,22 +140,8 @@ export default function PwaSeo(props: WrapperShape) {
                                     </Font>}/>
                         
                           <Grid container>
-                            <Grid item xs={12} sm={6}>
-                              {showContextNav ? <ContextNav /> : null }
-                              
-                              { og ? <CardContent><CardMedia 
-                                  component={"img"}
-                                  src={og} 
-                                  height={200}
-                                  alt={`${title} ${description}`}
-                                /></CardContent> : null }  
 
-                                {books ? <ListBooks books={books} /> : null }
-                                
-
-                            </Grid>
-
-                            <Grid item xs={12} sm={6}>
+                            <Grid item xs={12} sm={8}>
                               {body ? <>
                                 <CardContent>
                                   <Font>
@@ -166,12 +152,19 @@ export default function PwaSeo(props: WrapperShape) {
                                 </CardContent>
                               </> : null }   
                             </Grid>
-                            
-                            
-                            
-                            <Grid item xs={12}>
-                                
+
+
+                            <Grid item xs={12} sm={4}>
+                              {showContextNav ? <ContextNav /> : null }
+                              { og ? <CardContent><CardMedia 
+                                  component={"img"}
+                                  src={og} 
+                                  height={200}
+                                  alt={`${title} ${description}`}
+                                /></CardContent> : null }  
+                                {books ? <ListBooks books={books} /> : null }
                             </Grid>
+
                           </Grid>                        
                         </Box>
                     </Grid>
@@ -192,5 +185,5 @@ export function Head() {
 }
 
 /*
-<pre>{JSON.stringify(apps, null, 2)}</pre> 
+  <pre>{JSON.stringify(apps, null, 2)}</pre> 
 */
