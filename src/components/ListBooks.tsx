@@ -52,7 +52,7 @@ export default function ListBooks(props: any) {
                               const {
                                 title,
                                 slug,
-                                description,
+                                // description,
                               } = doc
                               return <ListItemButton
                                         key={`doc_${i}`}
@@ -64,9 +64,9 @@ export default function ListBooks(props: any) {
                                           primary={<Font>
                                                     {title}
                                                   </Font>}
-                                          secondary={<Font>
-                                                      {description}
-                                                    </Font>}
+                                          // secondary={<Font>
+                                          //             {description}
+                                          //           </Font>}
                                         />
                                       </ListItemButton>
                             }) }
