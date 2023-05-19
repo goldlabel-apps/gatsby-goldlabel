@@ -13,12 +13,13 @@ import Keywords from "./components/Keywords"
 import NotFound from "./components/NotFound"
 import LocaleMenu from "./components/LocaleMenu"
 import Icon from "./components/Icon"
-import {Font} from "./components/Font_"
+import {Font} from "./components/FontQuicksand"
 import HeroClip from "./components/HeroClip"
 import PWABar from "./components/PWABar"
 import MuiTheme from "./components/MuiTheme"
 import Slice from "./components/Slice"
 import ImageMedia from "./components/ImageMedia"
+import ContextNav from "./components/ContextNav"
 
 import WrapRedux from "./redux/WrapRedux"
 import {locales} from "./redux/locales"
@@ -51,6 +52,7 @@ export {
   Font,
   Meta,
   Keywords,
+  ContextNav,
   Sitemap,
   NotFound,
   LocaleMenu,

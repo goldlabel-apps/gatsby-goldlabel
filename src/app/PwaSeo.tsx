@@ -4,15 +4,6 @@ import { WrapperShape} from "../types"
 import ReactMarkdown from "react-markdown"
 import { GatsbySeo } from "gatsby-plugin-next-seo"
 import {
-  makeImgSrc,
-  useGQLMeta,
-  Font,
-  Icon,
-  Sitemap,
-  MuiTheme,
-  WrapRedux,
-} from "../"
-import {
   Avatar,
   IconButton,
   Box,
@@ -26,16 +17,24 @@ import {
   Grid,
   List,
   ListItemButton,
-  ListItemIcon,
   ListItemText,
 } from "@mui/material"
+import {
+  makeImgSrc,
+  useGQLMeta,
+  Font,
+  Icon,
+  Sitemap,
+  MuiTheme,
+  WrapRedux,
+  ContextNav,
+} from "../"
 
 export default function PwaSeo(props: WrapperShape) {
   const meta = useGQLMeta()
   
   const showBookImages = false
-  const showActions = true
-  const showLabels = true
+  const showContextNav = false
 
   let locale: string = "en"
   let title: string = ""
@@ -146,24 +145,17 @@ export default function PwaSeo(props: WrapperShape) {
                           subheader={<Font variant="subheader">
                                       {description}
                                     </Font>}
-                          // action={<>
-                          //       <Box sx={{display:"flex"}}>
-                          //         <LocaleMenu />
-                          //       </Box>
-                          //     </>}
                         />
                         
                           <Grid container>
-
                             <Grid item xs={12} md={7}>
-                              
+                              {showContextNav ? <ContextNav /> : null }
                               { og ? <CardContent><CardMedia 
                                   component={"img"}
                                   src={og} 
                                   height={200}
                                   alt={`${title} ${description}`}
                                 /></CardContent> : null }  
-
                                 {body ? <>
                                     <CardContent>
                                       <Font>
@@ -172,41 +164,11 @@ export default function PwaSeo(props: WrapperShape) {
                                       </ReactMarkdown>
                                       </Font>
                                     </CardContent>
-                                  </> : null }  
-
-                                  {showActions ? <CardActions>
-                                    <Box sx={{flexGrow:1}}/>
-                                        <Button
-                                          color="primary"
-                                          variant="text">
-                                            <Icon icon="left" />
-                                            {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
-                                              Back
-                                            </Font>  : null }
-                                        </Button>
-                                        <Button
-                                          color="primary"
-                                          variant="text">
-                                            <Icon icon="up" />
-                                            {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
-                                              Up
-                                            </Font>  : null }
-                                        </Button>
-                                        <Button
-                                          color="primary"
-                                          variant="text">
-                                            {showLabels ? <Font style={{marginLeft: 8, marginRight: 8}}>
-                                              Next
-                                            </Font>  : null }
-                                            <Icon icon="right" />
-                                        </Button>
-                                        <Box sx={{flexGrow:1}}/>
-                                      </CardActions> : null }
+                                  </> : null }                                    
                             </Grid>
 
                             <Grid item xs={12} md={5}>
-                                { books ? <>
-                                <List>
+                                { books ? <><List>
                                   { books.map((item: any, i: number) => {
                                     const {
                                       title,
@@ -220,7 +182,6 @@ export default function PwaSeo(props: WrapperShape) {
                                               key={`book_${i}`}
                                               sx={{m:1}}>
                                               <CardActionArea
-                                                sx={{display: "block"}}
                                                 onClick={(e: React.MouseEvent) => {
                                                   e.preventDefault()
                                                   window.open(`/book/${slug}`, "_self")
@@ -235,8 +196,7 @@ export default function PwaSeo(props: WrapperShape) {
                                                     avatar={<Icon icon="book" color="primary"/>}
                                                     title={<Font>
                                                             {title}
-                                                          </Font>}
-                                                  />
+                                                          </Font>}/>
                                                 </CardActionArea>
                                               {bookdocs.length ? <>
                                                 { bookdocs.map((doc: any, i: number) => {
@@ -258,12 +218,10 @@ export default function PwaSeo(props: WrapperShape) {
                                                           </ListItemButton>
                                                 }) }
                                               </> : null }
-                                              
                                           </Box>
                                           
                                   })}
-                                </List>
-                                </> : null }
+                                </List></> : null }
 
                             </Grid>
 
@@ -288,6 +246,5 @@ export function Head() {
 }
 
 /*
-<pre>{JSON.stringify(bookdocs, null, 2)}</pre>
 <pre>{JSON.stringify(apps, null, 2)}</pre> 
 */
