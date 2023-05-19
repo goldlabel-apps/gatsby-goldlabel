@@ -40,7 +40,7 @@ export type GatsbyShape = {
 
 export type ThemeShape = {
   title: string
-  description: string
+  description?: string
   primaryColor: string
   secondaryColor: string
   font: string

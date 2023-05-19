@@ -64,29 +64,19 @@ export default function PwaSeo(props: WrapperShape) {
   keywords = siteKeywords
   avatar = siteIcon  
   const {special, instructions, book, path, localised} = pageContext.data
-
   if (localised){
-    // console.log("localised", localised)
     books = localised.books
   }
-
-
   url = `${siteUrl}${path}`
   let appData: any = null
-
   if(pageContext){
     const {data} = pageContext
-    // console.log("data", data) 
     appData = data
   }
-  // console.log("appData", appData)
-  // const {apps} = appData
-
   if(special === "404"){
     title = instructions
     seotitle =  `${instructions} ${siteTitle}`
   }
-
   if(special === "book"){
     if (book){
       locale = book.locale
@@ -95,12 +85,9 @@ export default function PwaSeo(props: WrapperShape) {
       description = book.description
       keywords = book.keywords
       const {bookimage} = book
-      if (bookimage){
-        og = makeImgSrc(bookimage.url)
-      }
+      if (bookimage) og = makeImgSrc(bookimage.url)
     }
   }
-
   if(special === "home"){
     title = localised.title
     seotitle =  `${localised.title} ${localised.description}`
@@ -110,8 +97,8 @@ export default function PwaSeo(props: WrapperShape) {
     og = makeImgSrc(localised.appimage.url)
   }
 
-  const showActions = false
-  const showLabels = false
+  const showActions = true
+  const showLabels = true
 
   return (<>
             <GatsbySeo 
@@ -147,7 +134,7 @@ export default function PwaSeo(props: WrapperShape) {
                   </Box>
                   <Grid container>
                     <Grid item xs={12}>
-                      <Card>
+                      <Box>
                         <CardHeader 
                           avatar={<IconButton
                                     onClick={(e: React.MouseEvent) => {
@@ -300,8 +287,7 @@ export default function PwaSeo(props: WrapperShape) {
 
                           </Grid>                        
                           
-                        </Card>            
-                            
+                        </Box>
                     </Grid>
                   </Grid>
                 </Container>
