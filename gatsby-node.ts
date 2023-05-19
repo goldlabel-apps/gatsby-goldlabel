@@ -4,7 +4,6 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const PwaSeo = path.resolve("src/app/PwaSeo.tsx")
 
-
   const allApps = await graphql(`
   query Apps {
     allStrapiApp {
