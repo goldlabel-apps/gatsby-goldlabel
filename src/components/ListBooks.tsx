@@ -65,8 +65,8 @@ export default function ListBooks(props: any) {
                                                     {title}
                                                   </Font>}
                                           secondary={<Font>
-                                                    {description}
-                                                  </Font>}
+                                                      {description}
+                                                    </Font>}
                                         />
                                       </ListItemButton>
                             }) }

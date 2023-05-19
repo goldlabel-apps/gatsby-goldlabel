@@ -1,5 +1,6 @@
 import React from "react"
 import { PaletteMode } from "@mui/material"
+import {ThemeShape} from "../types"
 import {
   usePwaSelect,
   selectPWA,
@@ -17,7 +18,16 @@ export default function MuiTheme(props: any) {
   let locale: string|null = null
   if (pwa) locale = pwa.locale
   const {theme} = pwa
-  const customTheme = makeTheme(theme.mode, theme.primaryColor, theme.secondaryColor)
+
+  const themeOverride: ThemeShape = {
+    title: "Gold",
+    primaryColor: "#87703B",
+    secondaryColor: "#C09F52",
+    font: "gotham",
+    mode: "light",  
+  }
+
+  const customTheme = makeTheme(themeOverride.mode, themeOverride.primaryColor, themeOverride.secondaryColor)
 
   return (
     <>
