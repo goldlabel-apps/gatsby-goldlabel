@@ -74,7 +74,6 @@ export default function PwaSeo(props: WrapperShape) {
       localised = demo[i].node
     }
   }
-  // localise(list, locale)
 
   if(localised){
     title = localised.title
@@ -84,7 +83,15 @@ export default function PwaSeo(props: WrapperShape) {
     if (localised.body){
       body = localised.body.data.body
     }
-    
+  }
+
+  if(special === "page"){
+    const {page} = pageContext.data
+    // console.log("page", page)
+    title = page.title
+    seotitle =  page.title
+    description = ""
+    body = ""
   }
   
   return (<>
@@ -112,7 +119,7 @@ export default function PwaSeo(props: WrapperShape) {
                                   }}>
                                     <Avatar src={avatar} alt={description}/>
                                   </IconButton>}
-                          title={<Font variant="title">
+                          title={<Font>
                                   {title}
                                 </Font>}
                           subheader={<Font>

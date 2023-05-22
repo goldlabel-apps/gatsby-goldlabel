@@ -49,19 +49,23 @@ exports.createPages = async ({ graphql, actions }) => {
   
   for(let i = 0; i < pages.length; i++){
     const {node} = pages[i]
-    createPage({
-      path: node.path,
-      component: PwaSeo,
-      context: {
-        data: {
-          locale: "en",
-          special: "page",
-          demo,
-          path: node.path,
-        },
-      },
-    })
     const path = `${node.path}/${node.locale}`
+
+    if (node.locale === "en"){
+      createPage({
+        path: node.path,
+        component: PwaSeo,
+        context: {
+          data: {
+            locale: "en",
+            special: "page",
+            page: node,
+            demo,
+            path: node.path,
+          },
+        },
+      })
+    }
     createPage({
       path,
       component: PwaSeo,
@@ -69,6 +73,7 @@ exports.createPages = async ({ graphql, actions }) => {
         data: {
           locale: node.locale,
           special: "page",
+          page: node,
           demo,
           path,
         },

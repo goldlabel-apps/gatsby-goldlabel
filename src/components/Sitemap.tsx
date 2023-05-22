@@ -54,19 +54,22 @@ export default function Sitemap(props: any) {
               if (!data) return null
               const { book, special } = data
               if (book) linkTitle = book.title
-              let icon = "link"
+              let icon = "help"
               if (special === "404") return null
               switch (special) {
                 case "home":
                   icon = "home"
                   linkTitle = "Home"
                   break
+                case "page":
+                  icon = "doc"
+                  linkTitle = "Page"
+                  break
                 case "404":
                   icon = "help"
                   linkTitle = "404"
                   break
               }
-
               return <ListItemButton 
                       key={`page_${i}`}
                       onClick={(e: React.MouseEvent) => {
