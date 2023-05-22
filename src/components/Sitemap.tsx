@@ -28,7 +28,9 @@ export default function Sitemap(props: any) {
           expandIcon={<Icon icon="acc" color="primary" />}
           aria-controls="panel1a-content"
           id="sitemap"
-        />
+        >
+          Sitemap
+        </AccordionSummary>
         <AccordionDetails sx={{border: "none", boxShadow: "none"}}>
           
           <List dense>

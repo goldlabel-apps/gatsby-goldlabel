@@ -1,3 +1,5 @@
+import ServerSideRender from "./app/ServerSideRender"
+
 import {usePwaDispatch} from "./hooks/usePwaDispatch"
 import {usePwaSelect} from "./hooks/usePwaSelect"
 import {useGQLMeta} from "./hooks/useGQLMeta"
@@ -35,6 +37,7 @@ import { setOpen } from "./redux/actions/setOpen"
 import { navigateTo } from "./redux/actions/navigateTo"
 
 export {
+  ServerSideRender,
   firebaseConfig,
   locales,
   store,

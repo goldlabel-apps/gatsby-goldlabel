@@ -1,5 +1,18 @@
 import { PaletteMode } from "@mui/material"
 
+
+
+export type SsrShape = {
+  title: string
+  description: string
+  canoical: string
+  url: string
+  og: string
+  twitter: string
+  locale: string
+}
+
+
 export type MetaShape = {
   siteTitle: string
   title: string

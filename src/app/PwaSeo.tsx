@@ -22,6 +22,7 @@ import {
   WrapRedux,
   ContextNav,
   ListBooks,
+  ServerSideRender,
 } from "../"
 
 export default function PwaSeo(props: WrapperShape) {
@@ -39,7 +40,6 @@ export default function PwaSeo(props: WrapperShape) {
   let twitter: string = "@"
   let body: any = false
   let books: Array<any> = []
-  let appData: any = null
   let demo: any = null
   const {
     pageContext,
@@ -57,6 +57,7 @@ export default function PwaSeo(props: WrapperShape) {
   description = siteDescription
   keywords = siteKeywords
   avatar = siteIcon  
+
   const {special, instructions, book, path, localised} = pageContext.data
   if (localised){
     books = localised.books
@@ -64,65 +65,30 @@ export default function PwaSeo(props: WrapperShape) {
   url = `${siteUrl}${path}`
   if(pageContext){
     const {data} = pageContext
-    // appData = data
     demo = data.demo 
   }
   if(special === "404"){
     title = instructions
     seotitle =  `${instructions} ${siteTitle}`
   }
-  // if(special === "book"){
-  //   if (book){
-  //     locale = book.locale
-  //     title = book.title
-  //     seotitle =  `${book.title} ${siteDescription}`
-  //     description = book.description
-  //     keywords = book.keywords
-  //     const {bookimage} = book
-  //     if (bookimage) og = makeImgSrc(bookimage.url)
-  //   }
-  // }
-  // if(special === "home"){
-  //   title = localised.title
-  //   seotitle =  `${localised.title} ${localised.description}`
-  //   description = localised.description
-  //   keywords = siteKeywords
-  //   body = localised.appbody.data.appbody
-  //   og = makeImgSrc(localised.appimage.url)
-  // }
 
   return (<>
-            <GatsbySeo 
+
+            <ServerSideRender 
               title={seotitle}
               description={description}
-              canonical={siteUrl}
-              twitter={{
-                handle: twitter,
-                site: twitter,
-                cardType: 'summary_large_image',
-              }}
-              openGraph={{
-                type: 'website',
-                url,
-                title,
-                description,
-                images: [
-                  {
-                    url: og,
-                  },
-                ],
-              }}/>
+              canoical={siteUrl}
+              url={url}
+              og={og}
+              locale={locale}
+              twitter={twitter}
+            />
+            
 
             <WrapRedux>
               <MuiTheme>
                 <Container maxWidth="lg" sx={{my:1}}>
-                  <Box sx={{display: "none"}}>
-                    <Sitemap 
-                      options={{
-                        defaultExpanded: special === "home" || special === "404" ? false : false,
-                      }}
-                    />
-                  </Box>
+                  
                   <Grid container>
                     <Grid item xs={12}>
                       <Box>
@@ -173,19 +139,22 @@ export default function PwaSeo(props: WrapperShape) {
 
 
                             <Grid item xs={12} sm={4}>
+                              <Box sx={{}}>
+                                <Sitemap 
+                                  options={{
+                                    defaultExpanded: special === "home" || special === "404" ? false : false,
+                                  }}
+                                />
+                              </Box>
                               {showContextNav ? <ContextNav /> : null }
-                              
-                                {books ? <ListBooks books={books} /> : null }
                             </Grid>
-
-
 
                           </Grid>                        
                         </Box>
                     </Grid>
                   </Grid>
 
-                  <pre>{JSON.stringify(demo, null, 2)}</pre> 
+                  
 
                 </Container>
               </MuiTheme>
@@ -203,5 +172,6 @@ export function Head() {
 }
 
 /*
+<pre>{JSON.stringify(demo, null, 2)}</pre> 
   <pre>{JSON.stringify(apps, null, 2)}</pre> 
 */

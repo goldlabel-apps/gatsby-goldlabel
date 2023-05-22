@@ -5,18 +5,21 @@ exports.createPages = async ({ graphql, actions }) => {
   const PwaSeo = path.resolve("src/app/PwaSeo.tsx")
 
   const demoData = await graphql(`
-    query Demo {
-      strapiDemo {
+query Demo {
+  allStrapiDemo {
+    edges {
+      node {
         title
+        description
+        keywords
         locale
-        ogImage {
-          url
-        }
       }
     }
+  }
+}
   `)
   let demo: any = {}
-  if (demoData) demo = demoData.data.strapiDemo
+  if (demoData) demo = demoData.data.allStrapiDemo
 
   createPage({
     path: "/",
