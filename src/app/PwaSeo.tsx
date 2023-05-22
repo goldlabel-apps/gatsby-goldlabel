@@ -2,7 +2,7 @@ import React from "react"
 import "../theme/default.css"
 import { WrapperShape} from "../types"
 import ReactMarkdown from "react-markdown"
-import { GatsbySeo } from "gatsby-plugin-next-seo"
+// import { GatsbySeo } from "gatsby-plugin-next-seo"
 import {
   Avatar,
   IconButton,
@@ -14,14 +14,14 @@ import {
   Grid,
 } from "@mui/material"
 import {
-  makeImgSrc,
+  // makeImgSrc,
   useGQLMeta,
   Font,
   Sitemap,
   MuiTheme,
   WrapRedux,
   ContextNav,
-  ListBooks,
+  // ListBooks,
   ServerSideRender,
 } from "../"
 
@@ -58,14 +58,13 @@ export default function PwaSeo(props: WrapperShape) {
   keywords = siteKeywords
   avatar = siteIcon  
 
-  const {special, instructions, book, path, localised} = pageContext.data
-  if (localised){
-    books = localised.books
-  }
+  const {special, instructions, path} = pageContext.data
   url = `${siteUrl}${path}`
+
   if(pageContext){
     const {data} = pageContext
-    demo = data.demo 
+    // console.log("data", data)
+    demo = data.demo
   }
   if(special === "404"){
     title = instructions
@@ -73,7 +72,6 @@ export default function PwaSeo(props: WrapperShape) {
   }
 
   return (<>
-
             <ServerSideRender 
               title={seotitle}
               description={description}
@@ -83,12 +81,10 @@ export default function PwaSeo(props: WrapperShape) {
               locale={locale}
               twitter={twitter}
             />
-            
 
             <WrapRedux>
               <MuiTheme>
                 <Container maxWidth="lg" sx={{my:1}}>
-                  
                   <Grid container>
                     <Grid item xs={12}>
                       <Box>
@@ -106,38 +102,31 @@ export default function PwaSeo(props: WrapperShape) {
                           subheader={<Font>
                                       {description}
                                     </Font>}/>
-                        
                           <Grid container>
-
                             <Grid item xs={12} sm={8}>
-
-                              <Grid container>
-                                
-                                  { og ? <Grid item xs={12}><CardMedia 
-                                  component={"img"}
-                                  src={og} 
-                                  height={200}
-                                  alt={`${title} ${description}`}
-                                /></Grid> : null }  
-                                
-                                    {body ? <>
-                                    <Grid item xs={12}>
-                                      <CardContent>
-                                        <Font>
-                                          <ReactMarkdown>
-                                            {body}
-                                          </ReactMarkdown>
-                                        </Font>
-                                      </CardContent>
-                                      </Grid>
-                                    </> : null }  
-                                
+                              <pre>{JSON.stringify(demo, null, 2)}</pre> 
+                              <Grid container>  
+                                {og ? <Grid item xs={12}>
+                                  <CardMedia 
+                                    component={"img"}
+                                    src={og} 
+                                    height={200}
+                                    alt={`${title} ${description}`}
+                                  />
+                                </Grid> : null }
+                                {body ? <>
+                                  <Grid item xs={12}>
+                                    <CardContent>
+                                      <Font>
+                                        <ReactMarkdown>
+                                          {body}
+                                        </ReactMarkdown>
+                                      </Font>
+                                    </CardContent>
+                                  </Grid>
+                                </> : null }
                               </Grid>
-
-                              
                             </Grid>
-
-
                             <Grid item xs={12} sm={4}>
                               <Box sx={{}}>
                                 <Sitemap 
@@ -148,14 +137,10 @@ export default function PwaSeo(props: WrapperShape) {
                               </Box>
                               {showContextNav ? <ContextNav /> : null }
                             </Grid>
-
                           </Grid>                        
                         </Box>
                     </Grid>
                   </Grid>
-
-                  
-
                 </Container>
               </MuiTheme>
             </WrapRedux>
@@ -172,6 +157,6 @@ export function Head() {
 }
 
 /*
-<pre>{JSON.stringify(demo, null, 2)}</pre> 
+
   <pre>{JSON.stringify(apps, null, 2)}</pre> 
 */
