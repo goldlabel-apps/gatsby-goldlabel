@@ -2,7 +2,6 @@ import React from "react"
 import "../theme/default.css"
 import { WrapperShape} from "../types"
 import ReactMarkdown from "react-markdown"
-// import { GatsbySeo } from "gatsby-plugin-next-seo"
 import {
   Avatar,
   IconButton,
@@ -14,20 +13,19 @@ import {
   Grid,
 } from "@mui/material"
 import {
-  // makeImgSrc,
   useGQLMeta,
   Font,
   Sitemap,
   MuiTheme,
   WrapRedux,
   ContextNav,
-  // ListBooks,
   ServerSideRender,
 } from "../"
 
 export default function PwaSeo(props: WrapperShape) {
   const meta = useGQLMeta()
   const showContextNav = false
+  
 
   let locale: string = "en"
   let title: string = ""
@@ -44,6 +42,7 @@ export default function PwaSeo(props: WrapperShape) {
   const {
     pageContext,
   } = props
+  const {special, instructions, path} = pageContext.data
   const {
     siteUrl,
     siteTitle,
@@ -57,19 +56,18 @@ export default function PwaSeo(props: WrapperShape) {
   description = siteDescription
   keywords = siteKeywords
   avatar = siteIcon  
-
-  const {special, instructions, path} = pageContext.data
+  
   url = `${siteUrl}${path}`
-
   if(pageContext){
     const {data} = pageContext
-    // console.log("data", data)
     demo = data.demo
   }
   if(special === "404"){
     title = instructions
     seotitle =  `${instructions} ${siteTitle}`
   }
+
+
 
   return (<>
             <ServerSideRender 

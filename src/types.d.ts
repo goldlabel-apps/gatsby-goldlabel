@@ -38,6 +38,7 @@ export type PwaReduxShape = {
   locales: Array<LocaleShape>
   persisted?: boolean
   theme: ThemeShape
+  sitemap: boolean
 }
 
 export type GatsbyShape = {

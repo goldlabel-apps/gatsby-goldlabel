@@ -26,6 +26,7 @@ import ListBooks from "./components/ListBooks"
 
 import WrapRedux from "./redux/WrapRedux"
 import {locales} from "./redux/locales"
+import {theme} from "./redux/theme"
 import {selectPWA, setPwaKey} from "./redux/pwaReducer"
 import {store} from "./redux/store"
 import {persistor} from "./redux/store"
@@ -40,6 +41,7 @@ export {
   ServerSideRender,
   firebaseConfig,
   locales,
+  theme,
   store,
   persistor,
   setPwaKey,

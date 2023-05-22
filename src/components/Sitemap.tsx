@@ -15,6 +15,7 @@ import {
 } from "../"
 
 export default function Sitemap(props: any) {
+    console.log("sitemap")
     const {options} = props
     let dO = false
     const {defaultExpanded} = options
@@ -22,13 +23,17 @@ export default function Sitemap(props: any) {
     const gatsbyPages = useGQLGatsbyPages()
 
     return (<>
-      <Accordion defaultExpanded={dO} sx={{border: "none", boxShadow: "none"}}>
+      <Accordion 
+        defaultExpanded={dO} 
+        sx={{border: "none", 
+        boxShadow: "none",
+      }}>
+      
         <AccordionSummary
+          id="sitemap"
           sx={{border: "none", boxShadow: "none"}}
           expandIcon={<Icon icon="acc" color="primary" />}
-          aria-controls="panel1a-content"
-          id="sitemap"
-        >
+          aria-controls="sitemap-content">
           Sitemap
         </AccordionSummary>
         <AccordionDetails sx={{border: "none", boxShadow: "none"}}>

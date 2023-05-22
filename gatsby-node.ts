@@ -34,6 +34,20 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   createPage({
+    path: "/zh",
+    component: PwaSeo,
+    context: {
+      data: {
+        locale: "zh",
+        demo,
+        special: "home",
+        path: "/",
+      },
+    },
+  })
+
+
+  createPage({
     path: `${"404"}`,
     component: PwaSeo,
     context: {
