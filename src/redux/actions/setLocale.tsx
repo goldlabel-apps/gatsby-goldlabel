@@ -7,7 +7,7 @@ export const setLocale =
     try {
       dispatch(setPwaKey({ key: "locale", value: locale }))
       setTimeout(() => {
-        // dispatch(navigateTo(`/${locale}/`, "_self"))
+        dispatch(navigateTo(`/${locale}/`, "_self"))
       }, 100)
       
     } catch (error: any) {

@@ -55,6 +55,7 @@ export default function Sitemap(props: any) {
               const { book, special } = data
               if (book) linkTitle = book.title
               let icon = "link"
+              if (special === "404") return null
               switch (special) {
                 case "home":
                   icon = "home"

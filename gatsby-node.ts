@@ -18,6 +18,12 @@ exports.createPages = async ({ graphql, actions }) => {
               body
             }
           }
+          ogImage {
+            url
+            alternativeText
+            width
+            height
+          }
         }
       }
     }
@@ -44,10 +50,10 @@ exports.createPages = async ({ graphql, actions }) => {
     component: PwaSeo,
     context: {
       data: {
-        locale: "zh",
+        locale: "en",
         demo,
         special: "home",
-        path: "/zh",
+        path: "/en",
       },
     },
   })
