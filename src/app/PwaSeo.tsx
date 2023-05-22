@@ -69,25 +69,25 @@ export default function PwaSeo(props: WrapperShape) {
     title = instructions
     seotitle =  `${instructions} ${siteTitle}`
   }
-  if(special === "book"){
-    if (book){
-      locale = book.locale
-      title = book.title
-      seotitle =  `${book.title} ${siteDescription}`
-      description = book.description
-      keywords = book.keywords
-      const {bookimage} = book
-      if (bookimage) og = makeImgSrc(bookimage.url)
-    }
-  }
-  if(special === "home"){
-    title = localised.title
-    seotitle =  `${localised.title} ${localised.description}`
-    description = localised.description
-    keywords = siteKeywords
-    body = localised.appbody.data.appbody
-    og = makeImgSrc(localised.appimage.url)
-  }
+  // if(special === "book"){
+  //   if (book){
+  //     locale = book.locale
+  //     title = book.title
+  //     seotitle =  `${book.title} ${siteDescription}`
+  //     description = book.description
+  //     keywords = book.keywords
+  //     const {bookimage} = book
+  //     if (bookimage) og = makeImgSrc(bookimage.url)
+  //   }
+  // }
+  // if(special === "home"){
+  //   title = localised.title
+  //   seotitle =  `${localised.title} ${localised.description}`
+  //   description = localised.description
+  //   keywords = siteKeywords
+  //   body = localised.appbody.data.appbody
+  //   og = makeImgSrc(localised.appimage.url)
+  // }
 
   return (<>
             <GatsbySeo 
