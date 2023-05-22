@@ -32,6 +32,50 @@ exports.createPages = async ({ graphql, actions }) => {
   let demo: any = {}
   if (demoData) demo = demoData.data.allStrapiDemo.edges
 
+  const allPages = await graphql(`
+  query Pages {
+    allStrapiPage {
+      edges {
+        node {
+          locale
+          title
+          path
+        }
+      }
+    }
+  }
+  `)
+  const pages = allPages.data.allStrapiPage.edges
+  
+  for(let i = 0; i < pages.length; i++){
+    const {node} = pages[i]
+    createPage({
+      path: node.path,
+      component: PwaSeo,
+      context: {
+        data: {
+          locale: "en",
+          special: "page",
+          demo,
+          path: node.path,
+        },
+      },
+    })
+    const path = `${node.path}/${node.locale}`
+    createPage({
+      path,
+      component: PwaSeo,
+      context: {
+        data: {
+          locale: node.locale,
+          special: "page",
+          demo,
+          path,
+        },
+      },
+    })  
+  }
+
   createPage({
     path: "/",
     component: PwaSeo,
@@ -87,6 +131,20 @@ exports.createPages = async ({ graphql, actions }) => {
 
   createPage({
     path: `${"404"}`,
+    component: PwaSeo,
+    context: {
+      data: {
+        demo,
+        locale: "en",
+        special: "404",
+        instructions: "Route unavailable",
+        path: "/404",
+      },
+    },
+  })
+
+  createPage({
+    path: `${"undefined"}`,
     component: PwaSeo,
     context: {
       data: {

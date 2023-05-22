@@ -81,10 +81,12 @@ export default function PwaSeo(props: WrapperShape) {
     seotitle =  localised.title
     description = localised.description
     keywords = localised.keywords
-    body = localised.body.data.body
+    if (localised.body){
+      body = localised.body.data.body
+    }
+    
   }
   
-
   return (<>
             <ServerSideRender 
               title={seotitle}

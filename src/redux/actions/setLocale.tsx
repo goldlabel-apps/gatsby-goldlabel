@@ -6,9 +6,9 @@ export const setLocale =
   async (dispatch: any) => {
     try {
       dispatch(setPwaKey({ key: "locale", value: locale }))
-      setTimeout(() => {
-        dispatch(navigateTo(`/${locale}/`, "_self"))
-      }, 100)
+      // setTimeout(() => {
+      //   dispatch(navigateTo(`/${locale}/`, "_self"))
+      // }, 100)
       
     } catch (error: any) {
       console.log("Action error: setLocale", error)
