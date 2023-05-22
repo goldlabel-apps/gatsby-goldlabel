@@ -40,6 +40,7 @@ export default function PwaSeo(props: WrapperShape) {
   let body: any = false
   let books: Array<any> = []
   let appData: any = null
+  let demo: any = null
   const {
     pageContext,
   } = props
@@ -63,7 +64,8 @@ export default function PwaSeo(props: WrapperShape) {
   url = `${siteUrl}${path}`
   if(pageContext){
     const {data} = pageContext
-    appData = data
+    // appData = data
+    demo = data.demo 
   }
   if(special === "404"){
     title = instructions
@@ -176,10 +178,15 @@ export default function PwaSeo(props: WrapperShape) {
                                 {books ? <ListBooks books={books} /> : null }
                             </Grid>
 
+
+
                           </Grid>                        
                         </Box>
                     </Grid>
                   </Grid>
+
+                  <pre>{JSON.stringify(demo, null, 2)}</pre> 
+
                 </Container>
               </MuiTheme>
             </WrapRedux>
