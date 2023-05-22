@@ -11,7 +11,7 @@ import {
 
 const initialState: PwaReduxShape = {
   started: false,
-  sitemap: false,
+  sitemap: true,
   locale: "en",
   theme,
   locales,

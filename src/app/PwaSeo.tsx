@@ -20,13 +20,12 @@ import {
   WrapRedux,
   ContextNav,
   ServerSideRender,
+  LocaleMenu,
 } from "../"
 
 export default function PwaSeo(props: WrapperShape) {
   const meta = useGQLMeta()
   const showContextNav = false
-  
-
   let locale: string = "en"
   let title: string = ""
   let seotitle: string = ""
@@ -37,7 +36,6 @@ export default function PwaSeo(props: WrapperShape) {
   let avatar: string = ""
   let twitter: string = "@"
   let body: any = false
-  let books: Array<any> = []
   let demo: any = null
   const {
     pageContext,
@@ -55,19 +53,18 @@ export default function PwaSeo(props: WrapperShape) {
   title = siteTitle
   description = siteDescription
   keywords = siteKeywords
-  avatar = siteIcon  
-  
+  avatar = siteIcon
   url = `${siteUrl}${path}`
   if(pageContext){
     const {data} = pageContext
     demo = data.demo
+    // console.log("data", data)
+    locale = data.locale
   }
   if(special === "404"){
     title = instructions
     seotitle =  `${instructions} ${siteTitle}`
   }
-
-
 
   return (<>
             <ServerSideRender 
@@ -99,7 +96,9 @@ export default function PwaSeo(props: WrapperShape) {
                                 </Font>}
                           subheader={<Font>
                                       {description}
-                                    </Font>}/>
+                                    </Font>}
+                          action={<><LocaleMenu thisLocale={locale}/></>}            
+                        />
                           <Grid container>
                             <Grid item xs={12} sm={8}>
                               <pre>{JSON.stringify(demo, null, 2)}</pre> 

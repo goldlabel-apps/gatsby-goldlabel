@@ -13,6 +13,11 @@ exports.createPages = async ({ graphql, actions }) => {
           description
           keywords
           locale
+          body {
+            data {
+              body
+            }
+          }
         }
       }
     }
@@ -26,9 +31,23 @@ exports.createPages = async ({ graphql, actions }) => {
     component: PwaSeo,
     context: {
       data: {
+        locale: "en",
         demo,
         special: "home",
         path: "/",
+      },
+    },
+  })
+
+  createPage({
+    path: "/en",
+    component: PwaSeo,
+    context: {
+      data: {
+        locale: "zh",
+        demo,
+        special: "home",
+        path: "/zh",
       },
     },
   })
@@ -41,7 +60,20 @@ exports.createPages = async ({ graphql, actions }) => {
         locale: "zh",
         demo,
         special: "home",
-        path: "/",
+        path: "/zh",
+      },
+    },
+  })
+
+  createPage({
+    path: "/sv",
+    component: PwaSeo,
+    context: {
+      data: {
+        locale: "sv",
+        demo,
+        special: "home",
+        path: "/sv",
       },
     },
   })
@@ -53,6 +85,7 @@ exports.createPages = async ({ graphql, actions }) => {
     context: {
       data: {
         demo,
+        locale: "en",
         special: "404",
         instructions: "Route unavailable",
         path: "/404",
