@@ -39,7 +39,14 @@ exports.createPages = async ({ graphql, actions }) => {
         node {
           locale
           title
+          description
           path
+          keywords
+          body {
+            data {
+              body
+            }
+          }
         }
       }
     }

@@ -21,15 +21,17 @@ import {
   ContextNav,
   ServerSideRender,
   LocaleMenu,
+  makeImgSrc,
 } from "../"
 
 export default function PwaSeo(props: WrapperShape) {
   
+  let output: any = null
   let locale: string = "en"
   let title: string = ""
   let seotitle: string = ""
   let description: string = ""
-  let keywords: string = ""
+  // let keywords: string = ""
   let url: string = ""
   let og: string = ""
   let avatar: string = ""
@@ -48,16 +50,18 @@ export default function PwaSeo(props: WrapperShape) {
     siteUrl,
     siteTitle,
     siteDescription,
-    siteKeywords,
+    // siteKeywords,
     siteIcon,
+    siteImage,
     siteTwitter,
   } = meta
   twitter = siteTwitter
   title = siteTitle
   description = siteDescription
-  keywords = siteKeywords
+  // keywords = siteKeywords
   avatar = siteIcon
   url = `${siteUrl}${path}`
+  og = makeImgSrc(siteImage)
 
   if(special === "404"){
     title = instructions
@@ -79,7 +83,7 @@ export default function PwaSeo(props: WrapperShape) {
     title = localised.title
     seotitle =  localised.title
     description = localised.description
-    keywords = localised.keywords
+    // keywords = localised.keywords
     if (localised.body){
       body = localised.body.data.body
     }
@@ -87,11 +91,14 @@ export default function PwaSeo(props: WrapperShape) {
 
   if(special === "page"){
     const {page} = pageContext.data
+    // output = page
     // console.log("page", page)
     title = page.title
     seotitle =  page.title
-    description = ""
-    body = ""
+    description = page.description
+    if (page.body){
+      body = page.body.data.body
+    }
   }
   
   return (<>
@@ -130,7 +137,8 @@ export default function PwaSeo(props: WrapperShape) {
                           <Grid container>
                             <Grid item xs={12} sm={8}>
                               
-                              {/* <pre>{JSON.stringify(localised, null, 2)}</pre>  */}
+                              {output ? <pre>{JSON.stringify(output, null, 2)}</pre> : null}
+                              
 
                               <Grid container>  
                                 {og ? <Grid item xs={12}>
