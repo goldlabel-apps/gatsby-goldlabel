@@ -61,7 +61,7 @@ export default function PwaSeo(props: WrapperShape) {
   // keywords = siteKeywords
   avatar = siteIcon
   url = `${siteUrl}${path}`
-  og = makeImgSrc(siteImage)
+  // og = makeImgSrc(siteImage)
 
   if(special === "404"){
     title = instructions
