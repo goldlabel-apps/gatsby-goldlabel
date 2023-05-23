@@ -6,10 +6,10 @@ const siteTitle = "Goldlabel"
 const siteDescription = "by listingslab"
 const siteUrl = "https://listingslab.com/"
 const siteIcon = "/svg/icons/goldlabel.svg"
-const siteImage = "/png/og.png"
+const siteImage = "/webp/golden-ticket.webp"
 const siteTwitter = "@listingslab"
+const siteTheme = "#C09F52"
 const siteKeywords = "goldlabel, open source, gatsby, strapi, pwa, listingslab, react, javascript"
-const siteTheme = "#FFFFFF"
 
 const siteMetadata: GatsbyShape =  {
   siteTitle,
@@ -32,13 +32,13 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
+        start_url: `/`,
+        display: `standalone`,
         name: siteTitle,
         short_name: siteTitle,
         icon: `./static${siteIcon}`,
-        start_url: `/`,
         background_color: siteTheme,
         theme_color: siteTheme,
-        display: `standalone`,
       }
     },
     {

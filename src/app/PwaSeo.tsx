@@ -2,7 +2,6 @@ import React from "react"
 import "../theme/default.css"
 import { WrapperShape} from "../types"
 import ReactMarkdown from "react-markdown"
-import { GatsbySeo } from "gatsby-plugin-next-seo"
 import {
   Avatar,
   IconButton,
@@ -14,113 +13,108 @@ import {
   Grid,
 } from "@mui/material"
 import {
-  makeImgSrc,
   useGQLMeta,
   Font,
   Sitemap,
   MuiTheme,
   WrapRedux,
   ContextNav,
-  ListBooks,
+  ServerSideRender,
+  LocaleMenu,
+  makeImgSrc,
 } from "../"
 
 export default function PwaSeo(props: WrapperShape) {
-  const meta = useGQLMeta()
-  const showContextNav = false
-
+  
+  let output: any = null
   let locale: string = "en"
   let title: string = ""
   let seotitle: string = ""
   let description: string = ""
-  let keywords: string = ""
+  // let keywords: string = ""
   let url: string = ""
   let og: string = ""
   let avatar: string = ""
   let twitter: string = "@"
   let body: any = false
-  let books: Array<any> = []
-  let appData: any = null
-  const {
-    pageContext,
-  } = props
+  let demo: any = null
+
+  const meta = useGQLMeta()
+  const showContextNav = false
+  const {pageContext} = props
+  const {data} = pageContext
+  demo = data.demo
+  locale = data.locale
+  const {special, instructions, path} = pageContext.data
   const {
     siteUrl,
     siteTitle,
     siteDescription,
-    siteKeywords,
+    // siteKeywords,
     siteIcon,
+    siteImage,
     siteTwitter,
   } = meta
   twitter = siteTwitter
   title = siteTitle
   description = siteDescription
-  keywords = siteKeywords
-  avatar = siteIcon  
-  const {special, instructions, book, path, localised} = pageContext.data
-  if (localised){
-    books = localised.books
-  }
+  // keywords = siteKeywords
+  avatar = siteIcon
   url = `${siteUrl}${path}`
-  if(pageContext){
-    const {data} = pageContext
-    appData = data
-  }
+  og = makeImgSrc(siteImage)
+
   if(special === "404"){
     title = instructions
     seotitle =  `${instructions} ${siteTitle}`
   }
-  if(special === "book"){
-    if (book){
-      locale = book.locale
-      title = book.title
-      seotitle =  `${book.title} ${siteDescription}`
-      description = book.description
-      keywords = book.keywords
-      const {bookimage} = book
-      if (bookimage) og = makeImgSrc(bookimage.url)
+
+  let localised: any = {
+    not: "found",
+    locale,
+    
+  } 
+  for(let i=0; i< demo.length; i++){
+    if (locale === demo[i].node.locale){
+      localised = demo[i].node
     }
   }
-  if(special === "home"){
+
+  if(localised){
     title = localised.title
-    seotitle =  `${localised.title} ${localised.description}`
+    seotitle =  localised.title
     description = localised.description
-    keywords = siteKeywords
-    body = localised.appbody.data.appbody
-    og = makeImgSrc(localised.appimage.url)
+    // keywords = localised.keywords
+    if (localised.body){
+      body = localised.body.data.body
+    }
   }
 
+  if(special === "page"){
+    const {page} = pageContext.data
+    // output = page
+    // console.log("page", page)
+    title = page.title
+    seotitle =  page.title
+    description = page.description
+    if (page.body){
+      body = page.body.data.body
+    }
+  }
+  
   return (<>
-            <GatsbySeo 
+            <ServerSideRender 
               title={seotitle}
               description={description}
-              canonical={siteUrl}
-              twitter={{
-                handle: twitter,
-                site: twitter,
-                cardType: 'summary_large_image',
-              }}
-              openGraph={{
-                type: 'website',
-                url,
-                title,
-                description,
-                images: [
-                  {
-                    url: og,
-                  },
-                ],
-              }}/>
+              canoical={siteUrl}
+              url={url}
+              og={og}
+              locale={locale}
+              twitter={twitter}
+            />
 
             <WrapRedux>
               <MuiTheme>
                 <Container maxWidth="lg" sx={{my:1}}>
-                  <Box sx={{display: "none"}}>
-                    <Sitemap 
-                      options={{
-                        defaultExpanded: special === "home" || special === "404" ? false : false,
-                      }}
-                    />
-                  </Box>
                   <Grid container>
                     <Grid item xs={12}>
                       <Box>
@@ -132,50 +126,52 @@ export default function PwaSeo(props: WrapperShape) {
                                   }}>
                                     <Avatar src={avatar} alt={description}/>
                                   </IconButton>}
-                          title={<Font variant="title">
+                          title={<Font>
                                   {title}
                                 </Font>}
                           subheader={<Font>
                                       {description}
-                                    </Font>}/>
-                        
+                                    </Font>}
+                          action={<><LocaleMenu thisLocale={locale}/></>}            
+                        />
                           <Grid container>
-
                             <Grid item xs={12} sm={8}>
+                              
+                              {output ? <pre>{JSON.stringify(output, null, 2)}</pre> : null}
+                              
 
-                              <Grid container>
-                                
-                                  { og ? <Grid item xs={12}><CardMedia 
-                                  component={"img"}
-                                  src={og} 
-                                  height={200}
-                                  alt={`${title} ${description}`}
-                                /></Grid> : null }  
-                                
-                                    {body ? <>
-                                    <Grid item xs={12}>
-                                      <CardContent>
-                                        <Font>
-                                          <ReactMarkdown>
-                                            {body}
-                                          </ReactMarkdown>
-                                        </Font>
-                                      </CardContent>
-                                      </Grid>
-                                    </> : null }  
-                                
+                              <Grid container>  
+                                {og ? <Grid item xs={12}>
+                                  <CardMedia 
+                                    component={"img"}
+                                    src={og} 
+                                    height={200}
+                                    alt={`${title} ${description}`}
+                                  />
+                                </Grid> : null }
+                                {body ? <>
+                                  <Grid item xs={12}>
+                                    <CardContent>
+                                      <Font>
+                                        <ReactMarkdown>
+                                          {body}
+                                        </ReactMarkdown>
+                                      </Font>
+                                    </CardContent>
+                                  </Grid>
+                                </> : null }
                               </Grid>
-
-                              
                             </Grid>
-
-
                             <Grid item xs={12} sm={4}>
+                              <Box sx={{}}>
+                                <Sitemap 
+                                  options={{
+                                    defaultExpanded: special === "home" || special === "404" ? false : false,
+                                  }}
+                                />
+                              </Box>
                               {showContextNav ? <ContextNav /> : null }
-                              
-                                {books ? <ListBooks books={books} /> : null }
                             </Grid>
-
                           </Grid>                        
                         </Box>
                     </Grid>
@@ -196,5 +192,6 @@ export function Head() {
 }
 
 /*
+
   <pre>{JSON.stringify(apps, null, 2)}</pre> 
 */

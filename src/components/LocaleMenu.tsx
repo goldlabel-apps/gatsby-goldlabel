@@ -7,7 +7,6 @@ import {
   useTheme,
 } from "@mui/material"
 import { 
-  makeImgSrc, 
   usePwaSelect, 
   usePwaDispatch, 
   selectPWA, 
@@ -15,12 +14,22 @@ import {
 } from ".."
 
 export default function LocaleMenu(props: any) {
-  const { languages } = props
+  const {thisLocale} = props
   const theme = useTheme()
   const pwa = usePwaSelect(selectPWA)
   const dispatch = usePwaDispatch()
   const { locale, locales } = pwa
   const borderColor = theme.palette.secondary.main
+
+  React.useEffect(() => {
+    const {locale} = pwa
+    // console.log("locale", locale)
+    // console.log("thisLocale", thisLocale)
+    if (locale !== thisLocale){
+      // @ts-ignore
+      dispatch(setLocale(thisLocale))
+    }
+  }, [pwa, thisLocale])
 
   return (<Box sx={{display: "flex"}}>
           { locales.map((item: any, i: number) => {

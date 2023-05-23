@@ -44,9 +44,10 @@ export function Font(props: any) {
       // noWrap={true}
       component="span"
       sx={{
-        // border: "1px solid red",
+        border: "1px solid red",
+        height: 50,
         display: "block",
-        overflow: "hidden",
+        // overflow: "hidden",
         textAlign,
         fontFamily: textFont,
         fontSize: textfontSize,

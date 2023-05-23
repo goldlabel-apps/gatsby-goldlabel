@@ -1,23 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { RootState } from "./store"
-import { 
-  // MetaShape,
-  ThemeShape,
+import {
   KeyValueShape,
   PwaReduxShape,
 } from "../types"
-import {locales} from "../"
-
-const theme: ThemeShape = {
-  title: "Gold",
-  primaryColor: "#C09F52",
-  secondaryColor: "#C09F52",
-  font: "gotham",
-  mode: "light",  
-}
+import {
+  locales,
+  theme,
+} from "../"
 
 const initialState: PwaReduxShape = {
   started: false,
+  sitemap: true,
   locale: "en",
   theme,
   locales,

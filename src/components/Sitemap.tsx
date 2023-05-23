@@ -10,27 +10,42 @@ import {
 } from "@mui/material"
 import {
   useGQLGatsbyPages, 
+  usePwaSelect,
+  selectPWA,
   Icon,
   Font,
+  
 } from "../"
 
 export default function Sitemap(props: any) {
-    const {options} = props
-    let dO = false
-    const {defaultExpanded} = options
-    if (defaultExpanded) dO = true
+    
+    const pwa = usePwaSelect(selectPWA)
+    
+    const {sitemap} = pwa
+
+    // console.log("sitemap", sitemap)
+
+    // const {options} = props
+    // let dO = false
+    // const {defaultExpanded} = options
+    // if (defaultExpanded) dO = true
     const gatsbyPages = useGQLGatsbyPages()
 
     return (<>
-      <Accordion defaultExpanded={dO} sx={{border: "none", boxShadow: "none"}}>
+      <Accordion 
+        defaultExpanded={sitemap} 
+        sx={{border: "none", 
+        boxShadow: "none",
+      }}>
+      
         <AccordionSummary
+          id="sitemap"
           sx={{border: "none", boxShadow: "none"}}
           expandIcon={<Icon icon="acc" color="primary" />}
-          aria-controls="panel1a-content"
-          id="sitemap"
-        />
+          aria-controls="sitemap-content">
+          Sitemap
+        </AccordionSummary>
         <AccordionDetails sx={{border: "none", boxShadow: "none"}}>
-          
           <List dense>
             { gatsbyPages.map((item: any, i: number) => {
               let linkTitle: any = null
@@ -39,30 +54,22 @@ export default function Sitemap(props: any) {
               if (!data) return null
               const { book, special } = data
               if (book) linkTitle = book.title
-
-              let icon = "link"
+              let icon = "help"
+              if (special === "404") return null
               switch (special) {
-                case "book":
-                  icon = "book"
-                  break
-
-                case "app":
-
-                  icon = "code"
-                  linkTitle = data.path
-                  break
-                
                 case "home":
                   icon = "home"
                   linkTitle = "Home"
                   break
-                
+                case "page":
+                  icon = "doc"
+                  linkTitle = "Page"
+                  break
                 case "404":
                   icon = "help"
                   linkTitle = "404"
                   break
               }
-
               return <ListItemButton 
                       key={`page_${i}`}
                       onClick={(e: React.MouseEvent) => {
@@ -73,8 +80,8 @@ export default function Sitemap(props: any) {
                           <Icon icon={icon} color="primary"/> 
                         </ListItemIcon>
                         <ListItemText 
-                          primary={<Font>{linkTitle}</Font>}
-                          secondary={path}
+                          // primary={<Font>{linkTitle}</Font>}
+                          secondary={<Font>{path}</Font>}
                         />
                     </ListItemButton>
               })}

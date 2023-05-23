@@ -19,3 +19,20 @@ export const useGQLMeta = () => {
   )
   return gql.site.siteMetadata
 }
+
+/*
+query Gatsby {
+  site {
+    siteMetadata {
+      siteTitle
+      siteUrl
+      siteDescription
+      siteIcon
+      siteImage
+      siteKeywords
+      siteTwitter
+      siteTheme
+    }
+  }
+}
+*/

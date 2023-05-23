@@ -1,3 +1,5 @@
+import ServerSideRender from "./app/ServerSideRender"
+
 import {usePwaDispatch} from "./hooks/usePwaDispatch"
 import {usePwaSelect} from "./hooks/usePwaSelect"
 import {useGQLMeta} from "./hooks/useGQLMeta"
@@ -24,6 +26,7 @@ import ListBooks from "./components/ListBooks"
 
 import WrapRedux from "./redux/WrapRedux"
 import {locales} from "./redux/locales"
+import {theme} from "./redux/theme"
 import {selectPWA, setPwaKey} from "./redux/pwaReducer"
 import {store} from "./redux/store"
 import {persistor} from "./redux/store"
@@ -35,8 +38,10 @@ import { setOpen } from "./redux/actions/setOpen"
 import { navigateTo } from "./redux/actions/navigateTo"
 
 export {
+  ServerSideRender,
   firebaseConfig,
   locales,
+  theme,
   store,
   persistor,
   setPwaKey,

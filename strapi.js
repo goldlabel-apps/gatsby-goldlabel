@@ -5,7 +5,7 @@ module.exports = {
   accessToken: process.env.STRAPI_TOKEN,
   collectionTypes: [
     {
-      singularName: "app",
+      singularName: "demo",
       pluginOptions: {
         i18n: {
           locale: "all",
@@ -13,7 +13,7 @@ module.exports = {
       },
     },
     {
-      singularName: "book",
+      singularName: "page",
       pluginOptions: {
         i18n: {
           locale: "all",
